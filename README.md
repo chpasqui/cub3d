@@ -3,7 +3,7 @@ cub3d
 
 ETAPE A FAIRE
 - Parse args :
-    - check_file
+    - check_file / okay
     - Read file (avec char **file lines)
     - Parse config(file_lines)
     - Extract_map(file_lines)
