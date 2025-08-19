@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/19 16:51:51 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:54:16 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ bool	parse_arg(char *path, t_map *map)
 	if (!check_file_extension(path, len))
 		handle_map_error(map, BAD_EXTENSION);
 	if (!read_file(path, map))
+		return (false);
+	if (!parse_file(map))
 		return (false);
 	return (true);
 }

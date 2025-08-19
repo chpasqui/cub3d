@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/19 16:41:31 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/19 17:00:31 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+/*---------PARSING--------*/
+int		count_lines(char *path, t_map *map);
+bool	read_file(char *path, t_map *map);
+bool	check_file_extension(char *path, int len);
+bool	parse_arg(char *path, t_map *map);
+
+bool	parse_file(t_map *map);
+
+/*---------FREE_AND_ERRORS--------*/
 void	free_map(t_map	*map);
 void	free_mlx(t_mlx	*mlx);
 void	free_game(t_game *data);
