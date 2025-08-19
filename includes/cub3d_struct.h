@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/18 20:02:52 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:45:36 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct s_color
 
 typedef struct s_map
 {
+	char	**lines;
+	int		nb_lines;
+
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 10:23:18 by chpasqui          #+#    #+#             */
-/*   Updated: 2024/12/06 15:02:56 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:27:20 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /* handle_format: handle the conversion specifier in the format string */
-int	handle_format(const char *format, va_list args, int i)
+static int	handle_format(const char *format, va_list args, int i)
 {
 	int	count;
 

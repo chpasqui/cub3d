@@ -6,11 +6,56 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/18 20:03:05 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:51:51 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	count_lines(char *path, t_map *map)
+{
+	int		fd;
+	int		count;
+	char	*line;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		handle_map_error(map, CANNOT_OPEN);
+	count = 0;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		free (line);
+		count++;
+	}
+	close(fd);
+	return (count);
+}
+
+bool	read_file(char *path, t_map *map)
+{
+	int		i;
+	int		fd;
+	char	*line;
+
+	map->nb_lines = count_lines(path, map);
+	if (map->nb_lines == 0)
+		handle_map_error(map, EMPTY_FILE);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		handle_map_error(map, CANNOT_OPEN);
+	map->lines = malloc(sizeof(char *) * (map->nb_lines + 1));
+	if (!map->lines)
+		return (false);
+	i = 0;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		map->lines[i] = line;
+		i++;
+	}
+	map->lines[i] = NULL;
+	close(fd);
+	return (true);
+}
 
 bool	check_file_extension(char *path, int len)
 {
@@ -23,30 +68,16 @@ bool	check_file_extension(char *path, int len)
 	return (true);
 }
 
-bool	parse_file(char *path, t_game *data)
-{
-	// lire le fichier
-	//parse les identifiants 
-	// extract la map
-	// verifier la validite des textures
-	// verifier la validite de la map
-}
-
-bool	parse_arg(char *path, t_game *data)
+bool	parse_arg(char *path, t_map *map)
 {
 	int	len;
-	int	fd;
 
 	len = ft_strlen(path);
 	if (len < 5)
-		handle_error(data, INVALID_NAME);
+		handle_map_error(map, INVALID_NAME);
 	if (!check_file_extension(path, len))
-		handle_error(data, BAD_EXTENSION);
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		handle_error(data, CANOT_OPEN);
-	close(fd);
-	if (!parse_file(path, data))
+		handle_map_error(map, BAD_EXTENSION);
+	if (!read_file(path, map))
 		return (false);
 	return (true);
 }

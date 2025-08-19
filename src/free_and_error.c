@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   free_and_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:15:44 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/18 19:46:22 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:49:06 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	free_str_array(char **arr)
+{
+	int	i;
+
+	if (!arr)
+		return ;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i])
+		i++;
+	}
+	free(arr);
+}
 
 void	free_map(t_map	*map)
 {
 	int	i;
 
 	i = 0;
+	if (map->lines)
+		free_str_array(map->lines);
 	if (map->grid)
-	{
-		while (map->grid[i])
-		{
-			free(map->grid[i]);
-			i++;
-		}
-		free(map->grid);
-	}
+		free_str_array(map->grid);
 	if (map->no_path)
 		free(map->no_path);
 	if (map->so_path)
@@ -61,8 +71,17 @@ int	clean_exit(t_game *data, int code)
 	exit(code);
 }
 
+void	handle_map_error(t_map *map, char *msg)
+{
+	printf("Error\n%s\n", msg);
+	free_map(map);
+	exit(EXIT_FAILURE);
+}
+
 void	handle_error(t_game *data, char *msg)
 {
 	printf("Error\n%s\n", msg);
 	clean_exit(data, EXIT_FAILURE);
 }
+
+//test

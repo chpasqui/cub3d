@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:27:39 by chpasqui          #+#    #+#             */
-/*   Updated: 2024/12/06 15:14:02 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:29:12 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_print_pointer(void *ptr)
 	return (count);
 }
 
-int	convert_pointer(unsigned long n)
+static int	convert_pointer(unsigned long n)
 {
 	int	count;
 

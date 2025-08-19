@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:31:20 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/01/13 11:15:43 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/19 14:31:30 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*-------PRINTF-------*/
 int		ft_printf(const char *format, ...);
-int		handle_format(const char *format, va_list args, int i);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
 int		ft_putnbr(int n);
@@ -78,6 +77,9 @@ int		ft_putnbr_unsigned(unsigned int n);
 int		ft_print_hex_lower(unsigned int n);
 int		ft_print_hex_upper(unsigned int n);
 int		ft_print_pointer(void *ptr);
-int		convert_pointer(unsigned long n);
+
+
+/*------GNL--------*/
+char	*get_next_line(int fd);
 
 #endif

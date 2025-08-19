@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/18 19:45:27 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:41:31 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 void	free_map(t_map	*map);
 void	free_mlx(t_mlx	*mlx);
 void	free_game(t_game *data);
+void	handle_map_error(t_map *map, char *msg);
 void	handle_error(t_game *data, char *msg);
 
 
