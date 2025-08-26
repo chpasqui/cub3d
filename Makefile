@@ -6,24 +6,25 @@
 #    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/26 14:30:52 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/08/26 14:37:26 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
-
 CC = cc
-
 FLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = src/
-SRC = main.c errors.c free.c init.c parsing/parse_arg.c parsing/parse_file.c
-SRCS = $(addprefix $(SRC_DIR), $(SRC))
-
 OBJ_DIR = obj/
-OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
-
 INC_DIR = includes/
+
+#Module
+SRC_MAIN	= main.c errors.c free.c init.c
+SRC_PARSING = parsing/parse_arg.c parsing/parse_file.c
+
+SRC = $(SRC_MAIN) $(SRC_PARSING)
+SRCS = $(addprefix $(SRC_DIR), $(SRC))
+OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 #Minilibx
 MLX_DIR = minilibx-linux/
