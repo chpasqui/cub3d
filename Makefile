@@ -6,21 +6,24 @@
 #    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/07/22 12:03:13 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/08/26 14:37:26 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
-
 CC = cc
-
 FLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = src/
-SRC = main.c 
-SRCS = $(addprefix $(SRC_DIR), $(SRC))
-
 OBJ_DIR = obj/
+INC_DIR = includes/
+
+#Module
+SRC_MAIN	= main.c errors.c free.c init.c
+SRC_PARSING = parsing/parse_arg.c parsing/parse_file.c
+
+SRC = $(SRC_MAIN) $(SRC_PARSING)
+SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 #Minilibx
@@ -33,45 +36,56 @@ LIBFT_DIR = libft/
 LIBFT = $(LIBFT_DIR)libft.a
 LIBFT_FLAGS = -lft
 
+#Couleurs
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+BLUE = \033[0;34m
+RED = \033[0;31m
+RESET = \033[0m
+
+
+# ************************************************************************************
+#										RULES
+# ************************************************************************************
+
 all : $(NAME)
 
 # Compilation of minilibx
 $(MLX) :
-	@echo "Making MiniLibX..."
-	@$(MAKE) -C $(MLX_DIR) all
-	@echo "MiniLibx made!"
+	@echo "$(BLUE) Making MiniLibX...$(RESET)"
+	@$(MAKE) --no-print-directory -C $(MLX_DIR) > /dev/null 2>&1
+	@echo "$(GREEN) MiniLibx made! $(RESET)"
 
 # Compilation of Libft
 $(LIBFT) :
-	@echo "Making Libft..."
-	@$(MAKE) -C $(LIBFT_DIR) all
-	@echo "Libft made!"
+	@echo "$(BLUE) Making Libft... $(RESET)"
+	@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
+	@echo "$(GREEN) Libft made! $(RESET)"
 
 #Compilation of cub3d
 $(NAME) : $(OBJ) $(MLX) $(LIBFT)
-	$(CC) $(OBJ) -L$(MLX_DIR) $(MLX_FLAGS) -L$(LIBFT_DIR) $(LIBFT_FLAGS) -o $(NAME)
-
+	@echo "$(BLUE)→ Linking $(NAME)...$(RESET)"
+	@$(CC) $(OBJ) -L$(INC_DIR) -L$(MLX_DIR) $(MLX_FLAGS) -L$(LIBFT_DIR) $(LIBFT_FLAGS) -o $(NAME)
+	@echo "$(GREEN)✔ Build finished: $(NAME)$(RESET)"
+	
 #Compilation objects files avec header MLX et LIBFT
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJ_DIR)
-	$(CC) $(FLAGS) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
-
-#Create obj directory
-$(OBJ_DIR) :
-	@mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(FLAGS) -I$(INC_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
 clean :
 	@echo "Object files removed"
 	@rm -rf $(OBJ_DIR)
 	@echo "Cleaning Libft..."
-	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean > /dev/null
 	@echo "Cleaning MiniLibX..."
-	@$(MAKE) -C $(MLX_DIR) clean
+	@$(MAKE) --no-print-directory -C $(MLX_DIR) clean > /dev/null
 
 fclean : clean
 	@echo "Program removed"
 	@rm -f $(NAME)
 	@echo "Full clean for Libft..."
-	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean > /dev/null
 	@echo "Full clean for MiniLibX..."
 	@rm -f $(MLX_DIR)libmlx.a 
 
