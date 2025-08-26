@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/19 17:00:31 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/26 13:24:08 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "minilibx-linux/mlx.h"
-# include "libft/libft.h"
-
+# include "mlx.h"
+# include "libft.h"
 # include "cub3d_struct.h"
-# include "keycodes.h"
+# include "keycodes.
 # include "error.h"
 
 # include <unistd.h>

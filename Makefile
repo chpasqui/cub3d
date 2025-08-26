@@ -6,7 +6,7 @@
 #    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/07/22 12:03:13 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/08/26 12:02:02 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
 OBJ_DIR = obj/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+
+INC_DIR = includes/
 
 #Minilibx
 MLX_DIR = minilibx-linux/
@@ -49,11 +51,11 @@ $(LIBFT) :
 
 #Compilation of cub3d
 $(NAME) : $(OBJ) $(MLX) $(LIBFT)
-	$(CC) $(OBJ) -L$(MLX_DIR) $(MLX_FLAGS) -L$(LIBFT_DIR) $(LIBFT_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) -L$(INC_DIR) -L$(MLX_DIR) $(MLX_FLAGS) -L$(LIBFT_DIR) $(LIBFT_FLAGS) -o $(NAME)
 
 #Compilation objects files avec header MLX et LIBFT
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJ_DIR)
-	$(CC) $(FLAGS) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
+	$(CC) $(FLAGS) -I$(INC_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
 #Create obj directory
 $(OBJ_DIR) :
