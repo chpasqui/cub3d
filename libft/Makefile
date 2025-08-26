@@ -6,7 +6,7 @@
 #    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/10 14:40:23 by chpasqui          #+#    #+#              #
-#    Updated: 2025/01/10 16:18:16 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/08/26 14:02:22 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,9 @@ SRC_WRITE = ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 SRC_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 			ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 SRC_PRINTF = ft_printf.c print_hex.c print_pointer.c print_put.c
+SRC_GNL = GNL_cub3d.c
 
-SRCS = $(SRC_CHECK) $(SRC_STR) $(SRC_MEM) $(SRC_WRITE) $(SRC_BONUS) $(SRC_PRINTF)
+SRCS = $(SRC_CHECK) $(SRC_STR) $(SRC_MEM) $(SRC_WRITE) $(SRC_BONUS) $(SRC_PRINTF) $(SRC_GNL)
 
 OBJ = $(SRCS:.c=.o)
 

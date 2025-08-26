@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   GNL_cub3d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:11:14 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/19 14:56:06 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/26 14:00:33 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	*start_new_line(char *stash);
+static char	*return_line(char *stash);
+static char	*update_stash(int fd, char *stash);
 
 static char	*start_new_line(char *stash)
 {

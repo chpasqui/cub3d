@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 18:27:39 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/19 14:29:12 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/26 13:58:52 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	convert_pointer(unsigned long n);
 
 int	ft_print_pointer(void *ptr)
 {

@@ -6,7 +6,7 @@
 #    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/26 12:02:02 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/08/26 13:55:02 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = src/
-SRC = main.c 
+SRC = main.c errors.c free.c init.c parsing/parse_arg.c parsing/parse_file.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 
 OBJ_DIR = obj/
@@ -54,12 +54,9 @@ $(NAME) : $(OBJ) $(MLX) $(LIBFT)
 	$(CC) $(OBJ) -L$(INC_DIR) -L$(MLX_DIR) $(MLX_FLAGS) -L$(LIBFT_DIR) $(LIBFT_FLAGS) -o $(NAME)
 
 #Compilation objects files avec header MLX et LIBFT
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJ_DIR)
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(FLAGS) -I$(INC_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
-
-#Create obj directory
-$(OBJ_DIR) :
-	@mkdir -p $(OBJ_DIR)
 
 clean :
 	@echo "Object files removed"
