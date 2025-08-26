@@ -6,14 +6,12 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/26 13:13:07 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/26 14:40:17 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	parse_file(t_map *map)
-{
 	// - Parcourir la map
 	// -- poru recuperer les infos (identifants)
 	// -- Parser les identifiants et verifier la validite
@@ -21,7 +19,20 @@ bool	parse_file(t_map *map)
 	// -- Copier la grille dans map.grid
 	// -- Verifier la validifite de map.grid
 
+bool parse_color(t_map *map, int i)
+{
+	char** tab;
+	int i;
 
+	tab = ft_split(line[i], ',');
+	i = ft_atoi(tab[1]);
+	printf("F2 = %d\n", i);
+
+	return(true);
+}
+	
+bool	parse_file(t_map *map)
+{
 	int i;
 
 	i = 0;
@@ -37,13 +48,25 @@ bool	parse_file(t_map *map)
 		if (map->file[i][0] != '0' || map->file[i][0] != '1' || map->file[i][0] != ' ')
 		{
 			parse_grid(map, i);
-			return(0);
 		}
-		if (map->file[i][0] != 'N' || map->file[i][0] != 'S')
+		else if (map->file[i][0] == 'N' || map->file[i][0] == 'S' || map->file[i][0] == 'E' || map->file[i][0] == 'W')
 		{
-			parse_
+			parse_texture_path(map, i);
 		}
-			i++;
+		else if (map->file[i][0] == 'F' || map->file[i][0] == 'C')
+		{
+			parse_color(map, i);
+		}
+		else if (map->file[i][0] == '\n')
+		{
+			//ignore empty lines
+		}
+		else
+		{
+			return (false);
+		}
+		i++;
 	}
-
+	return(true);
+}
 
