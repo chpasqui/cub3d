@@ -27,3 +27,21 @@ player pour gerer les mouvements
 Sites interessants :
 - https://hackmd.io/@nszl/H1LXByIE2#player-direction-vector-and-camera-vector
 - https://lodev.org/cgtutor/raycasting.html
+
+
+Travail en cours :
+
+charlotte : 
+verifier que le main tourne
+pars_arg
+
+
+
+sylvain :
+pars_file : mettre les differentes infos(grid, texture, couleurs) dans la structure map
+
+
+a faire :
+afficher la grid en 2D
+algo de verification de grid fermee
+
