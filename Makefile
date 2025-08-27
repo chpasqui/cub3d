@@ -3,17 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
+#    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/26 14:37:26 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/08/27 09:37:40 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+#Noms, compilateur et flags
 NAME = cub3d
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 
+#Dossiers
 SRC_DIR = src/
 OBJ_DIR = obj/
 INC_DIR = includes/
@@ -27,9 +29,17 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 #Minilibx
-MLX_DIR = minilibx-linux/
-MLX = $(MLX_DIR)libmlx.a 
-MLX_FLAGS = -lmlx -lXext -lX11 -lm
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	MLX_DIR = minilibx-linux/
+	MLX_FLAGS = -lmlx -lXext -lX11 -lm
+
+else
+	MLX_DIR = minilibx_opengl/
+	MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
+endif
+
+MLX = $(MLX_DIR)libmlx.a
 
 #Libft
 LIBFT_DIR = libft/
@@ -67,7 +77,7 @@ $(NAME) : $(OBJ) $(MLX) $(LIBFT)
 	@echo "$(BLUE)→ Linking $(NAME)...$(RESET)"
 	@$(CC) $(OBJ) -L$(INC_DIR) -L$(MLX_DIR) $(MLX_FLAGS) -L$(LIBFT_DIR) $(LIBFT_FLAGS) -o $(NAME)
 	@echo "$(GREEN)✔ Build finished: $(NAME)$(RESET)"
-	
+
 #Compilation objects files avec header MLX et LIBFT
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
@@ -87,7 +97,7 @@ fclean : clean
 	@echo "Full clean for Libft..."
 	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean > /dev/null
 	@echo "Full clean for MiniLibX..."
-	@rm -f $(MLX_DIR)libmlx.a 
+	@rm -f $(MLX_DIR)libmlx.a
 
 re : fclean all
 
