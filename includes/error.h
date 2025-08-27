@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:17:17 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/19 14:43:10 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/27 12:35:15 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # define CANNOT_OPEN	"cannot open map file"
 # define INVALID_NAME "invalid file name"
 # define EMPTY_FILE	"file is empty"
+# define GRID_LAST	"grid is not the last in .cub"
+# define GRID_CHAR	"grid must contain only '10 NSEW'"
+
 
 //GENERIC
 # define PARSE_FAIL	"parsing failed"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:15:44 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/26 13:52:36 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/27 09:39:21 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	free_mlx(t_mlx	*mlx)
 		mlx_destroy_window(mlx->mlx, mlx->window);
 	if (mlx->mlx)
 	{
-		mlx_destroy_display(mlx->mlx);
+	//	mlx_destroy_display(mlx->mlx); // pose probleme sous mac
 		free(mlx->mlx);
 	}
 }
