@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/26 10:27:35 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/27 15:11:43 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_map
 	t_color	ceiling;
 
 	char	**grid;
+	char	**pass_grid;
 	int		height;
 	int		width;
 
@@ -59,7 +60,7 @@ typedef struct s_game
 {
 	t_map   map;
 	t_mlx	mlx;
-	
+
 
 }	t_game;
 

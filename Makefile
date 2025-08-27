@@ -6,7 +6,7 @@
 #    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/27 09:37:40 by sydubois         ###   ########.fr        #
+#    Updated: 2025/08/27 14:33:11 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ INC_DIR = includes/
 
 #Module
 SRC_MAIN	= main.c errors.c free.c init.c
-SRC_PARSING = parsing/parse_arg.c parsing/parse_file.c
+SRC_PARSING =	parsing/parse_arg.c\
+				parsing/parse_file.c\
+				parsing/grid_close.c\
 
 SRC = $(SRC_MAIN) $(SRC_PARSING)
 SRCS = $(addprefix $(SRC_DIR), $(SRC))

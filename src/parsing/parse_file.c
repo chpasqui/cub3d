@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/27 12:35:35 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/27 16:53:02 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	// -- Copier la grille dans map.grid
 	// -- Verifier la validifite de map.grid
 
-bool	char_in_string(char a, char*b)
+bool	char_in_string(char a, char *b)
 {
 	while (*b != '\0')
 	{
@@ -30,9 +30,9 @@ bool	char_in_string(char a, char*b)
 	return (false);
 }
 
-bool	print_char2(char** a)
+bool	print_char2(char **a)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (a[i])
@@ -40,18 +40,19 @@ bool	print_char2(char** a)
 		printf("%s\n", a[i]);
 		i++;
 	}
-	return(true);
+	return (true);
 }
 
-bool save_grid(t_map *map, int i)
+bool	save_grid(t_map *map, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
-	map->grid = malloc(sizeof(char *) * (map->nb_lines + 1 - i));
+	map->height = map->nb_lines -i;
+	map->grid = malloc(sizeof(char *) * (map->height + 1));
 	if (!map->grid)
 		return (false);
-	while(map->lines[i] && char_in_string(map->lines[i][0], "01 "))
+	while (map->lines[i] && char_in_string(map->lines[i][0], "01 "))
 	{
 		map->grid[j] = ft_strdup(map->lines[i]);
 		i++;
@@ -60,54 +61,65 @@ bool save_grid(t_map *map, int i)
 	map->grid[j] = NULL;
 	if (i != map->nb_lines)
 		handle_map_error(map, GRID_LAST);
-	return(true);
+	return (true);
 }
 
-bool check_grid_char(char **grid)
+bool	check_grid_char(char **grid)
 {
-	int i = 0;
-	int j = 0;
+	int	i;
+	int	j;
+	int	nb_player;
 
+	nb_player = 0;
 	i = 0;
-	while(grid[i])
+	while (grid[i])
 	{
 		j = 0;
-		while(grid[i][j])
+		while (grid[i][j])
 		{
 			if (char_in_string(grid[i][j], "10 NSEW"))
 				j++;
 			else
 				return (false);
+			if (char_in_string(grid[i][j], "NSEW"))
+				nb_player++;
 		}
 		i++;
 	}
+	if (nb_player != 1)
+		return (false);
 	return (true);
 }
 
-bool parse_grid(t_map *map, int i)
+bool	parse_grid(t_map *map, int i)
 {
 	save_grid(map, i);
 	if (!check_grid_char(map->grid))
 		handle_map_error(map, GRID_CHAR);
+	if (grid_close(map)!=true)
+		handle_map_error(map, GRID_CLOSE);
+	printf("\n");
 	print_char2(map->grid);
-	return(true);
+	printf("\n");
+	print_char2(map->pass_grid);
+	printf("\n");
+	return (true);
 }
 
-bool parse_color(t_map *map, int i)
+bool	parse_color(t_map *map, int i)
 {
-	char** tab;
-	int j;
+	char	**tab;
+	int		j;
 
 	tab = ft_split(map->lines[i], ',');
 	j = ft_atoi(tab[1]);
 //	printf("F2 = %d\n", j);
-
-	return(true);
+	return (true);
 }
 
 bool	parse_file(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map->lines[i])
@@ -116,14 +128,13 @@ bool	parse_file(t_map *map)
 		i++;
 	}
 	printf("\n");
-
 	i = 0;
 	while (map->lines[i])
 	{
 		if (char_in_string(map->lines[i][0], "01 "))
 		{
 			parse_grid(map, i);
-			return(true);
+			return (true);
 		}
 		else if (char_in_string(map->lines[i][0], "NSEW"))
 		{
@@ -148,6 +159,5 @@ bool	parse_file(t_map *map)
 //		printf("i++\n");
 	}
 	printf("\n");
-	return(true);
+	return (true);
 }
-

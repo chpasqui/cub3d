@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/26 13:34:14 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/27 16:53:43 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,15 @@ int		count_lines(char *path, t_map *map);
 bool	read_file(char *path, t_map *map);
 bool	check_file_extension(char *path, int len);
 bool	parse_arg(char *path, t_map *map);
+
+//grid_close.c
+bool	grid_close(t_map *map);
+bool	algo_dfs(t_map *map, int r, int c);
+
+//parse_file.c
 bool	parse_file(t_map *map);
+bool	save_grid(t_map *map, int i);
+bool	print_char2(char **a);
 
 /*---------FREE_AND_ERRORS--------*/
 void	free_map(t_map	*map);
@@ -42,6 +50,5 @@ void	free_game(t_game *data);
 void	handle_map_error(t_map *map, char *msg);
 void	handle_error(t_game *data, char *msg);
 int	    clean_exit(t_game *data, int code);
-
 
 #endif
