@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 12:30:56 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:42:21 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef enum e_token
 	EA,
 	F,
 	C,
-	INVALID;
+	INVALID,
 }	t_token;
 
 typedef struct s_mlx

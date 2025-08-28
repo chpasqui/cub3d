@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 14:29:22 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:41:51 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 bool	no_duplicates(t_map *map, t_token token)
 {
-	if (token == NO) && (!map->no_path)
+	if (token == NO && !map->no_path)
 		return (true);
-	if (token == SO) && (!map->so_path)
+	if (token == SO && !map->so_path)
 		return (true);
-	if (token == WE) && (!map->we_path)
+	if (token == WE && !map->we_path)
 		return (true);
-	if (token == EA) && (!map->ea_path)
+	if (token == EA &&!map->ea_path)
 		return (true);
-	if (token == C) && (map->ceiling.r == -1)
+	if (token == C && map->ceiling.r == -1)
 		return (true);
-	if (token == F) && (map->ceiling.r == -1)
+	if (token == F && map->ceiling.r == -1)
 		return (true);
 	return (false);
 }
@@ -41,8 +41,10 @@ int	skip_space(char *line)
 
 bool	all_identifiers(t_map *map)
 {
-	(void)*map;
-	return (true);
+	if (map->no_path && map->so_path && map->we_path 
+		&& map->ea_path && map->ceiling.r != -1  && map->floor.r != -1)
+			return (true);
+	return (false);
 }
 
 t_token	define_token(char *line)
