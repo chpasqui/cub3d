@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 13:27:24 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:44:52 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 /*---------PARSING--------*/
 int		count_lines(char *path, t_map *map);
 bool	read_file(char *path, t_map *map);
-bool	check_file_extension(char *path, int len);
+bool	check_file_extension(char *path, int len, char *extension);
 bool	parse_arg(char *path, t_map *map);
 
 //parse_identifer.c

@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 14:41:51 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:44:24 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	parse_color(t_map *map, char *value, t_token token)
 	
 	value = trim_all_spaces(value);
 	if (!*value)
-		handle_map_error(map, MISSING_COLORS_VALUE);
+		handle_map_error(map, MISSING_COLOR_VALUES);
 	tab = ft_split(value, ',');
 	if (!tab)
 		handle_map_error(map, MALLOC_FAIL);
@@ -196,10 +196,10 @@ bool	parse_file2(t_map *map)
 		}
 		else if (char_in_string(map->lines[i][s], "01"))
 		{
-		// 	if (!all_identifiers(map))
-		// 		handle_error(map, NOT_ENOUGH_IDENTIFIER);
-		// 	break ;
-		// }
+		if (!all_identifiers(map))
+			handle_error(map, MISSING_IDENTIFIER);
+		break ;
+		}
 		else
 			handle_map_error(map, WRONG_IDENTIFIER);
 	}
