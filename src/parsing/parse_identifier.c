@@ -6,11 +6,28 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 13:59:51 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:29:22 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+bool	no_duplicates(t_map *map, t_token token)
+{
+	if (token == NO) && (!map->no_path)
+		return (true);
+	if (token == SO) && (!map->so_path)
+		return (true);
+	if (token == WE) && (!map->we_path)
+		return (true);
+	if (token == EA) && (!map->ea_path)
+		return (true);
+	if (token == C) && (map->ceiling.r == -1)
+		return (true);
+	if (token == F) && (map->ceiling.r == -1)
+		return (true);
+	return (false);
+}
 
 int	skip_space(char *line)
 {
@@ -45,7 +62,7 @@ t_token	define_token(char *line)
 	else
 		return (INVALID);
 }
-void	save_path(t_map *map, t_token token, char *path)
+void	save_texture_path(t_map *map, t_token token, char *path)
 {	
 	char	*tmp;
 
@@ -77,7 +94,7 @@ void	parse_texture(t_map *map, char *path, t_token token)
 	if (fd == -1)
 		handle_map_error(map, CANNOT_OPEN_XPM);
 	close(fd);
-	save_path(map, token, path)
+	save_texture_path(map, token, path)
 }
 
 void	parse_identifier(t_map *map, char *line)
@@ -85,7 +102,7 @@ void	parse_identifier(t_map *map, char *line)
 	t_token	token;
 
 	token = define_token(line);
-	if (!no_duplicate(map, token))
+	if (!no_duplicates(map, token))
 		handle_map_error(map, DUPLICATE_IDENTIFIER);
 	if (token == NO || token == SO || token == WE || token == EA)
 		parse_texture(map, line + 3, token);
