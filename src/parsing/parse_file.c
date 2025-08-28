@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 14:12:52 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 15:04:46 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,47 +106,47 @@ bool	parse_grid(t_map *map, int i)
 	return (true);
 }
 
-bool	parse_file(t_map *map)
-{
-	int	i;
+// bool	parse_file(t_map *map)
+// {
+// 	int	i;
 
-	i = 0;
-	while (map->lines[i])
-	{
-//		printf("lines : %s\n", map->lines[i]);
-		i++;
-	}
-	printf("\n");
-	i = 0;
-	while (map->lines[i])
-	{
-		if (char_in_string(map->lines[i][0], "01 "))
-		{
-			parse_grid(map, i);
-			return (true);
-		}
-		else if (char_in_string(map->lines[i][0], "NSEW"))
-		{
-//			parse_texture_path(map, i);
-		}
-		else if (char_in_string(map->lines[i][0], "FC"))
-		{
-			parse_color(map, i);
-		}
-		else if (map->lines[i][0] == '\n')
-		{
-			printf("passe_empty\n");
-			//ignore empty lines
-		}
-		else
-		{
-			printf("passe_else\n");
-			printf("\n");
-			return (false);
-		}
-		i++;
-//		printf("i++\n");
-	}
-	printf("\n");
-	return (true);
-}
+// 	i = 0;
+// 	while (map->lines[i])
+// 	{
+// //		printf("lines : %s\n", map->lines[i]);
+// 		i++;
+// 	}
+// 	printf("\n");
+// 	i = 0;
+// 	while (map->lines[i])
+// 	{
+// 		if (char_in_string(map->lines[i][0], "01 "))
+// 		{
+// 			parse_grid(map, i);
+// 			return (true);
+// 		}
+// 		else if (char_in_string(map->lines[i][0], "NSEW"))
+// 		{
+// //			parse_texture_path(map, i);
+// 		}
+// 		else if (char_in_string(map->lines[i][0], "FC"))
+// 		{
+// 			parse_color(map, i);
+// 		}
+// 		else if (map->lines[i][0] == '\n')
+// 		{
+// 			printf("passe_empty\n");
+// 			//ignore empty lines
+// 		}
+// 		else
+// 		{
+// 			printf("passe_else\n");
+// 			printf("\n");
+// 			return (false);
+// 		}
+// 		i++;
+// //		printf("i++\n");
+// 	}
+// 	printf("\n");
+// 	return (true);
+// }

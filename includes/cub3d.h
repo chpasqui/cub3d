@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 14:44:52 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 15:05:54 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+
+/*---------INIT.C-------------*/
+void	init_map(t_map *map);
+
 /*---------PARSING--------*/
 int		count_lines(char *path, t_map *map);
 bool	read_file(char *path, t_map *map);
@@ -48,8 +52,10 @@ bool	algo_dfs(t_map *map, int r, int c);
 bool	parse_file(t_map *map);
 bool	save_grid(t_map *map, int i);
 bool	print_char2(char **a);
+bool	parse_grid(map, i);
 
 /*---------FREE_AND_ERRORS--------*/
+void	free_str_array(char **arr);
 void	free_map(t_map	*map);
 void	free_mlx(t_mlx	*mlx);
 void	free_game(t_game *data);
@@ -63,5 +69,6 @@ int	    clean_exit(t_game *data, int code);
 //trim.c
 char	*left_trim(char *str);
 void	right_trim(char *str, int len);
+char	*trim_all_spaces(char *str);
 
 #endif

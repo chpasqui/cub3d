@@ -6,11 +6,22 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 14:44:24 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 15:03:36 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+bool	char_in_string(char a, char *b)
+{
+	while (*b != '\0')
+	{
+		if (*b == a)
+			return (true);
+		b++;
+	}
+	return (false);
+}
 
 bool	no_duplicates(t_map *map, t_token token)
 {
@@ -96,21 +107,9 @@ void	parse_texture(t_map *map, char *path, t_token token)
 	if (fd == -1)
 		handle_map_error(map, CANNOT_OPEN_XPM);
 	close(fd);
-	save_texture_path(map, token, path)
+	save_texture_path(map, token, path);
 }
 
-void	parse_identifier(t_map *map, char *line)
-{
-	t_token	token;
-
-	token = define_token(line);
-	if (!no_duplicates(map, token))
-		handle_map_error(map, DUPLICATE_IDENTIFIER);
-	if (token == NO || token == SO || token == WE || token == EA)
-		parse_texture(map, line + 3, token);
-	if (token == C || token == F)
-		parse_color(map, line + 2, token);
-}
 
 bool	verify_color_value(char **tab)
 {
@@ -141,7 +140,7 @@ void	parse_color(t_map *map, char *value, t_token token)
 	if (!tab)
 		handle_map_error(map, MALLOC_FAIL);
 	if (!verify_color_value(tab))
-		handle_map_error(map, INVALID_COLOR)
+		handle_map_error(map, INVALID_COLOR);
 	if (token == C)
 	{
 		map->ceiling.r = ft_atoi(tab[0]);
@@ -177,6 +176,19 @@ bool	line_is_identifier(char *line, t_map *map)
 	return (false);
 }
 
+void	parse_identifier(t_map *map, char *line)
+{
+	t_token	token;
+
+	token = define_token(line);
+	if (!no_duplicates(map, token))
+		handle_map_error(map, DUPLICATE_IDENTIFIER);
+	if (token == NO || token == SO || token == WE || token == EA)
+		parse_texture(map, line + 3, token);
+	if (token == C || token == F)
+		parse_color(map, line + 2, token);
+}
+
 bool	parse_file2(t_map *map)
 {
 	int	i;
@@ -190,20 +202,19 @@ bool	parse_file2(t_map *map)
 			i++;
 		else if (line_is_identifier(&map->lines[i][s], map))
 		{
-			printf("yes");
 			parse_identifier(map, &map->lines[i][s]);
 			i++;
 		}
 		else if (char_in_string(map->lines[i][s], "01"))
 		{
 		if (!all_identifiers(map))
-			handle_error(map, MISSING_IDENTIFIER);
+			handle_map_error(map, MISSING_IDENTIFIER);
 		break ;
 		}
 		else
 			handle_map_error(map, WRONG_IDENTIFIER);
 	}
-	//parse_grid(map, i);
+	parse_grid(map, i);
 	return (true);
 }
 

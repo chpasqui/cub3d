@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 12:49:26 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:52:44 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ bool	check_file_extension(char *path, int len, char *extension)
 	int	i;
 
 	i = len - 1;
-	if (extension == "cub")
+	if (!strncmp(extension, "cub", 3))
 	{
 		if (path[i] != 'b' || path[i - 1] != 'u' || path[i -2] != 'c'
 			|| path[i - 3] != '.')
 			return (false);
 	}
-	else if (extension == "xpm")
+	else if (!ft_strncmp(extension, "xpm", 3))
 	{
 		if (path[i] != 'x' || path[i - 1] != 'p' || path[i -2] != 'm'
 			|| path[i - 3] != '.')

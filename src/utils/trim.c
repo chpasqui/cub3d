@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:17:02 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 13:39:15 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 15:02:37 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	right_trim(char *str, int len)
 {
 	while (len > 0 && str[len - 1] == ' ')
 		len--;
-	str[len] == '\0';
+	str[len] = '\0';
 }
 
 char	*trim_all_spaces(char *str)

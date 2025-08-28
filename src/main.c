@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 14:10:58 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 14:50:18 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_game	data;
 
-	init_map(data->map);
+	init_map(&data.map);
 	if (argc != 2)
 		handle_error(&data, WRONG_ARGS);
 	if (!parse_arg(argv[1], &data.map))
