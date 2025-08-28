@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
+#    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/27 14:33:11 by sydubois         ###   ########.fr        #
+#    Updated: 2025/08/28 11:49:31 by Charlye          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INC_DIR = includes/
 #Module
 SRC_MAIN	= main.c errors.c free.c init.c
 SRC_PARSING =	parsing/parse_arg.c\
-				parsing/parse_file.c\
+				parsing/parse_identifier.c\
 				parsing/grid_close.c\
 
 SRC = $(SRC_MAIN) $(SRC_PARSING)

@@ -6,11 +6,11 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 11:13:13 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 12:00:34 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "cub3d.h"
+#include "cub3d.h"
 
 int	skip_space(char *line)
 {
@@ -24,12 +24,33 @@ int	skip_space(char *line)
 
 bool	all_identifiers(t_map *map)
 {
-	
+	(void)*map;
+	return (true);
 }
 
-void	parse_identifier(t_map *map, )
+void	parse_identifier(t_map *map)
 {
-	
+	(void)*map;
+}
+
+bool	line_is_identifier(char *line, t_map *map)
+{
+	if (!line || !*line)
+		return (false);
+	if (!ft_strncmp(line, "NO", 2) || !ft_strncmp(line, "SO", 2)
+		|| !ft_strncmp(line, "WE", 2) || !ft_strncmp(line, "EA", 2))
+	{
+		if (line[2] != ' ')
+			handle_map_error(map, MISSING_SPACE);
+		return (true);
+	}
+	if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
+	{
+		if (line[1] != ' ')
+			handle_map_error(map, MISSING_SPACE);
+		return (true);
+	}
+	return (false);
 }
 
 bool	parse_file2(t_map *map)
@@ -43,21 +64,22 @@ bool	parse_file2(t_map *map)
 		s = skip_space(map->lines[i]);
 		if (map->lines[i][s] == '\0')
 			i++;
-		else if (line_is_identifier(&map->lines[i][s]))
+		else if (line_is_identifier(&map->lines[i][s], map))
 		{
-			parse_identifier(&map->lines[i][s]);
+			printf("yes");
+			//parse_identifier(&map->lines[i][s]);
 			i++;
 		}
-		else if (char_in_string(map->lines[i][s], "01"))
-		{
-			if (!all_identifiers(map))
-				handle_error(map, NOT_ENOUGH_IDENTIFIER);
-			break ;
-		}
+		// else if (char_in_string(map->lines[i][s], "01"))
+		// {
+		// 	if (!all_identifiers(map))
+		// 		handle_error(map, NOT_ENOUGH_IDENTIFIER);
+		// 	break ;
+		// }
 		else
-			handle_error(map, WRONG_IDENTIFIER);
+			handle_map_error(map, WRONG_IDENTIFIER);
 	}
-	parse_grid(map, i)
+	//parse_grid(map, i);
 	return (true);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/26 13:55:31 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:59:36 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ bool	parse_arg(char *path, t_map *map)
 		handle_map_error(map, BAD_EXTENSION);
 	if (!read_file(path, map))
 		return (false);
-	if (!parse_file(map))
+	if (!parse_file2(map))
 		return (false);
 	return (true);
 }

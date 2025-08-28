@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:15:44 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/27 09:39:21 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:48:59 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ void	free_str_array(char **arr)
 
 void	free_map(t_map	*map)
 {
-	int	i;
-
-	i = 0;
 	if (map->lines)
 		free_str_array(map->lines);
 	if (map->grid)

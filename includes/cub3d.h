@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/27 16:53:43 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/28 12:00:57 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ int		count_lines(char *path, t_map *map);
 bool	read_file(char *path, t_map *map);
 bool	check_file_extension(char *path, int len);
 bool	parse_arg(char *path, t_map *map);
+
+//parse_identifer.c
+int		skip_space(char *line);
+bool	line_is_identifier(char *line, t_map *map);
+bool	parse_file2(t_map *map);
+
 
 //grid_close.c
 bool	grid_close(t_map *map);
