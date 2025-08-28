@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 12:00:57 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 13:27:24 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,12 @@ void	free_game(t_game *data);
 void	handle_map_error(t_map *map, char *msg);
 void	handle_error(t_game *data, char *msg);
 int	    clean_exit(t_game *data, int code);
+
+
+/*-----------UTILS----------------*/
+
+//trim.c
+char	*left_trim(char *str);
+void	right_trim(char *str, int len);
 
 #endif

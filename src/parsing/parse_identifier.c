@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 12:34:08 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 13:27:15 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,44 @@ t_token	define_token(char *line)
 	else
 		return (INVALID);
 }
+void	save_path(t_map *map, t_token token, char *path)
+{	
+	char	*tmp;
+
+	tmp = ft_strdup(path);
+	if (!tmp)
+		handle_map_error(map, MALLOC_FAIL);
+	if (token == NO)
+		map->no_path = tmp;
+	else if (token == SO)
+		map->so_path = tmp;
+	else if (token == WE)
+		map->we_path = tmp;
+	else if (token == EA)
+		map->ea_path = tmp;
+}
+void	parse_texture(t_map *map, char *path, t_token token)
+{
+	int	len;
+	int	fd;
+
+	path = left_trim(path);
+	if (!*path)
+		handle_map_error(map, MISSING_TEXTURE_PATH);
+	len = ft_strlen(path);
+	right_trim(path, len);
+	if (!check_file_extension(path, len, "xpm"))
+		handle_map_error(map, BAD_EXTENSION_XPM);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		handle_map_error(map, CANNOT_OPEN_XPM);
+	close(fd);
+	save_path(map, token, path)
+}
 
 void	parse_identifier(t_map *map, char *line)
 {
-	t_token	*token;
+	t_token	token;
 
 	token = define_token(line);
 	if (!no_duplicate(map, token))
@@ -58,7 +92,7 @@ void	parse_identifier(t_map *map, char *line)
 	if (token == C || token == F)
 		parse_color(map, line + 2, token);
 }
-	
+
 	// verifier que la variable nexiste pas deja
 	// separer en 2, parse texture et parse color
 	// pour les textures :
@@ -71,7 +105,7 @@ void	parse_identifier(t_map *map, char *line)
 	// verifier quil y a bien 3 variables
 	// verifier la validite des variable entre 0 et 255
 	// enregistrer les variables correspondantes dans la struct
-}
+
 
 bool	line_is_identifier(char *line, t_map *map)
 {
@@ -82,7 +116,6 @@ bool	line_is_identifier(char *line, t_map *map)
 	{
 		if (line[2] != ' ')
 			handle_map_error(map, MISSING_SPACE);
-		token = ft_strdup(line...)
 		return (true);
 	}
 	if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
