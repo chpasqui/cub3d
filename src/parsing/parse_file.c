@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/27 16:53:02 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/28 13:31:58 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,6 @@ bool	parse_grid(t_map *map, int i)
 	printf("\n");
 	print_char2(map->pass_grid);
 	printf("\n");
-	return (true);
-}
-
-bool	parse_color(t_map *map, int i)
-{
-	char	**tab;
-	int		j;
-
-	tab = ft_split(map->lines[i], ',');
-	j = ft_atoi(tab[1]);
-//	printf("F2 = %d\n", j);
 	return (true);
 }
 

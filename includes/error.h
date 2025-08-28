@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:17:17 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 13:30:28 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 13:55:46 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define WRONG_IDENTIFIER "wrong identifier"
 # define MISSING_IDENTIFIER "missing identifiers (NO, SO, WE, EA, F, C)"
 # define MISSING_TEXTURE_PATH "missing one or more texture path"
+# define INVALID_COLOR "invalid color values, must be in RGB format"
 # define GRID_LAST	"grid is not the last in .cub"
 # define GRID_CHAR	"grid must contain only '10 ', and exactly one player 'NSEW'"
 # define GRID_CLOSE "grid not closed"

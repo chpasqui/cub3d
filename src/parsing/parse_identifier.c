@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 13:27:15 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 13:59:51 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,50 @@ void	parse_identifier(t_map *map, char *line)
 		parse_color(map, line + 2, token);
 }
 
-	// verifier que la variable nexiste pas deja
-	// separer en 2, parse texture et parse color
-	// pour les textures :
-	// verifier que le fichier termine par .xpm
-	// verifier quil peut souvri
-	// enregistrer dans la variable correspondante dans la struct
-	// pour les couleurs:
-	// verifier que cest des digits ou des virgules
-	// separer par un ft split 
-	// verifier quil y a bien 3 variables
-	// verifier la validite des variable entre 0 et 255
-	// enregistrer les variables correspondantes dans la struct
+bool	verify_color_value(char **tab)
+{
+	int	i;
+	int	value;
 
+	i = 0;
+	while (tab[i])
+	{
+		value = ft_atoi(tab[i]);
+		if (value < 0 || value > 255)
+			return (false);
+		i++;
+	}
+	if (i != 3)
+		return (false);
+	return (true);
+}
+
+void	parse_color(t_map *map, char *value, t_token token)
+{
+	char	**tab;
+	
+	value = trim_all_spaces(value);
+	if (!*value)
+		handle_map_error(map, MISSING_COLORS_VALUE);
+	tab = ft_split(value, ',');
+	if (!tab)
+		handle_map_error(map, MALLOC_FAIL);
+	if (!verify_color_value(tab))
+		handle_map_error(map, INVALID_COLOR)
+	if (token == C)
+	{
+		map->ceiling.r = ft_atoi(tab[0]);
+		map->ceiling.g = ft_atoi(tab[1]);
+		map->ceiling.b = ft_atoi(tab[2]);
+	}
+	if (token == F)
+	{
+		map->floor.r = ft_atoi(tab[0]);
+		map->floor.g = ft_atoi(tab[1]);
+		map->floor.b = ft_atoi(tab[2]);
+	}
+	free_str_array(tab);
+}
 
 bool	line_is_identifier(char *line, t_map *map)
 {
@@ -144,8 +175,8 @@ bool	parse_file2(t_map *map)
 			parse_identifier(map, &map->lines[i][s]);
 			i++;
 		}
-		// else if (char_in_string(map->lines[i][s], "01"))
-		// {
+		else if (char_in_string(map->lines[i][s], "01"))
+		{
 		// 	if (!all_identifiers(map))
 		// 		handle_error(map, NOT_ENOUGH_IDENTIFIER);
 		// 	break ;
