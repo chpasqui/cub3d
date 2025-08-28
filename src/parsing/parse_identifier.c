@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 12:00:34 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 12:34:08 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,49 @@ bool	all_identifiers(t_map *map)
 	return (true);
 }
 
-void	parse_identifier(t_map *map)
+t_token	define_token(char *line)
 {
-	(void)*map;
+	if (!strncmp(line, "NO ", 3))
+		return (NO);
+	if (!strncmp(line, "SO ", 3))
+		return (SO);
+	if (!strncmp(line, "WE ", 3))
+		return (WE);
+	if (!strncmp(line, "EA ", 3))
+		return (EA);
+	if (!strncmp(line, "F ", 2))
+		return (F);
+	if (!strncmp(line, "C ", 2))
+		return (C);
+	else
+		return (INVALID);
+}
+
+void	parse_identifier(t_map *map, char *line)
+{
+	t_token	*token;
+
+	token = define_token(line);
+	if (!no_duplicate(map, token))
+		handle_map_error(map, DUPLICATE_IDENTIFIER);
+	if (token == NO || token == SO || token == WE || token == EA)
+		parse_texture(map, line + 3, token);
+	if (token == C || token == F)
+		parse_color(map, line + 2, token);
+}
+	
+	// verifier que la variable nexiste pas deja
+	// separer en 2, parse texture et parse color
+	// pour les textures :
+	// verifier que le fichier termine par .xpm
+	// verifier quil peut souvri
+	// enregistrer dans la variable correspondante dans la struct
+	// pour les couleurs:
+	// verifier que cest des digits ou des virgules
+	// separer par un ft split 
+	// verifier quil y a bien 3 variables
+	// verifier la validite des variable entre 0 et 255
+	// enregistrer les variables correspondantes dans la struct
 }
 
 bool	line_is_identifier(char *line, t_map *map)
@@ -42,6 +82,7 @@ bool	line_is_identifier(char *line, t_map *map)
 	{
 		if (line[2] != ' ')
 			handle_map_error(map, MISSING_SPACE);
+		token = ft_strdup(line...)
 		return (true);
 	}
 	if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
@@ -67,7 +108,7 @@ bool	parse_file2(t_map *map)
 		else if (line_is_identifier(&map->lines[i][s], map))
 		{
 			printf("yes");
-			//parse_identifier(&map->lines[i][s]);
+			parse_identifier(map, &map->lines[i][s]);
 			i++;
 		}
 		// else if (char_in_string(map->lines[i][s], "01"))

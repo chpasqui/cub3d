@@ -3,15 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/27 15:11:43 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/28 12:30:56 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_STRUCT_H
 # define CUB3D_STRUCT_H
+
+typedef enum e_token
+{
+	NO,
+	SO,
+	WE,
+	EA,
+	F,
+	C,
+	INVALID;
+}	t_token;
 
 typedef struct s_mlx
 {
