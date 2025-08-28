@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/27 16:53:43 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:48:56 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+/*---------MAIN-----------*/
+//init.c
+bool	init_mlx(t_game *data);
+bool	init_value(t_game *data);
+
+//render.c
+bool	render_loop(t_game *data);
+
 /*---------PARSING--------*/
 int		count_lines(char *path, t_map *map);
 bool	read_file(char *path, t_map *map);
@@ -42,6 +50,9 @@ bool	algo_dfs(t_map *map, int r, int c);
 bool	parse_file(t_map *map);
 bool	save_grid(t_map *map, int i);
 bool	print_char2(char **a);
+bool	char_in_string(char a, char *b);
+
+
 
 /*---------FREE_AND_ERRORS--------*/
 void	free_map(t_map	*map);

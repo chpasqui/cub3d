@@ -6,7 +6,7 @@
 #    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/27 14:33:11 by sydubois         ###   ########.fr        #
+#    Updated: 2025/08/28 14:59:38 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_DIR = obj/
 INC_DIR = includes/
 
 #Module
-SRC_MAIN	= main.c errors.c free.c init.c
+SRC_MAIN	= main.c errors.c free.c init.c render.c
 SRC_PARSING =	parsing/parse_arg.c\
 				parsing/parse_file.c\
 				parsing/grid_close.c\
@@ -38,7 +38,7 @@ ifeq ($(UNAME_S),Linux)
 
 else
 	MLX_DIR = minilibx_opengl/
-	MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
+	MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lz
 endif
 
 MLX = $(MLX_DIR)libmlx.a

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/27 16:53:02 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:23:39 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	save_grid(t_map *map, int i)
 	int	j;
 
 	j = 0;
-	map->height = map->nb_lines -i;
+	map->height = map->nb_lines - i;
 	map->grid = malloc(sizeof(char *) * (map->height + 1));
 	if (!map->grid)
 		return (false);
@@ -96,12 +96,12 @@ bool	parse_grid(t_map *map, int i)
 	save_grid(map, i);
 	if (!check_grid_char(map->grid))
 		handle_map_error(map, GRID_CHAR);
-	if (grid_close(map)!=true)
+	if (!grid_close(map))
 		handle_map_error(map, GRID_CLOSE);
-	printf("\n");
-	print_char2(map->grid);
-	printf("\n");
-	print_char2(map->pass_grid);
+//	printf("\n");
+//	print_char2(map->grid);
+//	printf("\n");
+//	print_char2(map->pass_grid);
 	printf("\n");
 	return (true);
 }
@@ -121,13 +121,13 @@ bool	parse_file(t_map *map)
 {
 	int	i;
 
-	i = 0;
-	while (map->lines[i])
-	{
+//	i = 0;
+//	while (map->lines[i])
+//	{
 //		printf("lines : %s\n", map->lines[i]);
-		i++;
-	}
-	printf("\n");
+//		i++;
+//	}
+//	printf("\n");
 	i = 0;
 	while (map->lines[i])
 	{
@@ -144,9 +144,8 @@ bool	parse_file(t_map *map)
 		{
 			parse_color(map, i);
 		}
-		else if (map->lines[i][0] == '\n')
+		else if (map->lines[i][0] == '\0')
 		{
-			printf("passe_empty\n");
 			//ignore empty lines
 		}
 		else

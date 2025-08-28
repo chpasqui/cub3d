@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:17:17 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/27 16:30:47 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/28 11:54:43 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define GRID_LAST	"grid is not the last in .cub"
 # define GRID_CHAR	"grid must contain only '10 ', and exactly one player 'NSEW'"
 # define GRID_CLOSE "grid not closed"
+# define MLX_ERROR "mlx error"
+# define BYE_BYE "Bye bye!!"
+
+
 
 
 //GENERIC

@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/26 14:07:30 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/28 20:28:47 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	close_window(t_game *data)
+{
+	clean_exit(data, EXIT_SUCCESS);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -21,9 +27,12 @@ int	main(int argc, char **argv)
 		handle_error(&data, WRONG_ARGS);
 	if (!parse_arg(argv[1], &data.map))
 		handle_error(&data, PARSE_FAIL);
-	// init_mlx(&data);
+	init_value(&data);
+	init_mlx(&data);
 	// init_game(&data);
-	// render_loop(&data); // RAYCASTING
+	render_loop(&data); // RAYCASTING
+	mlx_hook(data.mlx.window, 17, 0, close_window, &data);
+	mlx_loop(data.mlx.mlx);
 	clean_exit(&data, EXIT_SUCCESS);
 	return (0);
 }

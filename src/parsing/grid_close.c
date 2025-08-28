@@ -1,5 +1,4 @@
-#include"cub3d.h"
-
+#include "cub3d.h"
 
 bool	grid_close(t_map *map)
 {
@@ -14,7 +13,7 @@ bool	grid_close(t_map *map)
 	{
 		map->pass_grid[i] = ft_strdup(map->grid[i]);
 		j = 0;
-		while(map->pass_grid[i][j])
+		while (map->pass_grid[i][j])
 		{
 			map->pass_grid[i][j] = '0';
 			j++;
@@ -22,36 +21,30 @@ bool	grid_close(t_map *map)
 		i++;
 	}
 	map->pass_grid[i] = NULL;
-
 	return (algo_dfs(map, 1, 1));
 }
 
-
 bool	algo_dfs(t_map *map, int r, int c)
 {
+	int	i;
+	int	dir[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};// SDU mettre ailleur?
+
 //		printf("\n");
 //		printf("r = %i, c = %i \n", r , c);
 //		print_char2(map->pass_grid);
-
-	int dir[4][2] = {{-1,0}, {1,0}, {0,-1}, {0,1}};//mettre ailleur?
-	int i;
-
 	if (!map->grid[r][c] || map->grid[r][c] == ' ')
-		return(false);
+		return (false);
 	if (map->grid[r][c] == '1' || map->pass_grid[r][c] == '1')
 		return (true);
-
-	 map->pass_grid[r][c] = '1';
-//	 printf("pass_grid\n");
-
+	map->pass_grid[r][c] = '1';
+//	printf("pass_grid\n");
 	i = 0;
-	while(i < 4)
+	while (i < 4)
 	{
-		if(!algo_dfs(map, r + dir[i][0],c + dir[i][1]))
-			return(false);
+		if (!algo_dfs(map, r + dir[i][0], c + dir[i][1]))
+			return (false);
 		i++;
 //		printf("i++\n");
 	}
-//	printf("\n");
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:15:44 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/27 09:39:21 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/28 14:37:05 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	free_map(t_map	*map)
 		free_str_array(map->lines);
 	if (map->grid)
 		free_str_array(map->grid);
+	if (map->pass_grid)
+		free_str_array(map->pass_grid);
 	if (map->no_path)
 		free(map->no_path);
 	if (map->so_path)
@@ -68,6 +70,8 @@ void	free_game(t_game *data)
 int	clean_exit(t_game *data, int code)
 {
 	free_game(data);
+//	mlx_destroy_image(data->mlx.mlx, data->mlx.img);//SDU verifier si il faut le mettre ailleur
+//	mlx_destroy_window(data->mlx.mlx, data->mlx.window);
 	exit(code);
 }
 
