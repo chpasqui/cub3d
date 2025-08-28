@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 15:03:36 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 15:48:10 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	skip_space(char *line)
 
 bool	all_identifiers(t_map *map)
 {
-	if (map->no_path && map->so_path && map->we_path 
-		&& map->ea_path && map->ceiling.r != -1  && map->floor.r != -1)
-			return (true);
+	if (map->no_path && map->so_path && map->we_path
+		&& map->ea_path && map->ceiling.r != -1 && map->floor.r != -1)
+		return (true);
 	return (false);
 }
 
@@ -75,8 +75,9 @@ t_token	define_token(char *line)
 	else
 		return (INVALID);
 }
+
 void	save_texture_path(t_map *map, t_token token, char *path)
-{	
+{
 	char	*tmp;
 
 	tmp = ft_strdup(path);
@@ -110,7 +111,6 @@ void	parse_texture(t_map *map, char *path, t_token token)
 	save_texture_path(map, token, path);
 }
 
-
 bool	verify_color_value(char **tab)
 {
 	int	i;
@@ -132,7 +132,7 @@ bool	verify_color_value(char **tab)
 void	parse_color(t_map *map, char *value, t_token token)
 {
 	char	**tab;
-	
+
 	value = trim_all_spaces(value);
 	if (!*value)
 		handle_map_error(map, MISSING_COLOR_VALUES);
