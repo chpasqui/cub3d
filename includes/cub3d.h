@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 15:05:54 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 17:47:35 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ bool	grid_close(t_map *map);
 bool	algo_dfs(t_map *map, int r, int c);
 
 //parse_file.c
+bool	char_in_string(char a, char *b);
 bool	parse_file(t_map *map);
 bool	save_grid(t_map *map, int i);
 bool	print_char2(char **a);
-bool	parse_grid(map, i);
+void	parse_grid(t_map *map, int i);
 
 /*---------FREE_AND_ERRORS--------*/
 void	free_str_array(char **arr);

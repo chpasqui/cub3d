@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 15:04:46 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 17:42:44 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,19 +91,18 @@ bool	check_grid_char(char **grid)
 	return (true);
 }
 
-bool	parse_grid(t_map *map, int i)
+void	parse_grid(t_map *map, int i)
 {
 	save_grid(map, i);
 	if (!check_grid_char(map->grid))
 		handle_map_error(map, GRID_CHAR);
-	if (grid_close(map)!=true)
+	if (grid_close(map) != true)
 		handle_map_error(map, GRID_CLOSE);
 	printf("\n");
 	print_char2(map->grid);
 	printf("\n");
 	print_char2(map->pass_grid);
 	printf("\n");
-	return (true);
 }
 
 // bool	parse_file(t_map *map)

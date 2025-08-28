@@ -6,22 +6,11 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 15:48:10 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/28 17:57:09 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-bool	char_in_string(char a, char *b)
-{
-	while (*b != '\0')
-	{
-		if (*b == a)
-			return (true);
-		b++;
-	}
-	return (false);
-}
 
 bool	no_duplicates(t_map *map, t_token token)
 {
@@ -92,19 +81,23 @@ void	save_texture_path(t_map *map, t_token token, char *path)
 	else if (token == EA)
 		map->ea_path = tmp;
 }
+
 void	parse_texture(t_map *map, char *path, t_token token)
 {
-	int	len;
-	int	fd;
+	int		len;
+	int		fd;
+	char	*whole_path;
 
 	path = left_trim(path);
 	if (!*path)
 		handle_map_error(map, MISSING_TEXTURE_PATH);
 	len = ft_strlen(path);
 	right_trim(path, len);
+	printf("%s\n", path);
 	if (!check_file_extension(path, len, "xpm"))
 		handle_map_error(map, BAD_EXTENSION_XPM);
-	fd = open(path, O_RDONLY);
+	whole_path = ft_strjoin("textures/", path);
+	fd = open(whole_path, O_RDONLY);
 	if (fd == -1)
 		handle_map_error(map, CANNOT_OPEN_XPM);
 	close(fd);
