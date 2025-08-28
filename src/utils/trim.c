@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:17:02 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 15:02:37 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/28 15:48:45 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*left_trim(char *str)
 {
 	while (*str == ' ')
 		str++;
-	return(str);
+	return (str);
 }
 
 void	right_trim(char *str, int len)
