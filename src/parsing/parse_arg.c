@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/26 13:55:31 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:16:02 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,23 @@ bool	read_file(char *path, t_map *map)
 	return (true);
 }
 
-bool	check_file_extension(char *path, int len)
+bool	check_file_extension(char *path, int len, char *extension)
 {
 	int	i;
 
 	i = len - 1;
-	if (path[i] != 'b' || path[i - 1] != 'u' || path[i -2] != 'c'
-		|| path[i - 3] != '.')
-		return (false);
+	if (!strncmp(extension, "cub", 3))
+	{
+		if (path[i] != 'b' || path[i - 1] != 'u' || path[i -2] != 'c'
+			|| path[i - 3] != '.')
+			return (false);
+	}
+	else if (!ft_strncmp(extension, "xpm", 3))
+	{
+		if (path[i] != 'm' || path[i - 1] != 'p' || path[i -2] != 'x'
+			|| path[i - 3] != '.')
+			return (false);
+	}
 	return (true);
 }
 
@@ -75,8 +84,8 @@ bool	parse_arg(char *path, t_map *map)
 	len = ft_strlen(path);
 	if (len < 5)
 		handle_map_error(map, INVALID_NAME);
-	if (!check_file_extension(path, len))
-		handle_map_error(map, BAD_EXTENSION);
+	if (!check_file_extension(path, len, "cub"))
+		handle_map_error(map, BAD_EXTENSION_CUB);
 	if (!read_file(path, map))
 		return (false);
 	if (!parse_file(map))
