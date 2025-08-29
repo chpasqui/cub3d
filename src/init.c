@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/08/29 12:20:45 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 12:23:25 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	init_map(t_map *map)
 	map->ceiling.r = -1;
 	map->ceiling.g = -1;
 	map->ceiling.b = -1;
-}
 }
 
 bool	init_value(t_game *data)
