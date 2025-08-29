@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/29 11:06:48 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:12:44 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,9 +202,11 @@ bool	parse_file2(t_map *map)
 		else
 			handle_map_error(map, WRONG_IDENTIFIER);
 	}
+	if (!map->lines[i])
+		handle_map_error(map, MISSING_GRID);
 	parse_grid(map, i);
 	if (!all_identifiers(map))
-			handle_map_error(map, MISSING_IDENTIFIER);
+		handle_map_error(map, MISSING_IDENTIFIER);
 	return (true);
 }
 
