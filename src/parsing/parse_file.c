@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 20:23:39 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/29 19:26:24 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,23 @@ bool	char_in_string(char a, char *b)
 	}
 	return (false);
 }
+
+void	grid_width(t_map * map, int j)
+{
+	int	l;
+
+	l = ft_strlen(map->grid[j]);
+	if (l > map->width)
+		map->width = l;
+}
+
+void init_player(t_map *map, int i, int j)
+{
+	map->player_x = j;
+	map->player_y = i;
+	map->player_dir = map->grid[i][j];
+}
+
 
 bool	print_char2(char **a)
 {
@@ -55,6 +72,7 @@ bool	save_grid(t_map *map, int i)
 	while (map->lines[i] && char_in_string(map->lines[i][0], "01 "))
 	{
 		map->grid[j] = ft_strdup(map->lines[i]);
+		grid_width(map, j);
 		i++;
 		j++;
 	}
@@ -64,7 +82,7 @@ bool	save_grid(t_map *map, int i)
 	return (true);
 }
 
-bool	check_grid_char(char **grid)
+bool	check_grid_char(t_map *map)
 {
 	int	i;
 	int	j;
@@ -72,17 +90,20 @@ bool	check_grid_char(char **grid)
 
 	nb_player = 0;
 	i = 0;
-	while (grid[i])
+	while (map->grid[i])
 	{
 		j = 0;
-		while (grid[i][j])
+		while (map->grid[i][j])
 		{
-			if (char_in_string(grid[i][j], "10 NSEW"))
+			if (char_in_string(map->grid[i][j], "10 NSEW"))
 				j++;
 			else
 				return (false);
-			if (char_in_string(grid[i][j], "NSEW"))
+			if (char_in_string(map->grid[i][j], "NSEW"))
+			{
+				init_player(map, i, j);
 				nb_player++;
+			}
 		}
 		i++;
 	}
@@ -94,7 +115,7 @@ bool	check_grid_char(char **grid)
 bool	parse_grid(t_map *map, int i)
 {
 	save_grid(map, i);
-	if (!check_grid_char(map->grid))
+	if (!check_grid_char(map))
 		handle_map_error(map, GRID_CHAR);
 	if (!grid_close(map))
 		handle_map_error(map, GRID_CLOSE);
@@ -102,7 +123,7 @@ bool	parse_grid(t_map *map, int i)
 //	print_char2(map->grid);
 //	printf("\n");
 //	print_char2(map->pass_grid);
-	printf("\n");
+//	printf("\n");
 	return (true);
 }
 

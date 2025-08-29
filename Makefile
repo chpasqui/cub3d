@@ -6,14 +6,15 @@
 #    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/28 14:59:38 by sydubois         ###   ########.fr        #
+#    Updated: 2025/08/29 14:17:19 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Noms, compilateur et flags
 NAME = cub3d
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 #Dossiers
 SRC_DIR = src/
@@ -21,7 +22,13 @@ OBJ_DIR = obj/
 INC_DIR = includes/
 
 #Module
-SRC_MAIN	= main.c errors.c free.c init.c render.c
+SRC_MAIN	=	errors.c\
+				free.c\
+				hook.c\
+				init.c\
+				main.c\
+				render.c\
+
 SRC_PARSING =	parsing/parse_arg.c\
 				parsing/parse_file.c\
 				parsing/grid_close.c\
@@ -31,15 +38,15 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 #Minilibx
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
-	MLX_DIR = minilibx-linux/
-	MLX_FLAGS = -lmlx -lXext -lX11 -lm
+#UNAME_S := $(shell uname -s)
+#ifeq ($(UNAME_S),Linux)
+#	MLX_DIR = minilibx-linux/
+#	MLX_FLAGS = -lmlx -lXext -lX11 -lm
 
-else
+#else
 	MLX_DIR = minilibx_opengl/
 	MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lz
-endif
+#endif
 
 MLX = $(MLX_DIR)libmlx.a
 

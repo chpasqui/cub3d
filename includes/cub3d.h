@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 17:48:56 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:13:19 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,17 @@
 # include <fcntl.h>
 
 /*---------MAIN-----------*/
+
+//hook.c
+int	mouse_hook (int button, int x, int y, t_game *data);
+int	key_hook (int button, t_game *data);
+
 //init.c
 bool	init_mlx(t_game *data);
 bool	init_value(t_game *data);
+
+//main.c
+int	close_window(t_game *data);
 
 //render.c
 bool	render_loop(t_game *data);

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 20:28:47 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:15:01 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int	main(int argc, char **argv)
 	// init_game(&data);
 	render_loop(&data); // RAYCASTING
 	mlx_hook(data.mlx.window, 17, 0, close_window, &data);
+	mlx_mouse_hook(data.mlx.window, mouse_hook, &data);
+	mlx_key_hook(data.mlx.window, key_hook, &data);
+
 	mlx_loop(data.mlx.mlx);
 	clean_exit(&data, EXIT_SUCCESS);
 	return (0);

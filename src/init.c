@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 20:28:01 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/29 12:05:35 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ bool	init_value(t_game *data)
 {
 	data->mlx.x_window = 800;
 	data->mlx.y_window = 600;
+	data->map.square_size = 10;
+	data->map.x = 0;
+	data->map.y = 0;
 	return (true);
 }
 

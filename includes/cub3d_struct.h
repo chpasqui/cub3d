@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 11:22:04 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/29 19:12:36 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,19 @@ typedef struct s_map
 	int		player_x;
 	int		player_y;
 	char	player_dir;
+
+	int		x;
+	int		y;
+	int		square_size;
 }	t_map;
 
 typedef struct s_game
 {
 	t_map	map;
 	t_mlx	mlx;
-
-
+	int		pos_x;
+	int		pos_y;
+	int		dir;
 }	t_game;
 
 #endif
