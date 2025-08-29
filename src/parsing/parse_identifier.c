@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 17:57:09 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:06:48 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	parse_texture(t_map *map, char *path, t_token token)
 		handle_map_error(map, MISSING_TEXTURE_PATH);
 	len = ft_strlen(path);
 	right_trim(path, len);
-	printf("%s\n", path);
 	if (!check_file_extension(path, len, "xpm"))
 		handle_map_error(map, BAD_EXTENSION_XPM);
 	whole_path = ft_strjoin("textures/", path);
@@ -199,16 +198,43 @@ bool	parse_file2(t_map *map)
 			i++;
 		}
 		else if (char_in_string(map->lines[i][s], "01"))
-		{
-		if (!all_identifiers(map))
-			handle_map_error(map, MISSING_IDENTIFIER);
-		break ;
-		}
+			break ;
 		else
 			handle_map_error(map, WRONG_IDENTIFIER);
 	}
 	parse_grid(map, i);
+	if (!all_identifiers(map))
+			handle_map_error(map, MISSING_IDENTIFIER);
 	return (true);
 }
+
+// bool	parse_file2(t_map *map)
+// {
+// 	int	i;
+// 	int	s;
+
+// 	i = 0;
+// 	while (map->lines[i])
+// 	{
+// 		s = skip_space(map->lines[i]);
+// 		if (map->lines[i][s] == '\0')
+// 			i++;
+// 		else if (line_is_identifier(&map->lines[i][s], map))
+// 		{
+// 			parse_identifier(map, &map->lines[i][s]);
+// 			i++;
+// 		}
+// 		else if (char_in_string(map->lines[i][s], "01"))
+// 		{
+// 		if (!all_identifiers(map))
+// 			handle_map_error(map, MISSING_IDENTIFIER);
+// 		break ;
+// 		}
+// 		else
+// 			handle_map_error(map, WRONG_IDENTIFIER);
+// 	}
+// 	parse_grid(map, i);
+// 	return (true);
+// }
 
 // faudrait ajouter dans parse_grid la condition if !map->lines[i] --> handle error NO_MAP_FOUND (pas assez de ligne)

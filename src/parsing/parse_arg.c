@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 17:51:16 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 10:58:49 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ bool	check_file_extension(char *path, int len, char *extension)
 	}
 	else if (!ft_strncmp(extension, "xpm", 3))
 	{
-		printf("je suis la \n");
 		if (path[i] != 'm' || path[i - 1] != 'p' || path[i -2] != 'x'
 			|| path[i - 3] != '.')
 			return (false);
