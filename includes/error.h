@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:17:17 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 14:46:09 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/08/29 11:12:37 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define MISSING_TEXTURE_PATH "missing one or more texture path"
 # define MISSING_COLOR_VALUES "missing one or more color values"
 # define INVALID_COLOR "invalid color values, must be in RGB format"
+# define MISSING_GRID "grid is missing, please add grid with 1 & 0 and one player NSEW"
 # define GRID_LAST	"grid is not the last in .cub"
 # define GRID_CHAR	"grid must contain only '10 ', and exactly one player 'NSEW'"
 # define GRID_CLOSE "grid not closed"

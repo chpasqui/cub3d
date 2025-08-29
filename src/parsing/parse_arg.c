@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 10:58:49 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 11:16:02 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool	parse_arg(char *path, t_map *map)
 		handle_map_error(map, BAD_EXTENSION_CUB);
 	if (!read_file(path, map))
 		return (false);
-	if (!parse_file2(map))
+	if (!parse_file(map))
 		return (false);
 	return (true);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
+#    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/28 15:04:10 by Charlye          ###   ########.fr        #
+#    Updated: 2025/08/29 12:06:54 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ INC_DIR = includes/
 SRC_MAIN	= 	main.c errors.c free.c init.c
 SRC_PARSING =	parsing/parse_arg.c parsing/parse_file.c\
 				parsing/parse_identifier.c\
-				parsing/grid_close.c
-SRC_UTILS	=	utils/trim.c
+				parsing/parse_grid.c parsing/valid_identifier.c
+SRC_UTILS	=	utils/trim.c utils/other.c utils/debug.c
 
 SRC = $(SRC_MAIN) $(SRC_PARSING) $(SRC_UTILS)
 SRCS = $(addprefix $(SRC_DIR), $(SRC))

@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/28 17:47:35 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 12:06:32 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,41 @@
 # include <fcntl.h>
 
 
-/*---------INIT.C-------------*/
+/*-----------INIT.C-----------*/
 void	init_map(t_map *map);
 
-/*---------PARSING--------*/
+/*-----------PARSING-----------*/
+
+//parse_arg.c
 int		count_lines(char *path, t_map *map);
 bool	read_file(char *path, t_map *map);
 bool	check_file_extension(char *path, int len, char *extension);
 bool	parse_arg(char *path, t_map *map);
 
-//parse_identifer.c
-int		skip_space(char *line);
-bool	line_is_identifier(char *line, t_map *map);
-bool	parse_file2(t_map *map);
-
-
-//grid_close.c
-bool	grid_close(t_map *map);
-bool	algo_dfs(t_map *map, int r, int c);
-
 //parse_file.c
-bool	char_in_string(char a, char *b);
 bool	parse_file(t_map *map);
+
+//parse_identifer.c
+bool	verify_color_value(char **tab);
+void	parse_color(t_map *map, char *value, t_token token);
+void	save_texture_path(t_map *map, t_token token, char *path);
+void	parse_texture(t_map *map, char *path, t_token token);
+void	parse_identifier(t_map *map, char *line);
+
+//valid_identifier.c
+bool	line_is_identifier(char *line, t_map *map);
+bool	all_identifiers(t_map *map);
+bool	no_duplicates(t_map *map, t_token token);
+t_token	define_token(char *line);
+
+//parse_grid.c
+bool	algo_dfs(t_map *map, int r, int c);
+bool	check_grid_char(char **grid);
 bool	save_grid(t_map *map, int i);
-bool	print_char2(char **a);
+bool	grid_close(t_map *map);
 void	parse_grid(t_map *map, int i);
 
-/*---------FREE_AND_ERRORS--------*/
+/*-----------FREE_AND_ERRORS-----------*/
 void	free_str_array(char **arr);
 void	free_map(t_map	*map);
 void	free_mlx(t_mlx	*mlx);
@@ -64,12 +72,18 @@ void	handle_map_error(t_map *map, char *msg);
 void	handle_error(t_game *data, char *msg);
 int	    clean_exit(t_game *data, int code);
 
-
-/*-----------UTILS----------------*/
+/*-----------UTILS-----------*/
 
 //trim.c
 char	*left_trim(char *str);
 void	right_trim(char *str, int len);
 char	*trim_all_spaces(char *str);
+
+//debug.c
+bool	print_char2(char **a);
+
+//other.c
+bool	char_in_string(char a, char *b);
+int		skip_space(char *line);
 
 #endif
