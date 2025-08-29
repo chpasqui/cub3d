@@ -6,7 +6,7 @@
 #    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/29 12:13:27 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/08/29 13:52:28 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,14 @@ OBJ_DIR = obj/
 INC_DIR = includes/
 
 #Module
-SRC_MAIN	= 	main.c errors.c free.c init.c render.c
+SRC_MAIN	= 	main.c errors.c free.c init.c
 SRC_PARSING =	parsing/parse_arg.c parsing/parse_file.c\
 				parsing/parse_identifier.c\
 				parsing/parse_grid.c parsing/valid_identifier.c
+SRC_RENDER	=	rendering/render.c
 SRC_UTILS	=	utils/trim.c utils/other.c utils/debug.c
 
-SRC = $(SRC_MAIN) $(SRC_PARSING) $(SRC_UTILS)
+SRC = $(SRC_MAIN) $(SRC_PARSING) $(SRC_UTILS) $(SRC_RENDER)
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

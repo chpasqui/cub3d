@@ -16,7 +16,7 @@ bool	render_logo(t_game *data)
 		perror("fichire introuvable\n");
 		return(false);
 	}
-	logo = mlx_png_file_to_image(data->mlx.mlx, img_logo, &width, &height);
+	logo = mlx_xpm_file_to_image(data->mlx.mlx, img_logo, &width, &height);
 	if (!logo)
 	{
 		printf("probleme logo %s et l = %p\n ", img_logo, logo);
@@ -28,10 +28,10 @@ bool	render_logo(t_game *data)
 
 bool	render_pixel(t_game *data)
 {
-	int color = 0x00FF0000;
-	int x;
-	int y;
-	int *pixel = (int *)data->mlx.address;
+	int	color = 0x00FF0000;
+	int	x;
+	int	y;
+	int	*pixel = (int *)data->mlx.address;
 
 	int i;
 	int c;
@@ -62,7 +62,7 @@ bool	render_pixel(t_game *data)
 	}
 	l++;
 	}
-//	pixel[50 * (data->mlx.line_length/4) + 100] = color;
+	//pixel[50 * (data->mlx.line_length/4) + 100] = color;
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
 	return(true);
 
@@ -70,7 +70,7 @@ bool	render_pixel(t_game *data)
 
 bool	render_loop(t_game *data)
 {
-//	render_logo(data);
+	//render_logo(data);
 	render_pixel(data);
 //	render_logo(data);
 	return(true);

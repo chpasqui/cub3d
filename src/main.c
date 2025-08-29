@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 12:21:56 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 13:57:59 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	main(int argc, char **argv)
 	render_loop(&data); // RAYCASTING
 	mlx_hook(data.mlx.window, 17, 0, close_window, &data);
 	mlx_loop(data.mlx.mlx);
-	clean_exit(&data, EXIT_SUCCESS);
+	//clean_exit(&data, EXIT_SUCCESS);
 	return (0);
 }
