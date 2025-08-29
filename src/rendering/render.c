@@ -7,7 +7,7 @@ bool	render_logo(t_game *data)
 	int		height;
 	void	*logo;
 
-	img_logo = "./src/fractol_image_100x100.png";
+	img_logo = "./src/fractol_image_100x100.xpm";
 	width = 100;
 	height = 100;
 
@@ -25,6 +25,7 @@ bool	render_logo(t_game *data)
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, logo, 0, 0);
 	return(true);
 }
+
 
 bool	render_pixel(t_game *data)
 {
@@ -68,10 +69,11 @@ bool	render_pixel(t_game *data)
 
 }
 
+
 bool	render_loop(t_game *data)
 {
-	//render_logo(data);
-	render_pixel(data);
+	render_logo(data);
+	//render_pixel(data);
 //	render_logo(data);
 	return(true);
 }

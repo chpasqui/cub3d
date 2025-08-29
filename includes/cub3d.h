@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 12:16:33 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/08/29 14:16:24 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ bool	init_value(t_game *data);
 bool	render_loop(t_game *data);
 
 /*-----------INIT.C-----------*/
+void	init_game(t_game *data);
 void	init_map(t_map *map);
 
 /*-----------PARSING-----------*/
