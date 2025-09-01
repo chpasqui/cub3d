@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/01 09:12:18 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 09:21:04 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	render_logo(t_game *data)
 }
 
 
-bool	render_pixel(t_game *data)
+bool	render_minimap(t_game *data)
 {
 	int		rouge = 0x00FF0000;
 	int		vert = 0x0000FF00;
@@ -94,7 +94,7 @@ bool	render_pixel(t_game *data)
 
 bool	render_loop(t_game *data)
 {
-	render_pixel(data);
+	render_minimap(data);
 	render_logo(data);
 	return (true);
 }
