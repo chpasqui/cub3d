@@ -6,7 +6,7 @@
 #    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/01 08:19:36 by Charlye          ###   ########.fr        #
+#    Updated: 2025/09/01 08:49:30 by Charlye          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC_MAIN	= 	main.c errors.c free.c init.c
 SRC_PARSING =	parsing/parse_arg.c parsing/parse_file.c\
 				parsing/parse_identifier.c\
 				parsing/parse_grid.c parsing/valid_identifier.c
-SRC_RENDER	=	rendering/render.c
+SRC_RENDER	=	rendering/render_minimap.c rendering/hook.c
 SRC_UTILS	=	utils/trim.c utils/other.c utils/debug.c
 
 SRC = $(SRC_MAIN) $(SRC_PARSING) $(SRC_UTILS) $(SRC_RENDER)

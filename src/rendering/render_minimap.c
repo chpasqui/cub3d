@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/01 08:30:28 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 09:12:18 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ bool	print_n_pixel(t_game *data, int *pixel, int color)
 	int	i;
 
 	i = 0;
-	while (i < data->map.square_size)
+	while (i < data->minimap.square_size)
 	{
-		pixel[(data->map.y) * (data->mlx.line_length / 4) + data->map.x] = color;
+		pixel[(data->minimap.y) * (data->mlx.line_length / 4)
+			+ data->minimap.x] = color;
 		i++;
-		data->map.x++;
+		data->minimap.x++;
 	}
 	return (true);
 }
@@ -33,7 +34,7 @@ bool	render_logo(t_game *data)
 	int		height;
 	void	*logo;
 
-	img_logo = "./src/cub3d_logo_30x30.png";
+	img_logo = "./src/cub3d_logo_30x30.xpm";
 	width = 30;
 	height = 30;
 	if (access(img_logo, F_OK) != 0)
@@ -65,11 +66,11 @@ bool	render_pixel(t_game *data)
 	l = 0;
 	while (l < data->map.height)
 	{
-		data->map.y = l * data->map.square_size;
-		while (data->map.y <= data->map.square_size * (l + 1))
+		data->minimap.y = l * data->minimap.square_size;
+		while (data->minimap.y <= data->minimap.square_size * (l + 1))
 		{
 			c = 0;
-			data->map.x = 0;
+			data->minimap.x = 0;
 			while (c < data->map.width)
 			{
 //				printf("x = %i   y = %i   c = %i   l = %i   grid = %c\n", data->map.x, data->map.y, c , l, grid[l][c]);
@@ -81,7 +82,7 @@ bool	render_pixel(t_game *data)
 					print_n_pixel(data, pixel, blanc);
 				c++;
 			}
-			data->map.y++;
+			data->minimap.y++;
 		}
 		l++;
 	}

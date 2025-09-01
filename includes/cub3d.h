@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 08:20:10 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 08:35:16 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@
 /*---------MAIN-----------*/
 
 //hook.c
-int	mouse_hook (int button, int x, int y, t_game *data);
-int	key_hook (int button, t_game *data);
+int		mouse_hook(int button, int x, int y, t_game *data);
+int		key_hook(int button, t_game *data);
 
 //init.c
 bool	init_mlx(t_game *data);
 bool	init_value(t_game *data);
 
 //main.c
-int	close_window(t_game *data);
+int		close_window(t_game *data);
 
 //render.c
 bool	render_loop(t_game *data);
@@ -74,7 +74,7 @@ t_token	define_token(char *line);
 
 //parse_grid.c
 bool	algo_dfs(t_map *map, int r, int c);
-bool	check_grid_char(char **grid);
+bool	check_grid_char(t_map *map);
 bool	save_grid(t_map *map, int i);
 bool	grid_close(t_map *map);
 void	parse_grid(t_map *map, int i);
@@ -86,7 +86,7 @@ void	free_mlx(t_mlx	*mlx);
 void	free_game(t_game *data);
 void	handle_map_error(t_map *map, char *msg);
 void	handle_error(t_game *data, char *msg);
-int	    clean_exit(t_game *data, int code);
+int		clean_exit(t_game *data, int code);
 
 /*-----------UTILS-----------*/
 

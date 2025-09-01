@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 08:21:46 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 09:17:25 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	init_game(t_game *data)
 {
-	ft_bzero(&data, sizeof(t_game));
+	ft_bzero(data, sizeof(t_game));
 
 }
 
@@ -35,9 +35,9 @@ bool	init_value(t_game *data)
 {
 	data->mlx.x_window = 800;
 	data->mlx.y_window = 600;
-	data->map.square_size = 10;
-	data->map.x = 0;
-	data->map.y = 0;
+	data->minimap.square_size = 10;
+	data->minimap.x = 0;
+	data->minimap.y = 0;
 	return (true);
 }
 
@@ -46,9 +46,13 @@ bool	init_mlx(t_game *data)
 	data->mlx.mlx = mlx_init();
 	if (data->mlx.mlx == NULL)
 		handle_error(data, MLX_ERROR);
-	data->mlx.window = mlx_new_window(data->mlx.mlx, data->mlx.x_window, data->mlx.y_window, "cub3D");
-	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.x_window, data->mlx.y_window);
-	data->mlx.address = mlx_get_data_addr(data->mlx.img, &data->mlx.bits_per_pixel, &data->mlx.line_length, &data->mlx.endian);
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
+	data->mlx.window = mlx_new_window(data->mlx.mlx, data->mlx.x_window,
+			data->mlx.y_window, "cub3D");
+	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.x_window, 
+			data->mlx.y_window);
+	data->mlx.address = mlx_get_data_addr(data->mlx.img,
+			&data->mlx.bits_per_pixel, &data->mlx.line_length,
+			&data->mlx.endian);
+	//mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
 	return (true);
 }

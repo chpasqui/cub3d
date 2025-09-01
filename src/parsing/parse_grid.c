@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 08:29:22 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 08:35:58 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,4 @@ void	parse_grid(t_map *map, int i)
 //	printf("\n");
 //	print_char2(map->pass_grid);
 //	printf("\n");
-	return (true);
 }
