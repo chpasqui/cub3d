@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/01 09:25:44 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 09:26:59 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ bool	render_minimap(t_game *data)
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
 	return (true);
 }
-
 
 bool	render_loop(t_game *data)
 {

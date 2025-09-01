@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 08:35:58 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 09:56:44 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,35 @@ bool	grid_close(t_map *map)
 	return (algo_dfs(map, 2, 2)); //attention a revoir
 }
 
-bool	algo_dfs(t_map *map, int l, int c)
+bool	algo_dfs(t_map *map, int row, int col)
 {
-	int	i;
-	int	dir[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};// SDU mettre ailleur?
+	//int	i;
+	//int	dir[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};// SDU mettre ailleur?
 
 	//	printf("\n");
 	//	printf("l = %i, c = %i, map->height = %i\n", l , c, map->height);
 	//	print_char2(map->pass_grid);
-	if (l < 0 || l >= map->height || c < 0 || !map->grid[l][c] || map->grid[l][c] == ' ')
+	if (row < 0 || row >= map->height || col < 0 || !map->grid[row][col]
+		|| map->grid[row][col] == ' ')
 		return (false);
-	if (map->grid[l][c] == '1' || map->pass_grid[l][c] == '1')
+	if (map->grid[row][col] == '1' || map->pass_grid[row][col] == '1')
 		return (true);
-	map->pass_grid[l][c] = '1';
-	i = 0;
-	while (i < 4)
-	{
-		if (!algo_dfs(map, l + dir[i][0], c + dir[i][1]))
-			return (false);
-		i++;
-	}
+	map->pass_grid[row][col] = '1';
+	if (!algo_dfs(map, row - 1, col))
+		return (false);
+	if (!algo_dfs(map, row + 1, col))
+		return (false);
+	if (!algo_dfs(map, row, col -1))
+		return (false);
+	if (!algo_dfs(map, row, col + 1))
+		return (false);
+	// i = 0;
+	// while (i < 4)
+	// {
+	// 	if (!algo_dfs(map, l + dir[i][0], c + dir[i][1]))
+	// 		return (false);
+	// 	i++;
+	// }
 	return (true);
 }
 
