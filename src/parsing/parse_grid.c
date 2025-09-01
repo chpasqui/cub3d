@@ -6,11 +6,27 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 08:24:10 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 08:29:22 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	grid_width(t_map * map, int j)
+{
+	int	l;
+
+	l = ft_strlen(map->grid[j]);
+	if (l > map->width)
+		map->width = l;
+}
+
+void init_player(t_map *map, int i, int j)
+{
+	map->player_x = j;
+	map->player_y = i;
+	map->player_dir = map->grid[i][j];
+}
 
 bool	grid_close(t_map *map)
 {
@@ -71,6 +87,7 @@ bool	save_grid(t_map *map, int i)
 	while (map->lines[i] && char_in_string(map->lines[i][0], "01 "))
 	{
 		map->grid[j] = ft_strdup(map->lines[i]);
+		grid_width(map, j);
 		i++;
 		j++;
 	}
@@ -80,7 +97,7 @@ bool	save_grid(t_map *map, int i)
 	return (true);
 }
 
-bool	check_grid_char(char **grid)
+bool	check_grid_char(t_map *map)
 {
 	int	i;
 	int	j;
@@ -88,17 +105,20 @@ bool	check_grid_char(char **grid)
 
 	nb_player = 0;
 	i = 0;
-	while (grid[i])
+	while (map->grid[i])
 	{
 		j = 0;
-		while (grid[i][j])
+		while (map->grid[i][j])
 		{
-			if (char_in_string(grid[i][j], "10 NSEW"))
+			if (char_in_string(map->grid[i][j], "10 NSEW"))
 				j++;
 			else
 				return (false);
-			if (char_in_string(grid[i][j], "NSEW"))
+			if (char_in_string(map->grid[i][j], "NSEW"))
+			{
+				init_player(map, i, j);
 				nb_player++;
+			}
 		}
 		i++;
 	}
@@ -110,13 +130,14 @@ bool	check_grid_char(char **grid)
 void	parse_grid(t_map *map, int i)
 {
 	save_grid(map, i);
-	if (!check_grid_char(map->grid))
+	if (!check_grid_char(map))
 		handle_map_error(map, GRID_CHAR);
-	if (grid_close(map) != true)
+	if (!grid_close(map))
 		handle_map_error(map, GRID_CLOSE);
-	printf("\n");
-	print_char2(map->grid);
-	printf("\n");
-	print_char2(map->pass_grid);
-	printf("\n");
+//	printf("\n");
+//	print_char2(map->grid);
+//	printf("\n");
+//	print_char2(map->pass_grid);
+//	printf("\n");
+	return (true);
 }
