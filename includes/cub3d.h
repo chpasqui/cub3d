@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 14:16:24 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/01 08:20:10 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,17 @@
 # include <fcntl.h>
 
 /*---------MAIN-----------*/
+
+//hook.c
+int	mouse_hook (int button, int x, int y, t_game *data);
+int	key_hook (int button, t_game *data);
+
 //init.c
 bool	init_mlx(t_game *data);
 bool	init_value(t_game *data);
+
+//main.c
+int	close_window(t_game *data);
 
 //render.c
 bool	render_loop(t_game *data);

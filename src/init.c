@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/08/29 14:19:45 by chpasqui         ###   ########.fr       */
+/*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
+/*   Updated: 2025/09/01 08:21:46 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ bool	init_value(t_game *data)
 {
 	data->mlx.x_window = 800;
 	data->mlx.y_window = 600;
+	data->map.square_size = 10;
+	data->map.x = 0;
+	data->map.y = 0;
 	return (true);
 }
 

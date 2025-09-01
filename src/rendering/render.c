@@ -1,4 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
+/*   Updated: 2025/09/01 08:30:28 by Charlye          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
+
+bool	print_n_pixel(t_game *data, int *pixel, int color)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->map.square_size)
+	{
+		pixel[(data->map.y) * (data->mlx.line_length / 4) + data->map.x] = color;
+		i++;
+		data->map.x++;
+	}
+	return (true);
+}
 
 bool	render_logo(t_game *data)
 {
@@ -7,76 +33,67 @@ bool	render_logo(t_game *data)
 	int		height;
 	void	*logo;
 
-	img_logo = "./src/fractol_image_100x100.xpm";
-	width = 100;
-	height = 100;
-
+	img_logo = "./src/cub3d_logo_30x30.png";
+	width = 30;
+	height = 30;
 	if (access(img_logo, F_OK) != 0)
 	{
 		perror("fichire introuvable\n");
-		return(false);
+		return (false);
 	}
 	logo = mlx_xpm_file_to_image(data->mlx.mlx, img_logo, &width, &height);
 	if (!logo)
 	{
 		printf("probleme logo %s et l = %p\n ", img_logo, logo);
-		return(false);
+		return (false);
 	}
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, logo, 0, 0);
-	return(true);
+	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, logo, 100, 0);
+	return (true);
 }
 
 
 bool	render_pixel(t_game *data)
 {
-	int	color = 0x00FF0000;
-	int	x;
-	int	y;
-	int	*pixel = (int *)data->mlx.address;
-
-	int i;
-	int c;
-	int l;
-	char **grid = data->map.grid;
+	int		rouge = 0x00FF0000;
+	int		vert = 0x0000FF00;
+	int		blanc = 0x00FFFFFF;
+	int		c;
+	int		l;
+	int		*pixel = (int *)data->mlx.address;
+	char	**grid = data->map.grid;
 
 	l = 0;
-	while(l < 15){
-	x = l * 12;
-	while(x <= l * 12 + 10)
+	while (l < data->map.height)
 	{
-		c = 0;
-		y = 0;
-		while(c < 14)
+		data->map.y = l * data->map.square_size;
+		while (data->map.y <= data->map.square_size * (l + 1))
 		{
-			if(grid[c][l] && char_in_string(grid[c][l], "1"))
+			c = 0;
+			data->map.x = 0;
+			while (c < data->map.width)
 			{
-				i = 0;
-				while(i++ < 10)
-					pixel[ (y++) * (data->mlx.line_length/4) + x] = color;
+//				printf("x = %i   y = %i   c = %i   l = %i   grid = %c\n", data->map.x, data->map.y, c , l, grid[l][c]);
+				if (grid[l][c] && char_in_string(grid[l][c], "1"))
+					print_n_pixel(data, pixel, rouge);
+				else if (l == data->map.player_y && c == data->map.player_x)
+					print_n_pixel(data, pixel, vert);
+				else
+					print_n_pixel(data, pixel, blanc);
+				c++;
 			}
-			else
-				y = y + 10;
-			c++;
-			y++;
+			data->map.y++;
 		}
-		x++;
+		l++;
 	}
-	l++;
-	}
-	//pixel[50 * (data->mlx.line_length/4) + 100] = color;
+//	pixel[50 * (data->mlx.line_length/4) + 100] = rouge;
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
-	return(true);
-
+	return (true);
 }
 
 
 bool	render_loop(t_game *data)
 {
+	render_pixel(data);
 	render_logo(data);
-	//render_pixel(data);
-//	render_logo(data);
-	return(true);
+	return (true);
 }
-
-
-

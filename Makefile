@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
+#    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/08/29 13:52:28 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/09/01 08:19:36 by Charlye          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Noms, compilateur et flags
 NAME = cub3d
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 #Dossiers
 SRC_DIR = src/
@@ -33,15 +34,15 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 #Minilibx
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
-	MLX_DIR = minilibx-linux/
-	MLX_FLAGS = -lmlx -lXext -lX11 -lm
+#UNAME_S := $(shell uname -s)
+#ifeq ($(UNAME_S),Linux)
+#	MLX_DIR = minilibx-linux/
+#	MLX_FLAGS = -lmlx -lXext -lX11 -lm
 
-else
+#else
 	MLX_DIR = minilibx_opengl/
 	MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lz
-endif
+#endif
 
 MLX = $(MLX_DIR)libmlx.a
 

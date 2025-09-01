@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 12:14:00 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/01 08:18:14 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,19 @@ typedef struct s_map
 	int		player_x;
 	int		player_y;
 	char	player_dir;
+
+	int		x;
+	int		y;
+	int		square_size;
 }	t_map;
 
 typedef struct s_game
 {
 	t_map	map;
 	t_mlx	mlx;
-
-
+	int		pos_x;
+	int		pos_y;
+	int		dir;
 }	t_game;
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_grid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 12:10:34 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/01 08:24:10 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,29 @@ bool	grid_close(t_map *map)
 		i++;
 	}
 	map->pass_grid[i] = NULL;
-
-	return (algo_dfs(map, 1, 1));
+	return (algo_dfs(map, 2, 2)); //attention a revoir
 }
 
-
-bool	algo_dfs(t_map *map, int r, int c)
+bool	algo_dfs(t_map *map, int l, int c)
 {
-	int dir[4][2] = {{-1,0}, {1,0}, {0,-1}, {0,1}};//mettre ailleur?
 	int	i;
+	int	dir[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};// SDU mettre ailleur?
 
-	//printf("\n");
-	//printf("r = %i, c = %i \n", r , c);
-	//print_char2(map->pass_grid);
-
-	if (!map->grid[r][c] || map->grid[r][c] == ' ')
+	//	printf("\n");
+	//	printf("l = %i, c = %i, map->height = %i\n", l , c, map->height);
+	//	print_char2(map->pass_grid);
+	if (l < 0 || l >= map->height || c < 0 || !map->grid[l][c] || map->grid[l][c] == ' ')
 		return (false);
-	if (map->grid[r][c] == '1' || map->pass_grid[r][c] == '1')
+	if (map->grid[l][c] == '1' || map->pass_grid[l][c] == '1')
 		return (true);
-
-	 map->pass_grid[r][c] = '1';
-	//	 printf("pass_grid\n");
+	map->pass_grid[l][c] = '1';
 	i = 0;
 	while (i < 4)
 	{
-		if (!algo_dfs(map, r + dir[i][0],c + dir[i][1]))
+		if (!algo_dfs(map, l + dir[i][0], c + dir[i][1]))
 			return (false);
 		i++;
-		//		printf("i++\n");
 	}
-	//	printf("\n");
 	return (true);
 }
 
