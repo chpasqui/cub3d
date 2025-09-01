@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 08:35:16 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 09:25:16 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "cub3d_struct.h"
 # include "keycodes.h"
 # include "error.h"
+# include "colors.h"
 
 # include <unistd.h>
 # include <stdbool.h>

@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/01 09:21:04 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 09:25:44 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ bool	render_logo(t_game *data)
 
 bool	render_minimap(t_game *data)
 {
-	int		rouge = 0x00FF0000;
-	int		vert = 0x0000FF00;
-	int		blanc = 0x00FFFFFF;
 	int		c;
 	int		l;
 	int		*pixel = (int *)data->mlx.address;
@@ -75,11 +72,11 @@ bool	render_minimap(t_game *data)
 			{
 //				printf("x = %i   y = %i   c = %i   l = %i   grid = %c\n", data->map.x, data->map.y, c , l, grid[l][c]);
 				if (grid[l][c] && char_in_string(grid[l][c], "1"))
-					print_n_pixel(data, pixel, rouge);
+					print_n_pixel(data, pixel, COLOR_RED);
 				else if (l == data->map.player_y && c == data->map.player_x)
-					print_n_pixel(data, pixel, vert);
+					print_n_pixel(data, pixel, COLOR_GREEN);
 				else
-					print_n_pixel(data, pixel, blanc);
+					print_n_pixel(data, pixel, COLOR_WHITE);
 				c++;
 			}
 			data->minimap.y++;
