@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 09:56:44 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 09:58:08 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ bool	algo_dfs(t_map *map, int row, int col)
 		return (false);
 	if (!algo_dfs(map, row + 1, col))
 		return (false);
-	if (!algo_dfs(map, row, col -1))
+	if (!algo_dfs(map, row, col - 1))
 		return (false);
 	if (!algo_dfs(map, row, col + 1))
 		return (false);
