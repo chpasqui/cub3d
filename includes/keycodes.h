@@ -3,25 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   keycodes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 11:00:52 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:32:53 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYCODES_H
 # define KEYCODES_H
 
-/*
-# define ESC 65307
-# define RIGHT 65361
-# define LEFT 65363
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-*/
 
 // MOUSE
 # define CLICK_L 1
@@ -30,24 +21,44 @@
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
-// KEYBOARD
-# define ESC 53
-# define UP 126
-# define DOWN 125
-# define LEFT 123
-# define RIGHT 124
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_1 83
-# define KEY_2 84
-# define KEY_3 85
-# define KEY_5 87
-# define KEY_6 88
-# define KEY_7 89
-# define KEY_8 91
-# define KEY_9 92
+// KEYBOARD MAC
+// # define ESC 53
+// # define UP 126
+// # define DOWN 125
+// # define LEFT 123
+// # define RIGHT 124
+// # define KEY_W 13
+// # define KEY_A 0
+// # define KEY_S 1
+// # define KEY_D 2
+// # define KEY_1 83
+// # define KEY_2 84
+// # define KEY_3 85
+// # define KEY_5 87
+// # define KEY_6 88
+// # define KEY_7 89
+// # define KEY_8 91
+// # define KEY_9 92
+
+// KEYBOARD LINUX
+# define ESC 65307
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115 
+# define KEY_D 100
+# define KEY_1 65457
+# define KEY_2 65458
+# define KEY_3 65459
+# define KEY_4 65460
+# define KEY_5 65461
+# define KEY_6 65462
+# define KEY_7 65463
+# define KEY_8 65464
+# define KEY_9 65465
 
 
 #endif
