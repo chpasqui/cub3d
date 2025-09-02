@@ -6,11 +6,14 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 12:33:06 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/01 12:33:28 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 15:42:43 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// setup la vision (position, direction, plane)
+// 
 
 bool	render_loop(t_game *data)
 {

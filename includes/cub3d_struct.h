@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 12:28:02 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/02 18:00:40 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ typedef struct s_minimap
 
 typedef struct s_texture
 {
-	int		text_num;
-	double	wallx;
 	double	tex_width;
 	double	tex_height;
 	double	tex_pos;
@@ -111,6 +109,15 @@ typedef struct s_ray
 	int		side;
 }	t_ray;
 
+typedef struct s_wall
+{
+	int	wall_height;
+	int	wall_x;
+	int	tex_x;
+	int	draw_start;
+	int	draw_end;
+}	t_wall;
+
 typedef struct s_player
 {
 	double		pos_x;
@@ -128,6 +135,7 @@ typedef struct s_game
 	t_minimap	minimap;
 	t_player	player;
 	t_ray		ray;
+	t_wall		wall;
 	t_texture	tex;
 }	t_game;
 

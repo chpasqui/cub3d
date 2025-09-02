@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 14:30:56 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/02 18:03:07 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,26 @@ void	init_values_for_test(t_game	*data)
 }
 
 // calculation de la texture : comprendre comment cela fonctionne 
-
-texnum = map->grid[ray->mapX][ray->mapY] - 1;
-
-
-// etape 5 selon tes notes 
-
-// wallx a quoi ca correspond exactement ? car si cest un mur ou side == 1, alors c-est les y du mur mais
-// toujours les x de la texture. donc quel est la diff avec texX ?
-void	set_value_wall_x(t_game *data)
+void	prepare_wall_values(t_game *data)
 {
-	t_ray		*ray;
-	t_player	*player;
-	t_texture	*tex;
+	double perpwalldist;
 
-	*ray = data->ray;
-	*player = data->player;
-	*tex = data->tex;
+	perpwalldist = data->ray.perpwalldist;
 	init_values_for_test(data);
+	data->wall.wall_height = perpwalldist * data->mlx.y_window;
 	if (data->ray.side == 0)
-		tex->wallx = player->pos_y + ray->perpwalldist * ray->raydiry;
+		data->wall.wall_x = data->player.pos_y + perpwalldist * data->ray.raydiry;
 	else
-		tex->wallx = player->pos_x + ray->perpwalldist * ray->raydirx;
-	tex->wallx -= floor(tex->wallx); // floor sort l integral la plus proche exemple floor(6.5) = 6
-	
+		data->wall.wall_x = data->player.pos_x + perpwalldist * data->ray.raydirx;
+	data->wall.wall_x -= floor(data->wall.wall_x);
+	data->wall.tex_x = data->wall.wall_x * data->tex.tex_width;
+	data->wall.draw_start = (data->mlx.y_window / 2) - (data->wall.wall_height / 2);
+	data->wall.draw_end = (data->mlx.y_window / 2) + (data->wall.wall_height / 2);
 }
 
-void	set_x_on_texture(t_game *game)
-{
-	
 }
+
+void	define_draw_end_start
 
 
 
