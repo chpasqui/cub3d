@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 12:34:26 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/02 13:41:25 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ int		close_window(t_game *data);
 bool	render_minimap(t_game *data);
 bool	render_logo(t_game *data);
 bool	render_loop(t_game *data);
+
+//render_ray.c
+bool	render_ray(t_game data);
 
 /*-----------INIT.C-----------*/
 void	init_game(t_game *data);
