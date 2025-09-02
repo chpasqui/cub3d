@@ -6,13 +6,12 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 10:32:53 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/02 10:34:12 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYCODES_H
 # define KEYCODES_H
-
 
 // MOUSE
 # define CLICK_L 1
@@ -59,6 +58,5 @@
 # define KEY_7 65463
 # define KEY_8 65464
 # define KEY_9 65465
-
 
 #endif
