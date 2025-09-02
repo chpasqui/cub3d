@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 09:02:40 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/02 12:26:01 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,50 @@ typedef struct s_minimap
 	int	square_size;
 }	t_minimap;
 
+typedef struct s_texture
+{
+	int		text_num;
+	double	wallx;
+	double	tex_width;
+	double	tex_height;
+	double	tex_pos;
+}	t_texture;
+
+typedef struct s_ray
+{
+	double	camerax;
+	double	raydirx;
+	double	raydiry;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	double	perpwalldist;
+	int		mapx;
+	int		mapy;
+	int		stepx;
+	int		stepy;
+	int		side;
+}	t_ray;
+
+typedef struct s_player
+{
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+}	t_player;
+
 typedef struct s_game
 {
 	t_map		map;
 	t_mlx		mlx;
-	t_minimap 	minimap;
-	int		pos_x;
-	int		pos_y;
-	int		dir;
+	t_minimap	minimap;
+	t_player	player;
+	t_ray		ray;
+	t_texture	tex;
 }	t_game;
 
 #endif
