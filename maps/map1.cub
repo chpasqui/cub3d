@@ -1,0 +1,12 @@
+F 3,100,0
+C 225,30,0
+
+NO test.xpm
+EA test.xpm
+WE test.xpm
+SO test.xpm
+
+ 1111111
+10000001
+10S11111
+11111

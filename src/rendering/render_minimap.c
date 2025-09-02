@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/01 09:26:59 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:40:40 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,17 @@ bool	render_minimap(t_game *data)
 		{
 			c = 0;
 			data->minimap.x = 0;
-			while (c < data->map.width)
+			while (grid[l][c] && c < data->map.width)
 			{
 //				printf("x = %i   y = %i   c = %i   l = %i   grid = %c\n", data->map.x, data->map.y, c , l, grid[l][c]);
 				if (grid[l][c] && char_in_string(grid[l][c], "1"))
 					print_n_pixel(data, pixel, COLOR_RED);
+				else if (grid[l][c] && char_in_string(grid[l][c], "0"))
+					print_n_pixel(data, pixel, COLOR_WHITE);
 				else if (l == data->map.player_y && c == data->map.player_x)
 					print_n_pixel(data, pixel, COLOR_GREEN);
 				else
-					print_n_pixel(data, pixel, COLOR_WHITE);
+					print_n_pixel(data, pixel, COLOR_BLACK);
 				c++;
 			}
 			data->minimap.y++;
