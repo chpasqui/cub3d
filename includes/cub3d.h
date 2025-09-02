@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 09:25:16 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:34:26 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ bool	init_value(t_game *data);
 int		close_window(t_game *data);
 
 //render.c
+bool	render_minimap(t_game *data);
+bool	render_logo(t_game *data);
 bool	render_loop(t_game *data);
 
 /*-----------INIT.C-----------*/

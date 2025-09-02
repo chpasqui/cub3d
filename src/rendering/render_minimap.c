@@ -6,91 +6,89 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/01 09:26:59 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:33:23 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	print_n_pixel(t_game *data, int *pixel, int color)
+bool	print_n_pixel(t_game *data, int x, int y, int color)
 {
 	int	i;
+	int	j;
+	int	*pixel;
 
-	i = 0;
-	while (i < data->minimap.square_size)
+	pixel = (int *)data->mlx.address;
+	j = 0;
+	while (j < data->minimap.square_size)
 	{
-		pixel[(data->minimap.y) * (data->mlx.line_length / 4)
-			+ data->minimap.x] = color;
-		i++;
-		data->minimap.x++;
+		i = 0;
+		while (i < data->minimap.square_size)
+		{
+			pixel[(y + j) * (data->mlx.line_length / 4) + x + i] = color;
+			i++;
+		}
+		j++;
 	}
 	return (true);
 }
 
-bool	render_logo(t_game *data)
+int	get_minimap_color(t_game *data, int m_row, int m_col)
 {
-	char	*img_logo;
-	int		width;
-	int		height;
-	void	*logo;
-
-	img_logo = "./src/cub3d_logo_30x30.xpm";
-	width = 30;
-	height = 30;
-	if (access(img_logo, F_OK) != 0)
-	{
-		perror("fichire introuvable\n");
-		return (false);
-	}
-	logo = mlx_xpm_file_to_image(data->mlx.mlx, img_logo, &width, &height);
-	if (!logo)
-	{
-		printf("probleme logo %s et l = %p\n ", img_logo, logo);
-		return (false);
-	}
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, logo, 100, 0);
-	return (true);
+	if (!data->map.grid[m_row]
+		|| m_col >= (int)ft_strlen(data->map.grid[m_row]))
+		return (data->minimap.color_floor);
+	else if (data->map.grid[m_row][m_col] == '1')
+		return (data->minimap.color_wall);
+	else if (m_row == data->map.player_y && m_col == data->map.player_x)
+		return (data->minimap.color_player);
+	else
+		return (data->minimap.color_floor);
 }
 
+void	render_minimap_case(t_game *data, t_minimap *minimap, int row, int col)
+{
+	int	m_row;
+	int	m_col;
+	int	view_rows;
+	int	view_cols;
+	int	color;
+
+	view_rows = minimap->height / minimap->square_size;
+	view_cols = minimap->width / minimap->square_size;
+	m_row = data->map.player_y - view_rows / 2 + row;
+	m_col = data->map.player_x - view_cols / 2 + col;
+	if (m_row < 0 || m_row >= data->map.height || m_col < 0
+		|| m_col >= data->map.width)
+		color = COLOR_BLACK;
+	else
+		color = get_minimap_color(data, m_row, m_col);
+	print_n_pixel(data, minimap->offset_x + col * minimap->square_size,
+		minimap->offset_y + row * minimap->square_size, color);
+}
 
 bool	render_minimap(t_game *data)
 {
-	int		c;
-	int		l;
-	int		*pixel = (int *)data->mlx.address;
-	char	**grid = data->map.grid;
+	int	view_rows;
+	int	view_cols;
+	int	row;
+	int	col;
 
-	l = 0;
-	while (l < data->map.height)
+	view_rows = data->minimap.height / data->minimap.square_size;
+	view_cols = data->minimap.width / data->minimap.square_size;
+	row = 0;
+	while (row < view_rows)
 	{
-		data->minimap.y = l * data->minimap.square_size;
-		while (data->minimap.y <= data->minimap.square_size * (l + 1))
+		col = 0;
+		while (col < view_cols)
 		{
-			c = 0;
-			data->minimap.x = 0;
-			while (c < data->map.width)
-			{
-//				printf("x = %i   y = %i   c = %i   l = %i   grid = %c\n", data->map.x, data->map.y, c , l, grid[l][c]);
-				if (grid[l][c] && char_in_string(grid[l][c], "1"))
-					print_n_pixel(data, pixel, COLOR_RED);
-				else if (l == data->map.player_y && c == data->map.player_x)
-					print_n_pixel(data, pixel, COLOR_GREEN);
-				else
-					print_n_pixel(data, pixel, COLOR_WHITE);
-				c++;
-			}
-			data->minimap.y++;
+			render_minimap_case(data, &data->minimap, row, col);
+			col++;
 		}
-		l++;
+		row++;
 	}
-//	pixel[50 * (data->mlx.line_length/4) + 100] = rouge;
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
+	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window,
+		data->mlx.img, 0, 0);
 	return (true);
 }
 
-bool	render_loop(t_game *data)
-{
-	render_minimap(data);
-	render_logo(data);
-	return (true);
-}

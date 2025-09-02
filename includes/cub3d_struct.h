@@ -6,12 +6,14 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 12:26:01 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/02 12:28:02 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_STRUCT_H
 # define CUB3D_STRUCT_H
+
+# include <stdbool.h>
 
 typedef enum e_token
 {
@@ -69,9 +71,18 @@ typedef struct s_map
 
 typedef struct s_minimap
 {
-	int	x;
-	int	y;
-	int	square_size;
+	int		square_size;
+	int		width;
+	int		height;
+	int		offset_x;
+	int		offset_y;
+
+	int		color_wall;
+	int		color_floor;
+	int		color_player;
+	int		color_ray;
+
+	bool	show;
 }	t_minimap;
 
 typedef struct s_texture
