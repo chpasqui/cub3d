@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 14:06:56 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/02 14:30:56 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ void	init_values_for_test(t_game	*data)
 	data->ray.side = 1;
 }
 
+// calculation de la texture : comprendre comment cela fonctionne 
+
+texnum = map->grid[ray->mapX][ray->mapY] - 1;
+
+
+// etape 5 selon tes notes 
+
+// wallx a quoi ca correspond exactement ? car si cest un mur ou side == 1, alors c-est les y du mur mais
+// toujours les x de la texture. donc quel est la diff avec texX ?
 void	set_value_wall_x(t_game *data)
 {
 	t_ray		*ray;
@@ -38,8 +47,17 @@ void	set_value_wall_x(t_game *data)
 		tex->wallx = player->pos_y + ray->perpwalldist * ray->raydiry;
 	else
 		tex->wallx = player->pos_x + ray->perpwalldist * ray->raydirx;
-	tex->wallx = floor(tex->wallx); // floor sort l integral la plus proche exemple floor(6.5) = 6
+	tex->wallx -= floor(tex->wallx); // floor sort l integral la plus proche exemple floor(6.5) = 6
+	
 }
+
+void	set_x_on_texture(t_game *game)
+{
+	
+}
+
+
+
 
 
 
