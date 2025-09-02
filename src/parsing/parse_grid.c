@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_grid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 09:58:08 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:22:21 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void init_player(t_map *map, int i, int j)
 	map->player_dir = map->grid[i][j];
 }
 
-bool	grid_close(t_map *map)
+bool	init_pass_grid(t_map *map)
 {
 	int	i;
 	int	j;
@@ -49,14 +49,32 @@ bool	grid_close(t_map *map)
 		i++;
 	}
 	map->pass_grid[i] = NULL;
-	return (algo_dfs(map, 2, 2)); //attention a revoir
+	return(true);
+}
+
+bool	grid_close(t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (map->grid[i])
+	{
+		j = 0;
+		while (map->grid[i][j])
+		{
+			init_pass_grid(map);
+			if (char_in_string(map->grid[i][j], "0NSEW") && !algo_dfs(map, i, j))
+				return (false);
+			j++;
+		}
+		i++;
+	}
+	return (true);
 }
 
 bool	algo_dfs(t_map *map, int row, int col)
 {
-	//int	i;
-	//int	dir[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};// SDU mettre ailleur?
-
 	//	printf("\n");
 	//	printf("l = %i, c = %i, map->height = %i\n", l , c, map->height);
 	//	print_char2(map->pass_grid);
@@ -74,13 +92,6 @@ bool	algo_dfs(t_map *map, int row, int col)
 		return (false);
 	if (!algo_dfs(map, row, col + 1))
 		return (false);
-	// i = 0;
-	// while (i < 4)
-	// {
-	// 	if (!algo_dfs(map, l + dir[i][0], c + dir[i][1]))
-	// 		return (false);
-	// 	i++;
-	// }
 	return (true);
 }
 
@@ -143,9 +154,9 @@ void	parse_grid(t_map *map, int i)
 		handle_map_error(map, GRID_CHAR);
 	if (!grid_close(map))
 		handle_map_error(map, GRID_CLOSE);
-//	printf("\n");
-//	print_char2(map->grid);
-//	printf("\n");
-//	print_char2(map->pass_grid);
-//	printf("\n");
+	printf("\n");
+	print_char2(map->grid);
+	printf("\n");
+	print_char2(map->pass_grid);
+	printf("\n");
 }
