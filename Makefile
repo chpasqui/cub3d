@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
+#    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/01 12:33:50 by Charlye          ###   ########.fr        #
+#    Updated: 2025/09/02 10:35:36 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,15 +35,15 @@ SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
 #Minilibx
-#UNAME_S := $(shell uname -s)
-#ifeq ($(UNAME_S),Linux)
-#	MLX_DIR = minilibx-linux/
-#	MLX_FLAGS = -lmlx -lXext -lX11 -lm
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	MLX_DIR = minilibx-linux/
+	MLX_FLAGS = -lmlx -lXext -lX11 -lm
 
-#else
+else
 	MLX_DIR = minilibx_opengl/
 	MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit -lz
-#endif
+endif
 
 MLX = $(MLX_DIR)libmlx.a
 
