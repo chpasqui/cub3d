@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/26 14:50:24 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/08/26 15:55:10 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ bool	parse_file(t_map *map)
 	i = 0;
 	while (map->file[i])
 	{
-		if (map->file[i][0] != '0' || map->file[i][0] != '1' || map->file[i][0] != ' ')
-		{
-			parse_grid(map, i);
-		}
-		else if (map->file[i][0] == 'N' || map->file[i][0] == 'S' || map->file[i][0] == 'E' || map->file[i][0] == 'W')
+		parse_identifier()
+		if (map->file[i][0] == 'N' || map->file[i][0] == 'S' || map->file[i][0] == 'E' || map->file[i][0] == 'W')
 		{
 			parse_texture_path(map, i);
 		}
@@ -60,6 +57,10 @@ bool	parse_file(t_map *map)
 		else if (map->file[i][0] == '\n')
 		{
 			//ignore empty lines
+		}
+		else if (map->file[i][0] != '0' || map->file[i][0] != '1' || map->file[i][0] != ' ')
+		{
+			parse_grid(map, i);
 		}
 		else
 		{
