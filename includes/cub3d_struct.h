@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 18:00:40 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/03 18:15:56 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,14 @@ typedef struct s_ray
 	int		side;
 }	t_ray;
 
-typedef struct s_wall
+typedef struct s_render
 {
 	int	wall_height;
 	int	wall_x;
 	int	tex_x;
 	int	draw_start;
 	int	draw_end;
-}	t_wall;
+}	t_render;
 
 typedef struct s_player
 {
@@ -135,7 +135,7 @@ typedef struct s_game
 	t_minimap	minimap;
 	t_player	player;
 	t_ray		ray;
-	t_wall		wall;
+	t_render	render;
 	t_texture	tex;
 }	t_game;
 

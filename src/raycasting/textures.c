@@ -6,13 +6,13 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 18:03:07 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/03 18:17:54 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_values_for_test(t_game	*data)
+void	init_ray_values_for_test(t_game	*data)
 {
 	ft_bzero(&data->ray, sizeof(t_ray));
 	ft_bzero(&data->player, sizeof(t_player));
@@ -24,27 +24,26 @@ void	init_values_for_test(t_game	*data)
 	data->ray.side = 1;
 }
 
-// calculation de la texture : comprendre comment cela fonctionne 
-void	prepare_wall_values(t_game *data)
+void	prepare_render_values(t_game *data)
 {
-	double perpwalldist;
+	double		perpwalldist;
+	t_render	render;
+
+	render = data->render;
 
 	perpwalldist = data->ray.perpwalldist;
 	init_values_for_test(data);
-	data->wall.wall_height = perpwalldist * data->mlx.y_window;
+	render.wall_height = perpwalldist * data->mlx.y_window;
 	if (data->ray.side == 0)
-		data->wall.wall_x = data->player.pos_y + perpwalldist * data->ray.raydiry;
+		render.wall_x = data->player.pos_y + perpwalldist * data->ray.raydiry;
 	else
-		data->wall.wall_x = data->player.pos_x + perpwalldist * data->ray.raydirx;
-	data->wall.wall_x -= floor(data->wall.wall_x);
-	data->wall.tex_x = data->wall.wall_x * data->tex.tex_width;
-	data->wall.draw_start = (data->mlx.y_window / 2) - (data->wall.wall_height / 2);
-	data->wall.draw_end = (data->mlx.y_window / 2) + (data->wall.wall_height / 2);
+		render.wall_x = data->player.pos_x + perpwalldist * data->ray.raydirx;
+	render.wall_x -= floor(data->render.wall_x);
+	render.tex_x = render.wall_x * data->tex.tex_width;
+	render.draw_start = (data->mlx.y_window / 2) - (render.wall_height / 2);
+	render.draw_end = (data->mlx.y_window / 2) + (render.wall_height / 2);
 }
 
-}
-
-void	define_draw_end_start
 
 
 
