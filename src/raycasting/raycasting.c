@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 14:20:31 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 15:13:56 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/03 18:19:22 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ project_walls
     prepare_calculation
         calculation wallx 
         calculate x in texture
+        calculate draw end et draw start
     select_texture_or_colors
         if texture :
             define_texture_position
