@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 12:22:21 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/03 12:36:48 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,9 +154,9 @@ void	parse_grid(t_map *map, int i)
 		handle_map_error(map, GRID_CHAR);
 	if (!grid_close(map))
 		handle_map_error(map, GRID_CLOSE);
-	printf("\n");
-	print_char2(map->grid);
-	printf("\n");
-	print_char2(map->pass_grid);
-	printf("\n");
+//	printf("\n");
+//	print_char2(map->grid);
+//	printf("\n");
+//	print_char2(map->pass_grid);
+//	printf("\n");
 }

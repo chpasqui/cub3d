@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 12:24:27 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/03 16:04:02 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ bool	init_value(t_game *data)
 	data->mlx.x_window = 800;
 	data->mlx.y_window = 600;
 	init_minimap(&data->minimap);
+	data->player.plane_x = 0.66;
+	data->player.plane_y = 0;
+	data->ray.hit = 0;
+	data->ray.side = 0;
 	return (true);
 }
 
@@ -60,7 +64,7 @@ bool	init_mlx(t_game *data)
 		handle_error(data, MLX_ERROR);
 	data->mlx.window = mlx_new_window(data->mlx.mlx, data->mlx.x_window,
 			data->mlx.y_window, "cub3D");
-	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.x_window, 
+	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.x_window,
 			data->mlx.y_window);
 	data->mlx.address = mlx_get_data_addr(data->mlx.img,
 			&data->mlx.bits_per_pixel, &data->mlx.line_length,

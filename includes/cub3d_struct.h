@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/02 19:34:36 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/03 11:35:34 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ typedef struct s_ray
 	int		stepy;
 	int		side;
 	int		hit;
+	int		lineHeight;
+	int		drawstart;
+	int		drawend;
 }	t_ray;
 
 typedef struct s_player
