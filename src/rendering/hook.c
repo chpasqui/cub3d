@@ -6,13 +6,13 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:01 by sydubois          #+#    #+#             */
-/*   Updated: 2025/08/29 11:32:03 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:56:58 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	move_player(t_game *d, int x, int y, char dir)
+bool	move_minimap(t_game *d, int x, int y, char dir)
 {
 	int	l;
 	int	c;
@@ -21,16 +21,53 @@ bool	move_player(t_game *d, int x, int y, char dir)
 	c = d->map.player_x + x;
 	if (char_in_string(d->map.grid[l][c], "1"))
 	{
-		d->map.player_dir = dir;
+//		d->map.player_dir = dir;
+		printf("P1\n");
+		(void)dir;
 	}
 	else
 	{
 		d->map.player_x += x;
 		d->map.player_y += y;
-		d->map.player_dir = dir;
+//		d->map.player_dir = dir;
+		printf("P1\n");
 	}
 	printf("X = %i Y = %i dir = %c\n", d->map.player_x, d->map.player_y, dir);
 	return (true);
+}
+
+bool move_map_up(t_game *data)
+{
+	int	l;
+	int	c;
+
+	l = (int)(data->player.pos_x + data->player.dir_x * data->ray.movespeed);
+	c = (int)data->player.pos_y;
+	printf("lx_up = %i \n", l);
+	if (c>=0 && l>= 0 && char_in_string2(data->map.grid[c][l], "1") != 1)
+		data->player.pos_x += data->player.dir_x * data->ray.movespeed;
+	l = (int)data->player.pos_x;
+	c = (int)(data->player.pos_y + data->player.dir_y * data->ray.movespeed);
+	printf("cy_up = %i \n", c);
+	if (c>=0 && l>= 0 && char_in_string2(data->map.grid[c][l], "1") != 1)
+		data->player.pos_y += data->player.dir_y * data->ray.movespeed;
+	return(true);
+}
+
+bool move_map_down(t_game *data)
+{
+	int	l;
+	int	c;
+
+	l = (int)(data->player.pos_x - data->player.dir_x * data->ray.movespeed);
+	c = (int)data->player.pos_y;
+	if (char_in_string2(data->map.grid[c][l], "1") != 1)
+		data->player.pos_x -= data->player.dir_x * data->ray.movespeed;
+	l = (int)data->player.pos_x;
+	c = (int)(data->player.pos_y - data->player.dir_y * data->ray.movespeed);
+	if (char_in_string2(data->map.grid[c][l], "1") != 1)
+		data->player.pos_y -= data->player.dir_y * data->ray.movespeed;
+	return(true);
 }
 
 int	mouse_hook(int button, int x, int y, t_game *data)
@@ -50,17 +87,81 @@ int	mouse_hook(int button, int x, int y, t_game *data)
 
 int	key_hook(int button, t_game *data)
 {
+	data->ray.movespeed = 1; //SDU
 	printf("touche : %d\n", button);
 	if (button == ESC)
 		close_window(data);
-	else if (button == LEFT || button == KEY_A)
-		move_player(data, -1, 0, 'W');
-	else if (button == RIGHT || button == KEY_D)
-		move_player(data, 1, 0, 'E');
+	else if (button == KEY_A)
+	{
+		move_minimap(data, -1, 0, 'W');
+	}
+	else if (button == KEY_D)
+		move_minimap(data, 1, 0, 'E');
 	else if (button == UP || button == KEY_W)
-		move_player(data, 0, -1, 'N');
+	{
+		move_map_up(data);
+		//move_minimap(data, 0, -1, 'N');
+		//printf("pos_x = %f  pos_y = %f\n", data->player.pos_x, data->player.pos_y);
+	}
 	else if (button == DOWN || button == KEY_S)
-		move_player(data, 0, 1, 'S');
+	{
+		//move_map_down(data);
+		printf("down\n");
+		move_minimap(data, 0, 1, 'S');
+	}
+	else if (button == LEFT)
+		move_minimap(data, -1, 0, 'W');
+	else if (button == RIGHT)
+		move_minimap(data, 1, 0, 'E');
 	render_loop(data);
 	return (0);
+}
+
+
+int	key_hook2(t_game *data)
+{
+
+	if (data->key.up || data->key.w)
+	{
+		move_map_up(data);
+//		move_minimap(data, 0, -1, 'N');
+	}
+	if (data->key.down || data->key.s)
+	{
+		move_map_down(data);
+//		move_minimap(data, 0, 1, 'S');
+	}
+
+	render_loop(data);
+	return (0);
+}
+
+
+bool move_map_up_V0(t_game *data)
+{
+	int	l;
+	int	c;
+
+	printf("move_map_up\n");
+
+	l = (int)(data->player.pos_x + data->player.dir_x * data->ray.movespeed);
+	c = (int)data->player.pos_y;
+//	printf("lx = %i  cx = %i grid = %i\n", l, c, char_in_string(data->map.grid[l][c], "1"));
+	if (char_in_string(data->map.grid[l][c], "1") != 1)
+	{
+	//	printf("movespeedx = %f   dir_x = %f\n", data->ray.movespeed, data->player.dir_x);
+		data->player.pos_x += data->player.dir_x * data->ray.movespeed;
+	//	printf("movespeedx = %f   dir_x = %f\n", data->ray.movespeed, data->player.dir_x);
+	}
+
+	l = (int)data->player.pos_x;
+	c = (int)(data->player.pos_y + data->player.dir_y * data->ray.movespeed);
+//	printf("ly = %i  cy = %i  grid = %i\n", l, c, char_in_string(data->map.grid[l][c], "1"));
+	if (char_in_string(data->map.grid[l][c], "1") != 1)
+	{
+//		printf("movespeedy = %f   dir_y = %f pos_y = %f\n", data->ray.movespeed, data->player.dir_y, data->player.pos_y);
+		data->player.pos_y += data->player.dir_y * data->ray.movespeed;
+//		printf("movespeedy = %f   dir_y = %f pos_y = %f\n", data->ray.movespeed, data->player.dir_y, data->player.pos_y);
+	}
+	return(true);
 }

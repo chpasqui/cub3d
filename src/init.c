@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/03 16:04:02 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:55:38 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,39 @@ void	init_map(t_map *map)
 	map->ceiling.b = -1;
 }
 
+void	init_key(t_key k)
+{
+	k.w = 0;
+	k.s = 0;
+	k.a = 0;
+	k.d = 0;
+	k.up = 0;
+	k.down = 0;
+	k.left = 0;
+	k.right = 0;
+}
+
+
 bool	init_value(t_game *data)
 {
 	data->mlx.x_window = 800;
 	data->mlx.y_window = 600;
 	init_minimap(&data->minimap);
+	data->player.pos_x = data->map.player_x + 0.5; //0 a verifier SDU
+	data->player.pos_y = data->map.player_y + 0.5;
+	printf("init pos_x = %f  pos_y = %f\n", data->player.pos_x, data->player.pos_y);
 	data->player.plane_x = 0.66;
 	data->player.plane_y = 0;
 	data->ray.hit = 0;
 	data->ray.side = 0;
+	data->ray.time = 0;
+	data->ray.oldtime = 0;
+	data->ray.frametime = 0.01;//SDU a verifier
+	data->ray.movespeed = data->ray.frametime * 5;
+	data->ray.rotspeed = data->ray.frametime * 3;
+	init_key(data->key);
+
+
 	return (true);
 }
 

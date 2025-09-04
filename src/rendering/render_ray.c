@@ -66,7 +66,9 @@ bool	calc_deltadist(t_game *data, int i)
 	data->ray.raydirx = data->player.dir_x + data->player.plane_x*data->ray.camerax;
 	data->ray.raydiry = data->player.dir_y + data->player.plane_y*data->ray.camerax;
 	data->ray.mapx = (int)data->player.pos_x;
+	data->map.player_x = data->ray.mapx;//SDU remplacer mapx  minimap
 	data->ray.mapy = (int)data->player.pos_y;
+	data->map.player_y = data->ray.mapy;//SDU remplacer mapx  minimap
 	data->ray.deltadistx = sqrt(1 + ((data->ray.raydiry * data->ray.raydiry) / (data->ray.raydirx * data->ray.raydirx)));
 	data->ray.deltadisty = sqrt(1 + ((data->ray.raydirx * data->ray.raydirx) / (data->ray.raydiry * data->ray.raydiry)));
 	return(true);
@@ -91,7 +93,7 @@ bool	algo_dda(t_game *data)
 //			printf("data->ray.sidedisty = %f\n", data->ray.sidedisty);
 		}
 //			printf("mapx = %d   mapy = %d   grid = %d\n", data->ray.mapx, data->ray.mapy, data->map.grid[data->ray.mapy][data->ray.mapx]);
-		if(data->map.grid[data->ray.mapy][data->ray.mapx] > '0')
+		if(char_in_string(data->map.grid[data->ray.mapy][data->ray.mapx], "1") == 1)
 			data->ray.hit = 1;
 	}
 	return(true);
@@ -123,10 +125,19 @@ bool	print_ray_v0(t_game *data, int i)
 	int	color;
 	int	j;
 
+//fonce pour les murs verticaux
 	color = COLOR_BLUE;
 	if(data->ray.side == 0)
 	color = 0x00000080;
 
+//reset en noir
+	j = 0;
+	while( j < data->mlx.y_window)
+	{
+		print_pixel(data, i, j, COLOR_BLACK);
+		j++;
+	}
+//murs en bleu
 	j = data->ray.drawstart;
 	while( j < data->ray.drawend)
 	{
@@ -141,8 +152,7 @@ bool	render_ray(t_game *data)
 {
 	int	i;
 
-	data->player.pos_x = data->map.player_x; //0 a verifier SDU
-	data->player.pos_y = data->map.player_y;
+
 //	printf("pos_x = %f   pos_y = %f\n", data->player.pos_x, data->player.pos_y);
 	player_start_dir(data);
 	i = 0;

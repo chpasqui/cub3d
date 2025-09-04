@@ -6,7 +6,7 @@
 #    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/03 12:34:11 by sydubois         ###   ########.fr        #
+#    Updated: 2025/09/04 14:49:40 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ_DIR = obj/
 INC_DIR = includes/
 
 #Module
-SRC_MAIN	= 	main.c errors.c free.c init.c
+SRC_MAIN	= 	main.c errors.c free.c init.c key.c
 SRC_PARSING =	parsing/parse_arg.c parsing/parse_file.c\
 				parsing/parse_identifier.c\
 				parsing/parse_grid.c parsing/valid_identifier.c

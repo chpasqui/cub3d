@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/03 12:31:43 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:34:16 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,15 @@
 //hook.c
 int		mouse_hook(int button, int x, int y, t_game *data);
 int		key_hook(int button, t_game *data);
+int	key_hook2(t_game *data);
 
 //init.c
 bool	init_mlx(t_game *data);
 bool	init_value(t_game *data);
+
+//key.c
+int		key_press(int keycode, t_game *data);
+int		key_release(int keycode, t_game *data);
 
 //main.c
 int		close_window(t_game *data);
@@ -107,5 +112,6 @@ bool	print_char2(char **a);
 //other.c
 bool	char_in_string(char a, char *b);
 int		skip_space(char *line);
+bool	char_in_string2(char a, char *b);
 
 #endif

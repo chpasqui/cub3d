@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/03 11:35:34 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 16:51:34 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,12 @@ typedef struct s_ray
 	int		lineHeight;
 	int		drawstart;
 	int		drawend;
+	double	time;
+	double	oldtime;
+	double	frametime;
+	double	movespeed;
+	double	rotspeed;
+	double	bord;
 }	t_ray;
 
 typedef struct s_player
@@ -125,6 +131,18 @@ typedef struct s_player
 	double		plane_y;
 }	t_player;
 
+typedef struct s_key
+{
+	int w;
+	int s;
+	int a;
+	int d;
+	int up;
+	int down;
+	int left;
+	int right;
+} t_key;
+
 typedef struct s_game
 {
 	t_map		map;
@@ -133,6 +151,7 @@ typedef struct s_game
 	t_player	player;
 	t_ray		ray;
 	t_texture	tex;
+	t_key		key;
 }	t_game;
 
 #endif
