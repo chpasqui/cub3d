@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 16:34:16 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:02:36 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,5 @@ bool	print_char2(char **a);
 //other.c
 bool	char_in_string(char a, char *b);
 int		skip_space(char *line);
-bool	char_in_string2(char a, char *b);
 
 #endif

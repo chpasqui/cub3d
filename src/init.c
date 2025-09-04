@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 16:55:38 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:00:25 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ bool	init_value(t_game *data)
 	data->ray.movespeed = data->ray.frametime * 5;
 	data->ray.rotspeed = data->ray.frametime * 3;
 	init_key(data->key);
+	data->ray.bord = 1.0001;
 
 
 	return (true);
