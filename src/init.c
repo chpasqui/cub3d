@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 17:00:25 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 20:51:06 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,21 @@ bool	init_value(t_game *data)
 	data->mlx.x_window = 800;
 	data->mlx.y_window = 600;
 	init_minimap(&data->minimap);
-	data->player.pos_x = data->map.player_x + 0.5; //0 a verifier SDU
+	data->player.pos_x = data->map.player_x + 0.5;
 	data->player.pos_y = data->map.player_y + 0.5;
-	printf("init pos_x = %f  pos_y = %f\n", data->player.pos_x, data->player.pos_y);
+	player_start_dir(data);
+///	printf("init pos_x = %f  pos_y = %f\n", data->player.pos_x, data->player.pos_y);
 	data->player.plane_x = 0.66;
 	data->player.plane_y = 0;
 	data->ray.hit = 0;
 	data->ray.side = 0;
 	data->ray.time = 0;
 	data->ray.oldtime = 0;
-	data->ray.frametime = 0.01;//SDU a verifier
+	data->ray.frametime = 0.01;//SDU
 	data->ray.movespeed = data->ray.frametime * 5;
 	data->ray.rotspeed = data->ray.frametime * 3;
 	init_key(data->key);
-	data->ray.bord = 1.0001;
-
-
+	data->ray.bord = 1.0001;//SDU
 	return (true);
 }
 
@@ -95,5 +94,30 @@ bool	init_mlx(t_game *data)
 			&data->mlx.bits_per_pixel, &data->mlx.line_length,
 			&data->mlx.endian);
 	//mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
+	return (true);
+}
+
+bool	player_start_dir(t_game *data)
+{
+	if (data->map.player_dir == 'N')
+	{
+		data->player.dir_x = 0;
+		data->player.dir_y = -1;
+	}
+	else if (data->map.player_dir == 'S')
+	{
+		data->player.dir_x = 0;
+		data->player.dir_y = 1;
+	}
+	else if (data->map.player_dir == 'E')
+	{
+		data->player.dir_x = 1;
+		data->player.dir_y = 0;
+	}
+	else if (data->map.player_dir == 'O')
+	{
+		data->player.dir_x = -1;
+		data->player.dir_y = 0;
+	}
 	return (true);
 }

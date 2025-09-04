@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/03 16:42:54 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 20:32:25 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,3 @@ bool	render_minimap(t_game *data)
 		data->mlx.img, 0, 0);
 	return (true);
 }
-

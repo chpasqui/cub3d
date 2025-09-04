@@ -16,8 +16,8 @@ int	key_press(int keycode, t_game *data)
 		data->key.down = 1;
 	if (keycode == LEFT)
 		data->key.left = 1;
-	if (keycode == DOWN)
-		data->key.down = 1;
+	if (keycode == RIGHT)
+		data->key.right = 1;
 	return (true);
 }
 
@@ -39,8 +39,8 @@ int	key_release(int keycode, t_game *data)
 		data->key.down = 0;
 	if (keycode == LEFT)
 		data->key.left = 0;
-	if (keycode == DOWN)
-		data->key.down = 0;
+	if (keycode == RIGHT)
+		data->key.right = 0;
 	return (true);
 
 }

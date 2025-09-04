@@ -6,7 +6,7 @@
 #    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/04 14:49:40 by sydubois         ###   ########.fr        #
+#    Updated: 2025/09/04 17:29:13 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC_PARSING =	parsing/parse_arg.c parsing/parse_file.c\
 SRC_RENDER	=	rendering/render_loop.c rendering/render_minimap.c rendering/hook.c\
 				rendering/render_logo.c\
 				rendering/render_ray.c\
+				rendering/move_map.c\
 
 SRC_UTILS	=	utils/trim.c utils/other.c utils/debug.c
 

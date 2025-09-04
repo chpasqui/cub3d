@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 17:02:36 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 20:34:51 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@
 
 //hook.c
 int		mouse_hook(int button, int x, int y, t_game *data);
-int		key_hook(int button, t_game *data);
-int	key_hook2(t_game *data);
+int		key_hook(t_game *data);
 
 //init.c
 bool	init_mlx(t_game *data);
 bool	init_value(t_game *data);
+bool	player_start_dir(t_game *data);
 
 //key.c
 int		key_press(int keycode, t_game *data);
@@ -52,8 +52,16 @@ bool	render_minimap(t_game *data);
 bool	render_logo(t_game *data);
 bool	render_loop(t_game *data);
 
+
 //render_ray.c
 bool	render_ray(t_game *data);
+
+//move_map.c
+bool	move_map_up(t_game *data);
+bool	move_map_down(t_game *data);
+bool	move_map_left(t_game *data);
+bool	move_map_right(t_game *data);
+bool	rotate(t_game *data, int direction);
 
 /*-----------INIT.C-----------*/
 void	init_game(t_game *data);
