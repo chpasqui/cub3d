@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/01 08:29:37 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/04 21:21:54 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ bool	parse_file(t_map *map)
 		handle_map_error(map, MISSING_IDENTIFIER);
 	return (true);
 }
-

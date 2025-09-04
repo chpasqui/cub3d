@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:36:46 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/04 20:49:28 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:00:24 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,19 @@ bool	init_step(t_game *data)
 
 bool	calc_deltadist(t_game *data, int i)
 {
-	data->ray.camerax = 2 * i / (double)data->mlx.x_window -1;
-	data->ray.raydirx = data->player.dir_x + data->player.plane_x * data->ray.camerax;
-	data->ray.raydiry = data->player.dir_y + data->player.plane_y * data->ray.camerax;
-	data->ray.mapx = (int)data->player.pos_x;
-	data->map.player_x = data->ray.mapx;//SDU remplacer mapx  minimap
-	data->ray.mapy = (int)data->player.pos_y;
-	data->map.player_y = data->ray.mapy;//SDU remplacer mapx  minimap
-	data->ray.deltadistx = sqrt(1 + ((data->ray.raydiry * data->ray.raydiry) / (data->ray.raydirx * data->ray.raydirx)));
-	data->ray.deltadisty = sqrt(1 + ((data->ray.raydirx * data->ray.raydirx) / (data->ray.raydiry * data->ray.raydiry)));
+	t_ray	*r;
+
+
+	r = &data->ray;
+	r->camerax = 2 * i / (double)data->mlx.x_window -1;
+	r->raydirx = data->player.dir_x + data->player.plane_x * r->camerax;
+	r->raydiry = data->player.dir_y + data->player.plane_y * r->camerax;
+	r->mapx = (int)data->player.pos_x;
+	data->map.player_x = r->mapx;//SDU remplacer mapx  minimap
+	r->mapy = (int)data->player.pos_y;
+	data->map.player_y = r->mapy;//SDU remplacer mapx  minimap
+	r->deltadistx = sqrt(1 + ((r->raydiry * r->raydiry) / (r->raydirx * r->raydirx)));
+	r->deltadisty = sqrt(1 + ((r->raydirx * r->raydirx) / (r->raydiry * r->raydiry)));
 	return (true);
 }
 
@@ -82,7 +86,7 @@ bool	algo_dda(t_game *data)
 			data->ray.side = 1;
 //			printf("data->ray.sidedisty = %f\n", data->ray.sidedisty);
 		}
-//			printf("mapx = %d   mapy = %d   grid = %d\n", data->ray.mapx, data->ray.mapy, data->map.grid[data->ray.mapy][data->ray.mapx]);
+//		printf("mapx = %d   mapy = %d   grid = %d\n", data->ray.mapx, data->ray.mapy, data->map.grid[data->ray.mapy][data->ray.mapx]);
 		if (char_in_string(data->map.grid[data->ray.mapy][data->ray.mapx], "1") == 1)
 			data->ray.hit = 1;
 	}
@@ -128,7 +132,7 @@ bool	print_ray_v0(t_game *data, int i)
 	}
 //murs en bleu
 	j = data->ray.drawstart;
-	while ( j < data->ray.drawend)
+	while (j < data->ray.drawend)
 	{
 //		printf("i = %i  j= %i\n", i, j);
 		print_pixel(data, i, j, color);

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:01 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/04 20:29:54 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:17:36 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ int	mouse_hook(int button, int x, int y, t_game *data)
 	return (0);
 }
 
-
-
 int	key_hook(t_game *data)
 {
-
 	if (data->key.up || data->key.w)
 		move_map_up(data);
 	if (data->key.down || data->key.s)
@@ -44,8 +41,6 @@ int	key_hook(t_game *data)
 		rotate(data, 1);
 	if (data->key.left)
 		rotate(data, -1);
-
 	render_loop(data);
 	return (0);
 }
-

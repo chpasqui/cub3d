@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/29 11:56:58 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:22:23 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	parse_texture(t_map *map, char *path, t_token token)
 	close(fd);
 	save_texture_path(map, token, path);
 }
- 
+
 void	parse_identifier(t_map *map, char *line)
 {
 	t_token	token;
@@ -107,4 +107,3 @@ void	parse_identifier(t_map *map, char *line)
 	if (token == C || token == F)
 		parse_color(map, line + 2, token);
 }
-

@@ -6,13 +6,13 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/03 12:36:48 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:21:42 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	grid_width(t_map * map, int j)
+void	grid_width(t_map *map, int j)
 {
 	int	l;
 
@@ -21,7 +21,7 @@ void	grid_width(t_map * map, int j)
 		map->width = l;
 }
 
-void init_player(t_map *map, int i, int j)
+void	init_player(t_map *map, int i, int j)
 {
 	map->player_x = j;
 	map->player_y = i;
@@ -49,13 +49,13 @@ bool	init_pass_grid(t_map *map)
 		i++;
 	}
 	map->pass_grid[i] = NULL;
-	return(true);
+	return (true);
 }
 
 bool	grid_close(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map->grid[i])
@@ -75,9 +75,6 @@ bool	grid_close(t_map *map)
 
 bool	algo_dfs(t_map *map, int row, int col)
 {
-	//	printf("\n");
-	//	printf("l = %i, c = %i, map->height = %i\n", l , c, map->height);
-	//	print_char2(map->pass_grid);
 	if (row < 0 || row >= map->height || col < 0 || !map->grid[row][col]
 		|| map->grid[row][col] == ' ')
 		return (false);
@@ -154,9 +151,4 @@ void	parse_grid(t_map *map, int i)
 		handle_map_error(map, GRID_CHAR);
 	if (!grid_close(map))
 		handle_map_error(map, GRID_CLOSE);
-//	printf("\n");
-//	print_char2(map->grid);
-//	printf("\n");
-//	print_char2(map->pass_grid);
-//	printf("\n");
 }

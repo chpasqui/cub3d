@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/04 21:03:22 by sydubois          #+#    #+#             */
+/*   Updated: 2025/09/04 21:03:38 by sydubois         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	key_press(int keycode, t_game *data)
@@ -21,8 +33,6 @@ int	key_press(int keycode, t_game *data)
 	return (true);
 }
 
-
-
 int	key_release(int keycode, t_game *data)
 {
 	if (keycode == KEY_W)
@@ -42,5 +52,4 @@ int	key_release(int keycode, t_game *data)
 	if (keycode == RIGHT)
 		data->key.right = 0;
 	return (true);
-
 }

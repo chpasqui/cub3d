@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 20:51:06 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:02:25 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 void	init_game(t_game *data)
 {
 	ft_bzero(data, sizeof(t_game));
-
 }
 
 void	init_minimap(t_minimap *minimap)
@@ -57,7 +56,6 @@ void	init_key(t_key k)
 	k.right = 0;
 }
 
-
 bool	init_value(t_game *data)
 {
 	data->mlx.x_window = 800;
@@ -66,18 +64,17 @@ bool	init_value(t_game *data)
 	data->player.pos_x = data->map.player_x + 0.5;
 	data->player.pos_y = data->map.player_y + 0.5;
 	player_start_dir(data);
-///	printf("init pos_x = %f  pos_y = %f\n", data->player.pos_x, data->player.pos_y);
 	data->player.plane_x = 0.66;
 	data->player.plane_y = 0;
 	data->ray.hit = 0;
 	data->ray.side = 0;
 	data->ray.time = 0;
 	data->ray.oldtime = 0;
-	data->ray.frametime = 0.01;//SDU
+	data->ray.frametime = 0.01;
 	data->ray.movespeed = data->ray.frametime * 5;
 	data->ray.rotspeed = data->ray.frametime * 3;
 	init_key(data->key);
-	data->ray.bord = 1.0001;//SDU
+	data->ray.bord = 1.0001;
 	return (true);
 }
 
@@ -93,7 +90,6 @@ bool	init_mlx(t_game *data)
 	data->mlx.address = mlx_get_data_addr(data->mlx.img,
 			&data->mlx.bits_per_pixel, &data->mlx.line_length,
 			&data->mlx.endian);
-	//mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
 	return (true);
 }
 

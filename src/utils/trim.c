@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:17:02 by Charlye           #+#    #+#             */
-/*   Updated: 2025/08/28 15:48:45 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:06:38 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*trim_all_spaces(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i]== ' ')
+		if (str[i] == ' ')
 			str++;
 		i++;
 	}
