@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 11:09:01 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/04 16:02:26 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,54 @@ void	prepare_render_values(t_game *data)
 	else
 		render->wall_x = data->player.pos_x + perpwalldist * data->ray.raydirx;
 	render->wall_x -= floor(render->wall_x);
-	render->tex_x = render->wall_x * data->tex.tex_width;
+	render->tex_x = render->wall_x * data->tex->tex_width;
 	render->draw_start = (data->mlx.y_window / 2) - (render->wall_height / 2);
 	render->draw_end = (data->mlx.y_window / 2) + (render->wall_height / 2);
 }
 
 
+void	define_wall(t_ray *ray, t_texture *tex)
+{
+	if (ray->side == 0 && ray->raydirx > 0)
+		tex->tex_side = EA;
+	else if (ray->side == 0 && ray->raydirx < 0)
+		tex->tex_side = WE;
+	else if (ray->side == 1 && ray->raydiry > 0)
+		tex->tex_side = SO;
+	else
+		tex->tex_side = NO;
+}
+
+void	align_texutre(t_game *data)
+{
+	double	ratio;
+	double	tex_pos;
+	int		wall_y;
+
+	wall_y = 0;
+	ratio = data->render.wall_height / data->tex->tex_height;
+	tex_pos = data->mlx.y_window / 2 - data->render.wall_height / 2;
+	while (wall_y < data->render.draw_end)
+	{
+		wall_y = data->render.draw_start + tex_pos * ratio;
+		mlx_xpm_to_image(data->mlx.mlx, data->tex[data->tex->tex_side].img,
+			&data->tex->tex_width, &data->tex->tex_height);
+		wall_y++;
+	}
+
+}
 void	render_wall(t_game *data)
-{	// define wall :
-	// en fonction de side si cest vertical ou horizontal et 
-	//en fonction de raydir si cest est/ouest ou nord/sud
+
+{	
+	t_texture *tex;
+
+	define_wall(&data->ray, &data->tex);
+	tex = &data->tex[data->tex->tex_side];
+	align_texture()
+	// aligner la texture selon le mur
 	// if data->texture->side == "north"
-		render la texture en north... ?
+		render la texture en north... pixel par pixel?
+	
 }
 
 void	select_color_texture(t_game *data);
