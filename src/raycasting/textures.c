@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/03 18:39:51 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/04 11:09:01 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,29 @@ void	prepare_render_values(t_game *data)
 	render->draw_end = (data->mlx.y_window / 2) + (render->wall_height / 2);
 }
 
+
+void	render_wall(t_game *data)
+{	// define wall :
+	// en fonction de side si cest vertical ou horizontal et 
+	//en fonction de raydir si cest est/ouest ou nord/sud
+	// if data->texture->side == "north"
+		render la texture en north... ?
+}
+
 void	select_color_texture(t_game *data);
 {
 	int	y;
-	
-	y = 0,
+
+	y = 0;
 	while (y >= 0 && y <= data->mlx.y_window)
 	{
-		if (y >= data->render.draw_start && y =< drawend)
-		define_wall(data);
-	else if (data->ray.mapy < drawstart && data->ray.mapy >= 0)
-		render_ceiling(data);
-	else if (data->ray.mapy > drawend && data->ray.mapy < mlx.y_window)
-		render_floor(data);
-	else
-		handle_error();
+		if (y >= data->render.draw_start && (y <= data->render.draw_end))
+			render_wall(data);
+		else if (y < render->data.draw_start && data->render.draw_end >= 0)
+			render_ceiling(data);
+		else if (y > data->render.draw_end)
+			render_floor(data);
+		y++;
 	}
 }
 
