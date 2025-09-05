@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 12:34:26 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 11:19:16 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,16 @@ bool	init_value(t_game *data);
 //main.c
 int		close_window(t_game *data);
 
+/*----------RENDERING-----------------*/
+
+//render_minimap.c
+void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);
+
 //render.c
 bool	render_minimap(t_game *data);
 bool	render_logo(t_game *data);
 bool	render_loop(t_game *data);
+
 
 /*-----------INIT.C-----------*/
 void	init_game(t_game *data);

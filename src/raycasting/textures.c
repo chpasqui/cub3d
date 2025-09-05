@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 16:02:26 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:49:23 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init_ray_values_for_test(t_game	*data)
-{
-	ft_bzero(&data->ray, sizeof(t_ray));
-	ft_bzero(&data->player, sizeof(t_player));
-	data->player.pos_x = 2.5;
-	data->player.pos_y = 4.5;
-	data->ray.perpwalldist = 4;
-	data->ray.raydirx = 2;
-	data->ray.raydiry = 5;
-	data->ray.side = 1;
-}
 
 void	prepare_render_values(t_game *data)
 {
@@ -32,7 +20,6 @@ void	prepare_render_values(t_game *data)
 	render = &data->render;
 
 	perpwalldist = data->ray.perpwalldist;
-	init_values_for_test(data);
 	render->wall_height = data->mlx.y_window / perpwalldist;
 	if (data->ray.side == 0)
 		render->wall_x = data->player.pos_y + perpwalldist * data->ray.raydiry;
@@ -57,54 +44,46 @@ void	define_wall(t_ray *ray, t_texture *tex)
 		tex->tex_side = NO;
 }
 
-void	align_texutre(t_game *data)
+int	get_pixel_from_texture(t_texture *tex, int x, int y)
 {
-	double	ratio;
-	double	tex_pos;
-	int		wall_y;
+	char	*pixel;
+	int		color;
 
-	wall_y = 0;
-	ratio = data->render.wall_height / data->tex->tex_height;
-	tex_pos = data->mlx.y_window / 2 - data->render.wall_height / 2;
-	while (wall_y < data->render.draw_end)
-	{
-		wall_y = data->render.draw_start + tex_pos * ratio;
-		mlx_xpm_to_image(data->mlx.mlx, data->tex[data->tex->tex_side].img,
-			&data->tex->tex_width, &data->tex->tex_height);
-		wall_y++;
-	}
-
+	pixel = tex->addr + (y * tex->line_length + x * (tex->bpp / 8));
+	color = *(int *)pixel;
+	return (color);
 }
-void	render_wall(t_game *data)
 
-{	
-	t_texture *tex;
+void	render_wall(t_game *data, int x)
+
+{
+	double		ratio;
+	int			wall_y;
+	int			tex_y;
+	int			color;
+	t_texture	*tex;
 
 	define_wall(&data->ray, &data->tex);
 	tex = &data->tex[data->tex->tex_side];
-	align_texture()
-	// aligner la texture selon le mur
-	// if data->texture->side == "north"
-		render la texture en north... pixel par pixel?
-	
-}
-
-void	select_color_texture(t_game *data);
-{
-	int	y;
-
-	y = 0;
-	while (y >= 0 && y <= data->mlx.y_window)
+	ratio = data->render.wall_height / data->tex->tex_height;
+	wall_y = data->render.draw_start;
+	while (wall_y < data->render.draw_end)
 	{
-		if (y >= data->render.draw_start && (y <= data->render.draw_end))
-			render_wall(data);
-		else if (y < render->data.draw_start && data->render.draw_end >= 0)
-			render_ceiling(data);
-		else if (y > data->render.draw_end)
-			render_floor(data);
-		y++;
+		tex_y = (int)((wall_y - data->render.draw_start) / ratio);
+		color = get_pixel_from_texture(tex, data->render.tex_x, tex_y);
+		put_pixel_in_image(&data->mlx, data->x,
+			wall_y, color);
+		wall_y++;
 	}
 }
+
+void	render_game(t_game *data, int x)
+{
+	render_ceiling(data, x, 0, data->render.draw_start);
+	render_wall(data, x);
+	render_floor(data, x, data->render.draw_end, data->mlx.y_window);
+}
+
 
 
 

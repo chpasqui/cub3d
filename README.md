@@ -26,7 +26,7 @@ player pour gerer les mouvements
 
 Sites interessants :
 - https://hackmd.io/@nszl/H1LXByIE2#player-direction-vector-and-camera-vector
-- https://lodev.org/cgtutor/raycasting.html
+- https://lodev.org/cgtutor/graycasting.html
 
 
 Travail en cours :
