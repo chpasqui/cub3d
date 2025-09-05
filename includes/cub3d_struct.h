@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 15:54:40 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:33:10 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct s_ray
 
 typedef struct s_render
 {
-	int	wall_height;
+	double	wall_height;
 	int	wall_x;
 	int	tex_x;
 	int	draw_start;
