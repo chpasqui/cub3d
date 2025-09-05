@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/05 11:18:11 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 14:58:34 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,3 @@ bool	render_minimap(t_game *data)
 		data->mlx.img, 0, 0);
 	return (true);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 08:22:41 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/04 21:05:16 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ int	main(int argc, char **argv)
 	init_value(&data);
 	init_mlx(&data);
 	// init_game(&data);
-	render_loop(&data); // RAYCASTING
+	render_loop(&data);
 	mlx_hook(data.mlx.window, 17, 0, close_window, &data);
 	mlx_mouse_hook(data.mlx.window, mouse_hook, &data);
-	mlx_key_hook(data.mlx.window, key_hook, &data);
-
+//	mlx_key_hook(data.mlx.window, key_hook, &data);
+	mlx_hook(data.mlx.window, 2, 1L << 0, key_press, &data);
+	mlx_hook(data.mlx.window, 3, 1L << 1, key_release, &data);
+	mlx_loop_hook(data.mlx.mlx, key_hook, &data);
 	mlx_loop(data.mlx.mlx);
 	//clean_exit(&data, EXIT_SUCCESS);
 	return (0);

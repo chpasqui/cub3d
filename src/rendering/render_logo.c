@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_logo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 11:35:40 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/01 11:51:37 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/04 12:48:35 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,38 +36,3 @@ bool	render_logo(t_game *data)
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, logo, 100, 0);
 	return (true);
 }
-
-// bool	render_minimap(t_game *data)
-// {
-// 	int		c;
-// 	int		l;
-// 	int		*pixel = (int *)data->mlx.address;
-// 	char	**grid = data->map.grid;
-
-// 	l = 0;
-// 	while (l < data->map.height)
-// 	{
-// 		data->minimap.y = l * data->minimap.square_size;
-// 		while (data->minimap.y <= data->minimap.square_size * (l + 1))
-// 		{
-// 			c = 0;
-// 			data->minimap.x = 0;
-// 			while (c < data->map.width)
-// 			{
-// //				printf("x = %i   y = %i   c = %i   l = %i   grid = %c\n", data->map.x, data->map.y, c , l, grid[l][c]);
-// 				if (grid[l][c] && char_in_string(grid[l][c], "1"))
-// 					print_n_pixel(data, pixel, COLOR_RED);
-// 				else if (l == data->map.player_y && c == data->map.player_x)
-// 					print_n_pixel(data, pixel, COLOR_GREEN);
-// 				else
-// 					print_n_pixel(data, pixel, COLOR_WHITE);
-// 				c++;
-// 			}
-// 			data->minimap.y++;
-// 		}
-// 		l++;
-// 	}
-// //	pixel[50 * (data->mlx.line_length/4) + 100] = rouge;
-// 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window, data->mlx.img, 0, 0);
-// 	return (true);
-// }

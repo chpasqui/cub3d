@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 15:14:37 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/05 14:57:08 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,16 @@ typedef struct s_ray
 	int		stepx;
 	int		stepy;
 	int		side;
+	int		hit;
+	int		lineHeight;
+	int		drawstart;
+	int		drawend;
+	double	time;
+	double	oldtime;
+	double	frametime;
+	double	movespeed;
+	double	rotspeed;
+	double	bord;
 }	t_ray;
 
 typedef struct s_render
@@ -133,7 +143,21 @@ typedef struct s_player
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
+	double		olddir_x;
+	double		oldplane_x;
 }	t_player;
+
+typedef struct s_key
+{
+	int w;
+	int s;
+	int a;
+	int d;
+	int up;
+	int down;
+	int left;
+	int right;
+} t_key;
 
 typedef struct s_game
 {
@@ -144,6 +168,7 @@ typedef struct s_game
 	t_ray		ray;
 	t_render	render;
 	t_texture	tex[4];
+	t_key		key;
 }	t_game;
 
 #endif

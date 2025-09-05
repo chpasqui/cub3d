@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 11:19:16 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 14:57:41 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,16 @@
 
 //hook.c
 int		mouse_hook(int button, int x, int y, t_game *data);
-int		key_hook(int button, t_game *data);
+int		key_hook(t_game *data);
 
 //init.c
 bool	init_mlx(t_game *data);
 bool	init_value(t_game *data);
+bool	player_start_dir(t_game *data);
+
+//key.c
+int		key_press(int keycode, t_game *data);
+int		key_release(int keycode, t_game *data);
 
 //main.c
 int		close_window(t_game *data);
@@ -51,6 +56,17 @@ void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);
 bool	render_minimap(t_game *data);
 bool	render_logo(t_game *data);
 bool	render_loop(t_game *data);
+
+
+//render_ray.c
+bool	render_ray(t_game *data);
+
+//move_map.c
+bool	move_map_up(t_game *data);
+bool	move_map_down(t_game *data);
+bool	move_map_left(t_game *data);
+bool	move_map_right(t_game *data);
+bool	rotate(t_game *data, int direction);
 
 
 /*-----------INIT.C-----------*/
