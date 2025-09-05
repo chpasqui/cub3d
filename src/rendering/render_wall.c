@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 16:13:49 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:23:24 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	render_wall(t_game *data, int x)
 	//double		ratio;
 	int			wall_y;
 	// int			tex_y;
-	int			color;
+	//int			color;
 	// t_texture	*tex;
 	
 	// tex = &data->tex[data->tex->tex_side];
@@ -50,8 +50,7 @@ void	render_wall(t_game *data, int x)
 	{
 		// tex_y = (int)((wall_y - data->render.draw_start) / ratio);
 		// color = get_pixel_from_texture(tex, data->render.tex_x, tex_y);
-		color = COLOR_BLUE;
-		put_pixel_in_image(&data->mlx, x, wall_y, color);
+		put_pixel_in_image(&data->mlx, x, wall_y, COLOR_BLUE);
 		wall_y++;
 	}
 }

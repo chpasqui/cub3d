@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 11:50:39 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/05 16:18:43 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:21:54 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	render_ceiling(t_game *data, int x, int y)
 
 	color = (data->map.ceiling.r << 16) | (data->map.ceiling.g << 8)
 		| data->map.ceiling.b;
+	color = COLOR_WHITE;
 	while (y < data->render.draw_start)
 	{
 		put_pixel_in_image(&data->mlx, x, y, color);
@@ -31,6 +32,7 @@ void	render_floor(t_game *data, int x, int y)
 
 	color = (data->map.floor.r << 16) | (data->map.floor.g << 8)
 		| data->map.floor.b;
+	color = COLOR_GREEN;
 	while (y < data->mlx.y_window)
 	{
 		put_pixel_in_image(&data->mlx, x, y, color);
