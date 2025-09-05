@@ -6,11 +6,20 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:12:46 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/05 15:20:42 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:26:48 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+bool	calc_perpwalldist(t_game *data)
+{
+	if (data->ray.side == 0)
+		data->ray.perpwalldist = data->ray.sidedistx - data->ray.deltadistx;
+	else
+		data->ray.perpwalldist = data->ray.sidedisty - data->ray.deltadisty;
+	return (true);
+}
 
 bool	init_sidedist(t_game *data)
 {
@@ -78,4 +87,5 @@ void	init_ray(t_game *data, int x)
 	//	printf("camerax = %f   deltadistx = %f  deltadisty = %f\n", data->ray.camerax, data->ray.deltadistx, data->ray.deltadisty);
 	//	usleep(10000);
 	init_step(data);
+	calc_perpwalldist(data);
 }
