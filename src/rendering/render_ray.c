@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 20:36:46 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/04 21:00:24 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/05 09:22:36 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	init_sidedist(t_game *data)
 	if (r->raydiry < 0)
 		r->sidedisty = (data->player.pos_y - r->mapy) * r->deltadisty;
 	else
-		r->sidedistx = (1 - data->player.pos_y + r->mapy) * r->deltadisty;
+		r->sidedisty = (1 - data->player.pos_y + r->mapy) * r->deltadisty;
 	return (true);
 }
 
@@ -62,9 +62,19 @@ bool	calc_deltadist(t_game *data, int i)
 	r->mapx = (int)data->player.pos_x;
 	data->map.player_x = r->mapx;//SDU remplacer mapx  minimap
 	r->mapy = (int)data->player.pos_y;
-	data->map.player_y = r->mapy;//SDU remplacer mapx  minimap
-	r->deltadistx = sqrt(1 + ((r->raydiry * r->raydiry) / (r->raydirx * r->raydirx)));
-	r->deltadisty = sqrt(1 + ((r->raydirx * r->raydirx) / (r->raydiry * r->raydiry)));
+	data->map.player_y = r->mapy;//SDU remplacer mapx  minimap)
+//	r->deltadistx = sqrt(1 + ((r->raydiry * r->raydiry) / (r->raydirx * r->raydirx)));
+//	r->deltadisty = sqrt(1 + ((r->raydirx * r->raydirx) / (r->raydiry * r->raydiry)));
+	if(r->raydirx == 0)
+		r->deltadistx = 1e30;
+	else
+		r->deltadistx = fabs(1/r->raydirx);
+
+	if(r->raydiry == 0)
+		r->deltadisty = 1e30;
+	else
+		r->deltadisty = fabs(1/r->raydiry);
+
 	return (true);
 }
 
@@ -145,7 +155,8 @@ bool	render_ray(t_game *data)
 {
 	int	i;
 
-//	printf("pos_x = %f   pos_y = %f\n", data->player.pos_x, data->player.pos_y);
+	printf("px=%.2f  py=%.2f  dix=%.2f  diy=%.2f  plx=%.2f  ply=%.2f  dex=%2.f  dey=%2.f  six=%2.f  siy=%2.f\n", data->player.pos_x, data->player.pos_y, data->player.dir_x, data->player.dir_y, data->player.plane_x, data->player.plane_y
+	,data->ray.deltadistx, data->ray.deltadisty, data->ray.sidedistx, data->ray.sidedisty);
 	i = 0;
 	while (i <= data->mlx.x_window)
 	{
