@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 17:49:03 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 20:29:44 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ int	get_pixel_from_texture(t_texture *tex, int x, int y)
 	return (color);
 }
 
-void	define_wall(t_ray *ray, t_texture *tex)
+int	define_wall(t_ray *ray)
 {
 	if (ray->side == 0 && ray->raydirx > 0)
-		tex->tex_side = EA;
+		return (EA);
 	else if (ray->side == 0 && ray->raydirx < 0)
-		tex->tex_side = WE;
+		return (WE);
 	else if (ray->side == 1 && ray->raydiry > 0)
-		tex->tex_side = SO;
+		return (SO);
 	else
-		tex->tex_side = NO;
+		return (NO);
 }
 
-void	render_wall(t_game *data, int x)
+void	render_wall(t_game *data, int x, int tex_side)
 
 {
 	double		ratio;
@@ -43,8 +43,8 @@ void	render_wall(t_game *data, int x)
 	int			color;
 	t_texture	*tex;
 
-	tex = &data->tex[data->tex->tex_side];
-	ratio = data->render.wall_height / data->tex->tex_height;
+	tex = &data->tex[tex_side];
+	ratio = data->render.wall_height / tex->tex_height;
 	wall_y = data->render.draw_start;
 	while (wall_y < data->render.draw_end)
 	{

@@ -6,13 +6,13 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:00:14 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/05 18:04:58 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 20:33:27 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	prepare_render_values(t_game *data)
+void	prepare_render_values(t_game *data, int tex_side)
 {
 	double		perpwalldist;
 	t_render	*render;
@@ -26,7 +26,7 @@ void	prepare_render_values(t_game *data)
 	else
 		render->wall_x = data->player.pos_x + perpwalldist * data->ray.raydirx;
 	render->wall_x -= floor(render->wall_x);
-	render->tex_x = render->wall_x * data->tex->tex_width;
+	render->tex_x = render->wall_x * data->tex[tex_side].tex_width;
 	render->draw_start = (data->mlx.y_window / 2) - (render->wall_height / 2);
 	if (render->draw_start < 0)
 		render->draw_start = 0;
@@ -38,6 +38,7 @@ void	prepare_render_values(t_game *data)
 void	render_game(t_game *data)
 {
 	int	x;
+	int	tex_side;
 
 	//printf("px=%.2f  py=%.2f  dix=%.2f  diy=%.2f  plx=%.2f  ply=%.2f  dex=%2.f  dey=%2.f  six=%2.f  siy=%2.f\n", data->player.pos_x, data->player.pos_y, data->player.dir_x, data->player.dir_y, data->player.plane_x, data->player.plane_y
 	//,data->ray.deltadistx, data->ray.deltadisty, data->ray.sidedistx, data->ray.sidedisty);
@@ -47,10 +48,12 @@ void	render_game(t_game *data)
 		init_ray(data, x);
 		algo_dda(data);
 		calc_perpwalldist(data);
-		prepare_render_values(data);
-		//define_wall(&data->ray, &data->tex);
+		tex_side = define_wall(&data->ray);
+		// if (tex_side < 0 || tex_side > 3)
+    	// 	tex_side = 0;
+		prepare_render_values(data, tex_side);
 		render_ceiling(data, x, 0);
-		render_wall(data, x);
+		render_wall(data, x, tex_side);
 		render_floor(data, x, data->render.draw_end);
 		x++;
 	}

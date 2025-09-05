@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 18:05:27 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 19:57:25 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ bool	algo_dda(t_game *data);
 /*----------RENDERING-----------------*/
 
 //render_wall.c
-void	define_wall(t_ray *ray, t_texture *tex);
-void	render_wall(t_game *data, int x);
+int		define_wall(t_ray *ray);
+void	render_wall(t_game *data, int x, int tex_side);
 
 //render_minimap.c
 void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);

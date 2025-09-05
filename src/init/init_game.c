@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 17:52:14 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 19:53:34 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ void	init_map(t_map *map)
 	map->ceiling.b = -1;
 }
 
-void	init_key(t_key k)
+void	init_key(t_key *k)
 {
-	k.w = 0;
-	k.s = 0;
-	k.a = 0;
-	k.d = 0;
-	k.up = 0;
-	k.down = 0;
-	k.left = 0;
-	k.right = 0;
+	k->w = 0;
+	k->s = 0;
+	k->a = 0;
+	k->d = 0;
+	k->up = 0;
+	k->down = 0;
+	k->left = 0;
+	k->right = 0;
 }
 
 bool	init_value(t_game *data)
@@ -73,7 +73,7 @@ bool	init_value(t_game *data)
 	data->ray.frametime = 0.01;
 	data->ray.movespeed = data->ray.frametime * 5;
 	data->ray.rotspeed = data->ray.frametime * 3;
-	init_key(data->key);
+	init_key(&data->key);
 	data->ray.bord = 1.0001;
 	return (true);
 }
