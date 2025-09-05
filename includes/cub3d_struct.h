@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 14:57:08 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:54:40 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,15 @@ typedef struct s_minimap
 
 typedef struct s_texture
 {
-	int		img;
-	int		addr;
+	void	*img;
+	char	*addr;
 	int		bpp;
 	int		line_length;
 	int		endian;
 	int		tex[4];
 	int		tex_side;
-	double	tex_width;
-	double	tex_height;
-	double	tex_pos;
+	int		tex_width;
+	int		tex_height;
 }	t_texture;
 
 typedef struct s_ray
@@ -115,9 +114,6 @@ typedef struct s_ray
 	int		stepy;
 	int		side;
 	int		hit;
-	int		lineHeight;
-	int		drawstart;
-	int		drawend;
 	double	time;
 	double	oldtime;
 	double	frametime;
@@ -128,7 +124,7 @@ typedef struct s_ray
 
 typedef struct s_render
 {
-	int	wall_height; 
+	int	wall_height;
 	int	wall_x;
 	int	tex_x;
 	int	draw_start;
@@ -149,15 +145,15 @@ typedef struct s_player
 
 typedef struct s_key
 {
-	int w;
-	int s;
-	int a;
-	int d;
-	int up;
-	int down;
-	int left;
-	int right;
-} t_key;
+	int	w;
+	int	s;
+	int	a;
+	int	d;
+	int	up;
+	int	down;
+	int	left;
+	int	right;
+}	t_key;
 
 typedef struct s_game
 {

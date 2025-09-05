@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
+#    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/04 17:29:13 by sydubois         ###   ########.fr        #
+#    Updated: 2025/09/05 16:04:33 by Charlye          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,18 +22,19 @@ OBJ_DIR = obj/
 INC_DIR = includes/
 
 #Module
-SRC_MAIN	= 	main.c errors.c free.c init.c key.c
-SRC_PARSING =	parsing/parse_arg.c parsing/parse_file.c\
-				parsing/parse_identifier.c\
-				parsing/parse_grid.c parsing/valid_identifier.c
-SRC_RENDER	=	rendering/render_loop.c rendering/render_minimap.c rendering/hook.c\
-				rendering/render_logo.c\
-				rendering/render_ray.c\
-				rendering/move_map.c\
+SRC_MAIN	= 		main.c errors.c free.c
+SRC_INIT	=		init/init_game.c init/init_texture.c
+SRC_PARSING =		parsing/parse_arg.c parsing/parse_file.c\
+					parsing/parse_identifier.c\
+					parsing/parse_grid.c parsing/valid_identifier.c
+SRC_RAYCASTING	=	raycasting/ray_init.c raycasting/ray_dda.c
+SRC_RENDER	=		rendering/render_minimap.c\
+					rendering/render.c rendering/render_logo.c\
+					rendering/render_wall.c rendering/render_ceiling_floor.c
+SRC_EVENTS	=		events/hook.c events/key.c events/move_map.c
+SRC_UTILS	=		utils/trim.c utils/other.c utils/debug.c
 
-SRC_UTILS	=	utils/trim.c utils/other.c utils/debug.c
-
-SRC = $(SRC_MAIN) $(SRC_PARSING) $(SRC_UTILS) $(SRC_RENDER)
+SRC = $(SRC_MAIN) $(SRC_PARSING) $(SRC_UTILS) $(SRC_INIT) $(SRC_RAYCASTING) $(SRC_RENDER) $(SRC_EVENTS)
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

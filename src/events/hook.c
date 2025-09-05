@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:01 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/04 21:17:36 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:02:57 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	mouse_hook(int button, int x, int y, t_game *data)
 	{
 		printf("click R py = %d\n", data->map.player_y);
 	}
-	render_loop(data);
+	render_game(data);
 	return (0);
 }
 
@@ -41,6 +41,6 @@ int	key_hook(t_game *data)
 		rotate(data, 1);
 	if (data->key.left)
 		rotate(data, -1);
-	render_loop(data);
+	render_game(data);
 	return (0);
 }

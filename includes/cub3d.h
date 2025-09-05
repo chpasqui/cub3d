@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 14:57:41 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:01:19 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,33 @@ int		key_release(int keycode, t_game *data);
 //main.c
 int		close_window(t_game *data);
 
+
+/*----------RAYCASTING-----------------*/
+void	init_ray(t_game *data, int x);
+bool	calc_deltadist(t_game *data, int i);
+bool	init_step(t_game *data);
+bool	init_sidedist(t_game *data);
+bool	algo_dda(t_game *data);
+
 /*----------RENDERING-----------------*/
+
+//render_wall.c
+void	define_wall(t_ray *ray, t_texture *tex);
+void	render_wall(t_game *data, int x);
 
 //render_minimap.c
 void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);
 
 //render.c
+
 bool	render_minimap(t_game *data);
 bool	render_logo(t_game *data);
-bool	render_loop(t_game *data);
+void	render_game(t_game *data);
 
 
-//render_ray.c
-bool	render_ray(t_game *data);
+//render_ceiling_floor.c
+void	render_ceiling(t_game *data, int x, int y);
+void	render_floor(t_game *data, int x, int y);
 
 //move_map.c
 bool	move_map_up(t_game *data);

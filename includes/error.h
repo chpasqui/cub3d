@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:17:17 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 12:16:58 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:51:46 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define GRID_CLOSE "grid not closed"
 # define MLX_ERROR "mlx error"
 # define BYE_BYE "Bye bye!!"
+# define IMG_FAILED	"texture did not load"
 
 
 
