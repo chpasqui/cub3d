@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 16:01:19 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 18:05:27 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		close_window(t_game *data);
 
 /*----------RAYCASTING-----------------*/
 void	init_ray(t_game *data, int x);
+void	calc_perpwalldist(t_game *data);
 bool	calc_deltadist(t_game *data, int i);
 bool	init_step(t_game *data);
 bool	init_sidedist(t_game *data);
@@ -85,6 +86,7 @@ bool	rotate(t_game *data, int direction);
 
 /*-----------INIT.C-----------*/
 void	init_game(t_game *data);
+void	init_all_textures(t_game *data);
 void	init_map(t_map *map);
 
 /*-----------PARSING-----------*/

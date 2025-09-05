@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 15:58:01 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 17:55:00 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 		handle_error(&data, PARSE_FAIL);
 	init_value(&data);
 	init_mlx(&data);
+	init_all_textures(&data);
 	// init_game(&data);
 	render_game(&data);
 	mlx_hook(data.mlx.window, 17, 0, close_window, &data);

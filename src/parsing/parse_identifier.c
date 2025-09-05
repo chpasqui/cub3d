@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/04 21:22:23 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:03:39 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	parse_texture(t_map *map, char *path, t_token token)
 	if (fd == -1)
 		handle_map_error(map, CANNOT_OPEN_XPM);
 	close(fd);
-	save_texture_path(map, token, path);
+	save_texture_path(map, token, whole_path);
 }
 
 void	parse_identifier(t_map *map, char *line)

@@ -6,7 +6,7 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:07:05 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/05 15:52:51 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 18:04:20 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_one_texture(t_game *data, t_texture *tex, char *path)
 			&tex->line_length, &tex->endian);
 }
 
-void	init_all_texture(t_game *data)
+void	init_all_textures(t_game *data)
 {
 	init_one_texture(data, &data->tex[NO], data->map.no_path);
 	init_one_texture(data, &data->tex[SO], data->map.so_path);

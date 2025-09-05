@@ -6,20 +6,11 @@
 /*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:00:14 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/05 16:32:23 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/05 18:04:58 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	calc_perpwalldist(t_game *data)
-{
-	if (data->ray.side == 0)
-		data->ray.perpwalldist = data->ray.sidedistx - data->ray.deltadistx;
-	else
-		data->ray.perpwalldist = data->ray.sidedisty - data->ray.deltadisty;
-	printf("perpwalldist=%f wall_height=%f\n", data->ray.perpwalldist, data->render.wall_height);
-}
 
 void	prepare_render_values(t_game *data)
 {
