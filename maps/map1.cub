@@ -1,10 +1,10 @@
-F 3,100,0
-C 225,30,0
+F 0,85,46
+C 255,169,228
 
-NO test.xpm
-EA test.xpm
-WE test.xpm
-SO test.xpm
+NO BRICK_3E.xpm
+EA CONCRETE_5A.xpm
+WE BRICK_3C.xpm
+SO south.xpm
 
 11111111111111
 10101000000001
