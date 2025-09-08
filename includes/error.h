@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:17:17 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 15:51:46 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/08 12:19:20 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,13 @@
 # define MISSING_TEXTURE_PATH "missing one or more texture path"
 # define MISSING_COLOR_VALUES "missing one or more color values"
 # define INVALID_COLOR "invalid color values, must be in RGB format"
-# define MISSING_GRID "grid is missing, please add grid with 1 & 0 and one player NSEW"
+# define MISSING_GRID "grid is missing, add grid with 1 & 0 and oine NSEW"
 # define GRID_LAST	"grid is not the last in .cub"
-# define GRID_CHAR	"grid must contain only '10 ', and exactly one player 'NSEW'"
+# define GRID_CHAR	"grid must contain only '10 ', and exactly one 'NSEW'"
 # define GRID_CLOSE "grid not closed"
 # define MLX_ERROR "mlx error"
 # define BYE_BYE "Bye bye!!"
 # define IMG_FAILED	"texture did not load"
-
-
-
 
 //GENERIC
 # define PARSE_FAIL	"parsing failed"

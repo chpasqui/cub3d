@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/05 19:57:25 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/08 12:11:32 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@
 int		mouse_hook(int button, int x, int y, t_game *data);
 int		key_hook(t_game *data);
 
-//init.c
-bool	init_mlx(t_game *data);
-bool	init_value(t_game *data);
-bool	player_start_dir(t_game *data);
 
 //key.c
 int		key_press(int keycode, t_game *data);
@@ -85,9 +81,19 @@ bool	rotate(t_game *data, int direction);
 
 
 /*-----------INIT.C-----------*/
+
+//init_game.c
 void	init_game(t_game *data);
+bool	init_mlx(t_game *data);
+
+//init_texture.c
 void	init_all_textures(t_game *data);
+
+//init_value.c
+
 void	init_map(t_map *map);
+bool	init_value(t_game *data);
+bool	player_start_dir(t_game *data);
 
 /*-----------PARSING-----------*/
 
@@ -117,8 +123,13 @@ t_token	define_token(char *line);
 bool	algo_dfs(t_map *map, int r, int c);
 bool	check_grid_char(t_map *map);
 bool	save_grid(t_map *map, int i);
-bool	grid_close(t_map *map);
 void	parse_grid(t_map *map, int i);
+
+//parse_grid_tool.c
+void	grid_width(t_map *map, int j);
+void	init_player(t_map *map, int i, int j);
+bool	init_pass_grid(t_map *map);
+bool	grid_close(t_map *map);
 
 /*-----------FREE_AND_ERRORS-----------*/
 void	free_str_array(char **arr);
@@ -140,7 +151,7 @@ char	*trim_all_spaces(char *str);
 bool	print_char2(char **a);
 
 //other.c
-bool	char_in_string(char a, char *b);
+bool	c_in_s(char a, char *b);
 int		skip_space(char *line);
 
 #endif

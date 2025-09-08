@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:00:14 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/08 11:07:01 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:14:30 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	prepare_render_values(t_game *data, int tex_side)
 	t_render	*render;
 
 	render = &data->render;
-
 	perpwalldist = data->ray.perpwalldist;
 	render->wall_height = data->mlx.y_window / perpwalldist;
 	if (data->ray.side == 0)
@@ -50,7 +49,7 @@ void	render_game(t_game *data)
 		calc_perpwalldist(data);
 		tex_side = define_wall(&data->ray);
 		// if (tex_side < 0 || tex_side > 3)
-    	// 	tex_side = 0;
+		// 	tex_side = 0;
 		prepare_render_values(data, tex_side);
 		render_ceiling(data, x, 0);
 		render_wall(data, x, tex_side);

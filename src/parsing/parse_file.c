@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 16:57:36 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/04 21:21:54 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:52:31 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	parse_file(t_map *map)
 			parse_identifier(map, &map->lines[i][s]);
 			i++;
 		}
-		else if (char_in_string(map->lines[i][s], "01"))
+		else if (c_in_s(map->lines[i][s], "01"))
 			break ;
 		else
 			handle_map_error(map, WRONG_IDENTIFIER);

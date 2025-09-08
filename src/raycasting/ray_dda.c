@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 14:20:31 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 11:51:20 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:52:51 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ bool	algo_dda(t_game *data)
 			data->ray.mapy += data->ray.stepy;
 			data->ray.side = 1;
 		}
-		if (char_in_string(data->map.grid[data->ray.mapy][data->ray.mapx], "1") == 1)
+		if (c_in_s(data->map.grid[data->ray.mapy][data->ray.mapx], "1") == 1)
 			data->ray.hit = 1;
 	}
 	return (true);
 }
 /*
-printf("mapx = %d   mapy = %d   grid = %d\n", data->ray.mapx, data->ray.mapy, data->map.grid[data->ray.mapy][data->ray.mapx]);
+printf("mapx = %d   mapy = %d   grid = %d\n", data->ray.mapx,
+data->ray.mapy, data->map.grid[data->ray.mapy][data->ray.mapx]);
 */

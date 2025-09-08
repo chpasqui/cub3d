@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:50 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/29 11:56:43 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:03:14 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,3 @@ bool	line_is_identifier(char *line, t_map *map)
 	}
 	return (false);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:18:26 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/04 17:02:08 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:52:31 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	skip_space(char *line)
 	return (s);
 }
 
-bool	char_in_string(char a, char *b)
+bool	c_in_s(char a, char *b)
 {
 	while (*b != '\0')
 	{

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
+#    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/05 16:04:33 by Charlye          ###   ########.fr        #
+#    Updated: 2025/09/08 12:06:27 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,12 @@ INC_DIR = includes/
 
 #Module
 SRC_MAIN	= 		main.c errors.c free.c
-SRC_INIT	=		init/init_game.c init/init_texture.c
+SRC_INIT	=		init/init_game.c init/init_texture.c\
+					init/init_value.c
 SRC_PARSING =		parsing/parse_arg.c parsing/parse_file.c\
 					parsing/parse_identifier.c\
-					parsing/parse_grid.c parsing/valid_identifier.c
+					parsing/parse_grid.c parsing/valid_identifier.c\
+					parsing/parse_grid_tool.c
 SRC_RAYCASTING	=	raycasting/ray_init.c raycasting/ray_dda.c
 SRC_RENDER	=		rendering/render_minimap.c\
 					rendering/render.c rendering/render_logo.c\
