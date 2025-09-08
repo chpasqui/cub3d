@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_grid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:01:51 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 15:07:57 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ bool	check_grid_char(t_map *map)
 
 void	parse_grid(t_map *map, int i)
 {
-	save_grid(map, i);
+	if (!save_grid(map, i))
+		handle_map_error(map, MALLOC_FAIL);
 	if (!check_grid_char(map))
 		handle_map_error(map, GRID_CHAR);
 	if (!grid_close(map))

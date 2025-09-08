@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/08 14:44:43 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/08 15:00:54 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	save_texture_path(t_map *map, t_token token, char *path)
 		map->we_path = tmp;
 	else if (token == EA)
 		map->ea_path = tmp;
-	free(tmp);
 }
 
 void	parse_texture(t_map *map, char *path, t_token token)
@@ -89,12 +88,12 @@ void	parse_texture(t_map *map, char *path, t_token token)
 	if (!check_file_extension(path, len, "xpm"))
 		handle_map_error(map, BAD_EXTENSION_XPM);
 	whole_path = ft_strjoin("textures/", path);
-	free(path);
 	fd = open(whole_path, O_RDONLY);
 	if (fd == -1)
 		handle_map_error(map, CANNOT_OPEN_XPM);
 	close(fd);
 	save_texture_path(map, token, whole_path);
+	free(whole_path);
 }
 
 void	parse_identifier(t_map *map, char *line)

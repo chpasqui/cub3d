@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_grid_tool.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 11:56:14 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 16:42:53 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,24 @@ bool	grid_close(t_map *map)
 		j = 0;
 		while (map->grid[i][j])
 		{
-			init_pass_grid(map);
+			if(!init_pass_grid(map))
+				return (false);
 			if (c_in_s(map->grid[i][j], "0NSEW") && !algo_dfs(map, i, j))
 				return (false);
 			j++;
+			if(map->pass_grid)
+				free_str_array(map->pass_grid);
 		}
 		i++;
 	}
+	return (true);
+}
+
+bool	grid_close2(t_map *map)
+{
+	if (c_in_s(map->grid[1][1], "0NSEW") && !algo_dfs(map, 1, 1))
+		return (false);
+	if (map->pass_grid)
+		free_str_array(map->pass_grid);
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:15:44 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 14:37:58 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/08 16:43:06 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	free_map(t_map	*map)
 		free_str_array(map->lines);
 	if (map->grid)
 		free_str_array(map->grid);
-	if (map->pass_grid)
-		free_str_array(map->pass_grid);
+//	if (map->pass_grid)
+//		free_str_array(map->pass_grid);
 	if (map->no_path)
 		free(map->no_path);
 	if (map->so_path)
