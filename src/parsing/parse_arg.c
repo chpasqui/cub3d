@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 11:41:24 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 19:09:28 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	count_lines(char *path, t_map *map)
+static int	count_lines(char *path, t_map *map)
 {
 	int		fd;
 	int		count;
@@ -33,7 +33,7 @@ int	count_lines(char *path, t_map *map)
 	return (count);
 }
 
-bool	read_file(char *path, t_map *map)
+static bool	read_file(char *path, t_map *map)
 {
 	int		i;
 	int		fd;

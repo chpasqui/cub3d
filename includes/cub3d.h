@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:21:13 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 19:12:38 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,23 +79,21 @@ bool	rotate(t_game *data, int direction);
 /*-----------INIT.C-----------*/
 
 //init_game.c
+void	init_values_player(t_game *data);
 void	init_game(t_game *data);
 bool	init_mlx(t_game *data);
 
 //init_texture.c
-void	init_all_textures(t_game *data);
+bool	init_all_textures(t_game *data);
 
 //init_value.c
 
 void	init_map(t_map *map);
 bool	init_value(t_game *data);
-bool	player_start_dir(t_game *data);
 
 /*-----------PARSING-----------*/
 
 //parse_arg.c
-int		count_lines(char *path, t_map *map);
-bool	read_file(char *path, t_map *map);
 bool	check_file_extension(char *path, int len, char *extension);
 bool	parse_arg(char *path, t_map *map);
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
+#    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/08 12:06:27 by sydubois         ###   ########.fr        #
+#    Updated: 2025/09/08 19:02:35 by Charlye          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ INC_DIR = includes/
 
 #Module
 SRC_MAIN	= 		main.c errors.c free.c
-SRC_INIT	=		init/init_game.c init/init_texture.c\
-					init/init_value.c
+SRC_INIT	=		init/init_game.c init/init_mlx.c\
+					init/init_texture.c init/init_player.c
 SRC_PARSING =		parsing/parse_arg.c parsing/parse_file.c\
 					parsing/parse_identifier.c\
 					parsing/parse_grid.c parsing/valid_identifier.c\

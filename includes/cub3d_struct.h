@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 16:22:40 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:00:25 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,10 @@ typedef struct s_render
 	double	wall_height;
 	double	wall_x;
 	int		tex_x;
-	int		draw_start;
-	int		draw_end;
+	double	draw_start;
+	double	draw_end;
+	double	ratio;
+	double	tex_pos;
 }	t_render;
 
 typedef struct s_player
