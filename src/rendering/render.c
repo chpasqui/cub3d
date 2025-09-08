@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:00:14 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/08 12:14:30 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 14:32:28 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	render_game(t_game *data)
 	int	x;
 	int	tex_side;
 
-	//printf("px=%.2f  py=%.2f  dix=%.2f  diy=%.2f  plx=%.2f  ply=%.2f  dex=%2.f  dey=%2.f  six=%2.f  siy=%2.f\n", data->player.pos_x, data->player.pos_y, data->player.dir_x, data->player.dir_y, data->player.plane_x, data->player.plane_y
-	//,data->ray.deltadistx, data->ray.deltadisty, data->ray.sidedistx, data->ray.sidedisty);
 	x = 0;
 	while (x < data->mlx.x_window)
 	{
@@ -48,8 +46,8 @@ void	render_game(t_game *data)
 		algo_dda(data);
 		calc_perpwalldist(data);
 		tex_side = define_wall(&data->ray);
-		// if (tex_side < 0 || tex_side > 3)
-		// 	tex_side = 0;
+		if (tex_side < 0 || tex_side > 3)
+			tex_side = 0;
 		prepare_render_values(data, tex_side);
 		render_ceiling(data, x, 0);
 		render_wall(data, x, tex_side);
@@ -59,3 +57,11 @@ void	render_game(t_game *data)
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window,
 		data->mlx.img, 0, 0);
 }
+
+/*printf("px=%.2f  py=%.2f  dix=%.2f  diy=%.2f  plx=%.2f  
+ply=%.2f  dex=%2.f  dey=%2.f  six=%2.f  siy=%2.f\n", 
+data->player.pos_x, data->player.pos_y, data->player.dir_x, 
+data->player.dir_y, data->player.plane_x, data->player.plane_y
+,data->ray.deltadistx, data->ray.deltadisty, data->ray.sidedistx,
+ data->ray.sidedisty);
+*/

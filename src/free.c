@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:15:44 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:16:57 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 14:37:58 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	free_mlx(t_mlx	*mlx)
 		mlx_destroy_window(mlx->mlx, mlx->window);
 	if (mlx->mlx)
 	{
-	//	mlx_destroy_display(mlx->mlx); // pose probleme sous mac
+		mlx_destroy_display(mlx->mlx); // pose probleme sous mac
 		free(mlx->mlx);
 	}
 }
@@ -67,7 +67,7 @@ void	free_game(t_game *data)
 int	clean_exit(t_game *data, int code)
 {
 	free_game(data);
-//	mlx_destroy_image(data->mlx.mlx, data->mlx.img);//SDU verifier si il faut le mettre ailleur
-//	mlx_destroy_window(data->mlx.mlx, data->mlx.window);
+	// mlx_destroy_image(data->mlx.mlx, data->mlx.img);//SDU verifier si il faut le mettre ailleur
+	// mlx_destroy_window(data->mlx.mlx, data->mlx.window);
 	exit(code);
 }
