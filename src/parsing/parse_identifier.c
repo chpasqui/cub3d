@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/08 14:53:56 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/08 15:03:49 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	save_texture_path(t_map *map, t_token token, char *path)
 		map->we_path = tmp;
 	else if (token == EA)
 		map->ea_path = tmp;
-	free(tmp);
 }
 
 void	parse_texture(t_map *map, char *path, t_token token)

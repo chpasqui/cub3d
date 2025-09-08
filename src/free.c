@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:15:44 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 14:37:58 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/08 16:21:26 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,20 @@ void	free_map(t_map	*map)
 		free(map->we_path);
 }
 
-void	free_mlx(t_mlx	*mlx)
+void	free_texture(t_game *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (data->tex[i].img)
+			mlx_destroy_image(data->mlx.mlx, data->tex[i].img);
+		i++;
+	}
+}
+
+void	free_mlx(t_mlx *mlx)
 {
 	if (mlx->img)
 		mlx_destroy_image(mlx->mlx, mlx->img);
@@ -53,7 +66,7 @@ void	free_mlx(t_mlx	*mlx)
 		mlx_destroy_window(mlx->mlx, mlx->window);
 	if (mlx->mlx)
 	{
-		mlx_destroy_display(mlx->mlx); // pose probleme sous mac
+		mlx_destroy_display(mlx->mlx);
 		free(mlx->mlx);
 	}
 }
@@ -62,6 +75,7 @@ void	free_game(t_game *data)
 {
 	free_map(&data->map);
 	free_mlx(&data->mlx);
+	free_texture(data);
 }
 
 int	clean_exit(t_game *data, int code)
