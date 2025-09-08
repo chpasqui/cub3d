@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 21:03:22 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/04 21:03:38 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 10:56:08 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	key_press(int keycode, t_game *data)
 		data->key.left = 1;
 	if (keycode == RIGHT)
 		data->key.right = 1;
+	if (keycode == ESC)
+		data->key.esc = 1;
 	return (true);
 }
 
@@ -50,6 +52,8 @@ int	key_release(int keycode, t_game *data)
 	if (keycode == LEFT)
 		data->key.left = 0;
 	if (keycode == RIGHT)
+		data->key.right = 0;
+	if (keycode == ESC)
 		data->key.right = 0;
 	return (true);
 }

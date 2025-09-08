@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:53 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/01 08:26:00 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/08 11:41:24 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ int	count_lines(char *path, t_map *map)
 	if (fd == -1)
 		handle_map_error(map, CANNOT_OPEN);
 	count = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		free (line);
 		count++;
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (count);
@@ -47,10 +49,12 @@ bool	read_file(char *path, t_map *map)
 	if (!map->lines)
 		return (false);
 	i = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		map->lines[i] = line;
 		i++;
+		line = get_next_line(fd);
 	}
 	map->lines[i] = NULL;
 	close(fd);

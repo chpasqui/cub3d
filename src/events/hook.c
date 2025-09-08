@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:01 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/05 16:02:57 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/08 10:56:57 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	key_hook(t_game *data)
 		rotate(data, 1);
 	if (data->key.left)
 		rotate(data, -1);
+	if (data->key.esc)
+		close_window(data);
 	render_game(data);
 	return (0);
 }
