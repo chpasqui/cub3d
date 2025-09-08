@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:11:32 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:21:13 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@
 int		mouse_hook(int button, int x, int y, t_game *data);
 int		key_hook(t_game *data);
 
-
 //key.c
 int		key_press(int keycode, t_game *data);
 int		key_release(int keycode, t_game *data);
 
 //main.c
 int		close_window(t_game *data);
-
 
 /*----------RAYCASTING-----------------*/
 void	init_ray(t_game *data, int x);
@@ -67,7 +65,6 @@ bool	render_minimap(t_game *data);
 bool	render_logo(t_game *data);
 void	render_game(t_game *data);
 
-
 //render_ceiling_floor.c
 void	render_ceiling(t_game *data, int x, int y);
 void	render_floor(t_game *data, int x, int y);
@@ -78,7 +75,6 @@ bool	move_map_down(t_game *data);
 bool	move_map_left(t_game *data);
 bool	move_map_right(t_game *data);
 bool	rotate(t_game *data, int direction);
-
 
 /*-----------INIT.C-----------*/
 

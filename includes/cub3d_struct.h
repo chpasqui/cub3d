@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 10:54:59 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:23:06 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,9 @@ typedef struct s_render
 {
 	double	wall_height;
 	double	wall_x;
-	int	tex_x;
-	int	draw_start;
-	int	draw_end;
+	int		tex_x;
+	int		draw_start;
+	int		draw_end;
 }	t_render;
 
 typedef struct s_player

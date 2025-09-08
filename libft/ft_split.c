@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:21:38 by chpasqui          #+#    #+#             */
-/*   Updated: 2024/10/21 14:53:31 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:26:47 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_count_words(char const *s, char c)
 			count++;
 			while (s[i] && s[i] != c)
 				i++;
-		}	
+		}
 	}
 	return (count);
 }

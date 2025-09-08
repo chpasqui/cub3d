@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:31:20 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/08/26 14:03:46 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:26:05 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int		ft_putnbr_unsigned(unsigned int n);
 int		ft_print_hex_lower(unsigned int n);
 int		ft_print_hex_upper(unsigned int n);
 int		ft_print_pointer(void *ptr);
-
 
 /*------GNL--------*/
 char	*get_next_line(int fd);
