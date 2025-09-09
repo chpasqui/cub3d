@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:16:31 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:39:51 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,10 @@ void	init_map(t_map *map);
 void	init_values_player(t_game *data);
 void	init_game(t_game *data);
 bool	init_mlx(t_game *data);
+
+//init_color.c
+void	init_color_ceiling(t_map *map, char **tab);
+void	init_color_floor(t_map *map, char **tab);
 
 //init_texture.c
 bool	init_all_textures(t_game *data);
