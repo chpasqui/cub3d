@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/09 14:43:24 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:26:26 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ bool	verify_color_value(char **tab)
 		return (false);
 	return (true);
 }
+void	init_color(t_map *map, char **tab)
+{
+		map->ceiling.r = ft_atoi(tab[0]);
+		map->ceiling.g = ft_atoi(tab[1]);
+		map->ceiling.b = ft_atoi(tab[2]);
+}
 
 void	parse_color(t_map *map, char *value, t_token token)
 {
@@ -52,11 +58,7 @@ void	parse_color(t_map *map, char *value, t_token token)
 		handle_map_error(map, INVALID_COLOR);
 	}
 	if (token == C)
-	{
-		map->ceiling.r = ft_atoi(tab[0]);
-		map->ceiling.g = ft_atoi(tab[1]);
-		map->ceiling.b = ft_atoi(tab[2]);
-	}
+		init_color(map, tab);
 	if (token == F)
 	{
 		map->floor.r = ft_atoi(tab[0]);
