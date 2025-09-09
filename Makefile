@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+         #
+#    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/08 19:02:35 by Charlye          ###   ########.fr        #
+#    Updated: 2025/09/09 11:59:41 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC_PARSING =		parsing/parse_arg.c parsing/parse_file.c\
 					parsing/parse_grid.c parsing/valid_identifier.c\
 					parsing/parse_grid_tool.c
 SRC_RAYCASTING	=	raycasting/ray_init.c raycasting/ray_dda.c
-SRC_RENDER	=		rendering/render_minimap.c\
+SRC_RENDER	=		rendering/render_minimap.c rendering/mlx_utils.c\
 					rendering/render.c rendering/render_logo.c\
 					rendering/render_wall.c rendering/render_ceiling_floor.c
 SRC_EVENTS	=		events/hook.c events/key.c events/move_map.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 19:12:38 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/09 11:58:41 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,9 @@ bool	print_char2(char **a);
 //other.c
 bool	c_in_s(char a, char *b);
 int		skip_space(char *line);
+
+/*---------------MLX_UTILS------------------*/
+void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);
+bool	print_n_pixel(t_game *data, int x, int y, int color);
 
 #endif
