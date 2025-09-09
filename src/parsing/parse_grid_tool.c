@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 16:42:53 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:47:10 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ bool	grid_close(t_map *map)
 		j = 0;
 		while (map->grid[i][j])
 		{
-			if(!init_pass_grid(map))
+			if (!init_pass_grid(map))
 				return (false);
 			if (c_in_s(map->grid[i][j], "0NSEW") && !algo_dfs(map, i, j))
 				return (false);
 			j++;
-			if(map->pass_grid)
+			if (map->pass_grid)
 				free_str_array(map->pass_grid);
 		}
 		i++;

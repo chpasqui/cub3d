@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 13:34:40 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:48:02 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int argc, char **argv)
 	init_value(&data);
 	init_mlx(&data);
 	init_all_textures(&data);
-	// Looking at main function
 	render_game(&data);
 	mlx_hook(data.mlx.window, 17, 0, close_window, &data);
 	mlx_mouse_hook(data.mlx.window, mouse_hook, &data);

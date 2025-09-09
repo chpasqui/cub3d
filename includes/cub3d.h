@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 13:29:42 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:50:59 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 //hook.c
 int		mouse_hook(int button, int x, int y, t_game *data);
 int		key_hook(t_game *data);
-int	    key_hook2(t_game *data);
+int		key_hook2(t_game *data);
 
 //key.c
 int		key_press(int keycode, t_game *data);
