@@ -3,16 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 19:11:04 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/09 10:34:11 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	init_key(t_key *k)
+{
+	k->w = 0;
+	k->s = 0;
+	k->a = 0;
+	k->d = 0;
+	k->up = 0;
+	k->down = 0;
+	k->left = 0;
+	k->right = 0;
+	k->esc = 0;
+}
 
 static void	init_minimap(t_minimap *minimap)
 {
@@ -55,6 +68,7 @@ void	init_game(t_game *data)
 {
 	data->mlx.x_window = 800;
 	data->mlx.y_window = 600;
+	init_key(&data->key);
 	init_values_player(data);
 	init_minimap(&data->minimap);
 	init_values_ray(&data->ray);
