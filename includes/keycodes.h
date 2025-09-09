@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycodes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 17:49:13 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/09 10:45:20 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,27 @@
 # define SCROLL_DOWN 5
 
 // KEYBOARD MAC
-# ifdef __APPLE__
-# define ESC 53
-# define UP 126
-# define DOWN 125
-# define LEFT 123
-# define RIGHT 124
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_1 83
-# define KEY_2 84
-# define KEY_3 85
-# define KEY_5 87
-# define KEY_6 88
-# define KEY_7 89
-# define KEY_8 91
-# define KEY_9 92
+// # ifdef __APPLE__
+// # define ESC 53
+// # define UP 126
+// # define DOWN 125
+// # define LEFT 123
+// # define RIGHT 124
+// # define KEY_W 13
+// # define KEY_A 0
+// # define KEY_S 1
+// # define KEY_D 2
+// # define KEY_1 83
+// # define KEY_2 84
+// # define KEY_3 85
+// # define KEY_5 87
+// # define KEY_6 88
+// # define KEY_7 89
+// # define KEY_8 91
+// # define KEY_9 92
 
 // KEYBOARD LINUX
-# elif defined (__linux__)
+// # elif defined (__linux__)
 # define ESC 65307
 # define UP 65362
 # define DOWN 65364
@@ -61,8 +61,8 @@
 # define KEY_8 65464
 # define KEY_9 65465
 
-#else
-# error "unsupprted platform"
-#endif
+// #else
+// # error "unsupprted platform"
+// #endif
 
 #endif

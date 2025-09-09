@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 10:38:18 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 10:45:50 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 {
 	t_game	data;
 
-	ft_bzero(&data.map, sizeof(t_game));
+	t_bzero(&data.map, sizeof(t_game));
 	if (argc != 2)
 		handle_error(&data, WRONG_ARGS);
 	init_map(&data.map);
