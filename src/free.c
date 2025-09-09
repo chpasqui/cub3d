@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:15:44 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:00:58 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:05:04 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,4 @@ void	free_game(t_game *data)
 	free_map(&data->map);
 	free_texture(data);
 	free_mlx(&data->mlx);
-}
-
-int	clean_exit(t_game *data, int code)
-{
-	free_game(data);
-	exit(code);
 }

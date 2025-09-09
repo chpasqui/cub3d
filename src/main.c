@@ -6,17 +6,11 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:01:44 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:05:22 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	close_window(t_game *data)
-{
-	clean_exit(data, EXIT_SUCCESS);
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {

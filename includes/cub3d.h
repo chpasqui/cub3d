@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:00:20 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:08:02 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,9 @@
 
 /*---------MAIN-----------*/
 
-//hook.c
-int		mouse_hook(int button, int x, int y, t_game *data);
-int		key_hook(t_game *data);
-int		key_hook2(t_game *data);
-
-//key.c
-int		key_press(int keycode, t_game *data);
-int		key_release(int keycode, t_game *data);
+//close_exit.c
+int	close_window(t_game *data);
+int	clean_exit(t_game *data, int code);
 
 //main.c
 int		close_window(t_game *data);
@@ -84,6 +79,15 @@ bool	move_map_left(t_game *data);
 bool	move_map_right(t_game *data);
 bool	rotate(t_game *data, int direction);
 bool	move_map_up2(t_game *data);
+
+//hook.c
+int		mouse_hook(int button, int x, int y, t_game *data);
+int		key_hook(t_game *data);
+int		key_hook2(t_game *data);
+
+//key.c
+int		key_press(int keycode, t_game *data);
+int		key_release(int keycode, t_game *data);
 
 //move_map.c
 bool	move_map_up2(t_game *data);

@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/09 13:55:10 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:09:31 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	draw_circle(t_game *data, int px, int py)
 		}
 		y++;
 	}
-
 }
 
 void	draw_direction(t_game *data, int px, int py)
@@ -76,7 +75,6 @@ void	draw_direction(t_game *data, int px, int py)
 
 	radius = data->minimap.square_size;
 	i = 0;
-
 	while (i < radius)
 	{
 		x = px + (int)(data->player.dir_x * i);

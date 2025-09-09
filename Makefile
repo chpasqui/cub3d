@@ -6,7 +6,7 @@
 #    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/09 13:59:08 by chpasqui         ###   ########.fr        #
+#    Updated: 2025/09/09 14:08:11 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ_DIR = obj/
 INC_DIR = includes/
 
 #Module
-SRC_MAIN	= 		main.c errors.c free.c
+SRC_MAIN	= 		main.c errors.c free.c close_exit.c
 SRC_INIT	=		init/init_game.c init/init_mlx.c\
 					init/init_texture.c init/init_player.c
 SRC_PARSING =		parsing/parse_arg.c parsing/parse_file.c\

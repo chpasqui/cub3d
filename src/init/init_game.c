@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 13:05:46 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:09:49 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static void	init_minimap(t_game *data)
 {
-	t_minimap *minimap;
+	t_minimap	*minimap;
 
 	minimap = &data->minimap;
 	minimap->color_floor = COLOR_WHITE;
@@ -62,4 +62,3 @@ void	init_game(t_game *data)
 	init_minimap(data);
 	init_values_ray(&data->ray);
 }
-
