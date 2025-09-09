@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:09:58 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:36:28 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ bool	init_value(t_game *data)
 	data->ray.rotspeed = data->ray.frametime * 3;
 	init_key(&data->key);
 	data->ray.bord = 1.0001;
+	data->map.stick = 1;
 	return (true);
 }

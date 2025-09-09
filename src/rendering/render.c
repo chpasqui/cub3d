@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:00:14 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/08 14:32:28 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 11:42:38 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ void	prepare_render_values(t_game *data, int tex_side)
 		render->draw_end = data->mlx.y_window - 1;
 }
 
+void	calc_frametime(t_game *data)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	data->ray.oldtime = data->ray.time;
+	data->ray.time = tv.tv_usec / 1000 + tv.tv_sec * 1000;
+	data->ray.frametime = (data->ray.time - data->ray.oldtime) / 1000;
+	printf("frametime = %f\n", data->ray.frametime);
+	data->ray.movespeed = data->ray.frametime * 4;
+	data->ray.rotspeed = data->ray.frametime * 2;
+}
+
 void	render_game(t_game *data)
 {
 	int	x;
@@ -54,6 +67,7 @@ void	render_game(t_game *data)
 		render_floor(data, x, data->render.draw_end);
 		x++;
 	}
+	calc_frametime(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window,
 		data->mlx.img, 0, 0);
 }

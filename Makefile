@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+         #
+#    By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/08 12:06:27 by sydubois         ###   ########.fr        #
+#    Updated: 2025/09/09 13:35:29 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRC_RAYCASTING	=	raycasting/ray_init.c raycasting/ray_dda.c
 SRC_RENDER	=		rendering/render_minimap.c\
 					rendering/render.c rendering/render_logo.c\
 					rendering/render_wall.c rendering/render_ceiling_floor.c
-SRC_EVENTS	=		events/hook.c events/key.c events/move_map.c
+SRC_EVENTS	=		events/hook.c events/key.c events/move_map.c\
+					events/move_map2.c
 SRC_UTILS	=		utils/trim.c utils/other.c utils/debug.c
 
 SRC = $(SRC_MAIN) $(SRC_PARSING) $(SRC_UTILS) $(SRC_INIT) $(SRC_RAYCASTING) $(SRC_RENDER) $(SRC_EVENTS)

@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 15:10:29 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:34:40 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	main(int argc, char **argv)
 	mlx_mouse_hook(data.mlx.window, mouse_hook, &data);
 	mlx_hook(data.mlx.window, 2, 1L << 0, key_press, &data);
 	mlx_hook(data.mlx.window, 3, 1L << 1, key_release, &data);
-	mlx_loop_hook(data.mlx.mlx, key_hook, &data);
+	if (data.map.stick == 0)
+		mlx_loop_hook(data.mlx.mlx, key_hook, &data);
+	else
+		mlx_loop_hook(data.mlx.mlx, key_hook2, &data);
 	mlx_loop(data.mlx.mlx);
 	return (0);
 }

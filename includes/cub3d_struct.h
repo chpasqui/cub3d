@@ -6,7 +6,7 @@
 /*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 16:22:40 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:31:14 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_map
 	int		player_x;
 	int		player_y;
 	char	player_dir;
+	char	stick;
 }	t_map;
 
 typedef struct s_minimap
