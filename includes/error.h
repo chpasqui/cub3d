@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:17:17 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 18:58:09 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/09 15:20:38 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define GRID_LAST	"grid is not the last in .cub"
 # define GRID_CHAR	"grid must contain only '10 ', and exactly one 'NSEW'"
 # define GRID_CLOSE "grid not closed"
+# define GRID_TOO_BIG "grid too big, make it smaller :)"
 # define MLX_ERROR "mlx error"
 # define BYE_BYE "Bye bye!!"
 # define TEX_FAIL "texture did not load"

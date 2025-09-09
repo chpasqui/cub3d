@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:51:19 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:20:10 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	grid_width(t_map *map, int j)
 	l = ft_strlen(map->grid[j]);
 	if (l > map->width)
 		map->width = l;
+	if (map->width >= 200)
+		handle_map_error(map, GRID_TOO_BIG);
 }
 
 void	init_player(t_map *map, int i, int j)

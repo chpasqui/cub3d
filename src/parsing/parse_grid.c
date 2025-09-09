@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_grid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 15:07:57 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:19:56 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ bool	save_grid(t_map *map, int i)
 
 	j = 0;
 	map->height = map->nb_lines - i;
+	if (map->height >= 200)
+		handle_map_error(map, GRID_TOO_BIG);
 	map->grid = malloc(sizeof(char *) * (map->height + 1));
 	if (!map->grid)
 		return (false);
