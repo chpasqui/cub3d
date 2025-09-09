@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 13:31:14 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:59:48 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef struct s_minimap
 	int		height;
 	int		offset_x;
 	int		offset_y;
+	int		px;
+	int		py;
 
 	int		color_wall;
 	int		color_floor;
@@ -125,8 +127,10 @@ typedef struct s_render
 	double	wall_height;
 	double	wall_x;
 	int		tex_x;
-	int		draw_start;
-	int		draw_end;
+	double	draw_start;
+	double	draw_end;
+	double	ratio;
+	double	tex_pos;
 }	t_render;
 
 typedef struct s_player

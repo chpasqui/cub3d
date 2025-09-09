@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:12:26 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:05:46 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,52 @@
 
 #include "cub3d.h"
 
-void	init_game(t_game *data)
+static void	init_minimap(t_game *data)
 {
-	ft_bzero(data, sizeof(t_game));
+	t_minimap *minimap;
+
+	minimap = &data->minimap;
+	minimap->color_floor = COLOR_WHITE;
+	minimap->color_player = COLOR_GREEN;
+	minimap->color_wall = COLOR_BLACK;
+	minimap->color_ray = COLOR_RED;
+	minimap->square_size = 15;
+	minimap->width = 250;
+	minimap->height = 150;
+	minimap->offset_x = data->mlx.x_window - minimap->width - 20;
+	minimap->offset_y = data->mlx.y_window - minimap->height - 20;
+	minimap->show = true;
 }
 
-bool	init_mlx(t_game *data)
+void	init_map(t_map *map)
 {
-	data->mlx.mlx = mlx_init();
-	if (data->mlx.mlx == NULL)
-		handle_error(data, MLX_ERROR);
-	data->mlx.window = mlx_new_window(data->mlx.mlx, data->mlx.x_window,
-			data->mlx.y_window, "cub3D");
-	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.x_window,
-			data->mlx.y_window);
-	data->mlx.address = mlx_get_data_addr(data->mlx.img,
-			&data->mlx.bits_per_pixel, &data->mlx.line_length,
-			&data->mlx.endian);
-	return (true);
+	ft_bzero(map, sizeof(t_map));
+	map->floor.r = -1;
+	map->floor.g = -1;
+	map->floor.b = -1;
+	map->ceiling.r = -1;
+	map->ceiling.g = -1;
+	map->ceiling.b = -1;
 }
+
+static void	init_values_ray(t_ray *ray)
+{
+	ray->hit = 0;
+	ray->side = 0;
+	ray->time = 0;
+	ray->oldtime = 0;
+	ray->frametime = 0.01;
+	ray->movespeed = ray->frametime * 5;
+	ray->rotspeed = ray->frametime * 3;
+	ray->bord = 1.0001;
+}
+
+void	init_game(t_game *data)
+{
+	data->mlx.x_window = 1280;
+	data->mlx.y_window = 720;
+	init_values_player(data);
+	init_minimap(data);
+	init_values_ray(&data->ray);
+}
+

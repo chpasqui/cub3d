@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:00:14 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/09 11:42:38 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:03:08 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	render_game(t_game *data)
 		render_floor(data, x, data->render.draw_end);
 		x++;
 	}
+	render_minimap(data);
 	calc_frametime(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window,
 		data->mlx.img, 0, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_wall.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 13:43:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:15:03 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:08:45 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,24 @@ int	define_wall(t_ray *ray)
 void	render_wall(t_game *data, int x, int tex_side)
 
 {
-	double		ratio;
-	int			wall_y;
+	double		wall_y;
 	int			tex_y;
 	int			color;
+	t_render	*render;
 	t_texture	*tex;
 
 	tex = &data->tex[tex_side];
-	ratio = data->render.wall_height / tex->tex_height;
+	render = &data->render;
+	render->ratio = (double)tex->tex_height / data->render.wall_height;
+	render->tex_pos = (render->draw_start - data->mlx.y_window / 2
+			+ render->wall_height / 2) * render->ratio;
 	wall_y = data->render.draw_start;
 	while (wall_y < data->render.draw_end)
 	{
-		tex_y = (int)((wall_y - data->render.draw_start) / ratio);
+		tex_y = (int)render->tex_pos;
+		render->tex_pos += render->ratio;
 		color = get_pixel_from_texture(tex, data->render.tex_x, tex_y);
-		put_pixel_in_image(&data->mlx, x, wall_y, color);
+		put_pixel_in_image(&data->mlx, x, (int)wall_y, color);
 		wall_y++;
 	}
 }

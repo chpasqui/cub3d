@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 13:50:59 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:00:20 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ void	render_wall(t_game *data, int x, int tex_side);
 //render_minimap.c
 void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);
 
+//render_minimap_utils.c
+int	calc_pos_y_minimap(t_game *data, int view_rows);
+int	calc_pos_x_minimap(t_game *data, int view_cols);
+
 //render.c
 
 bool	render_minimap(t_game *data);
@@ -70,6 +74,8 @@ void	render_game(t_game *data);
 //render_ceiling_floor.c
 void	render_ceiling(t_game *data, int x, int y);
 void	render_floor(t_game *data, int x, int y);
+
+/*------------EVENTS--------------------------*/
 
 //move_map.c
 bool	move_map_up(t_game *data);
@@ -85,26 +91,24 @@ bool	move_map_down2(t_game *data);
 bool	move_map_left2(t_game *data);
 bool	move_map_right2(t_game *data);
 
-/*-----------INIT.C-----------*/
+/*-----------INIT-----------*/
 
 //init_game.c
+void	init_values_player(t_game *data);
 void	init_game(t_game *data);
 bool	init_mlx(t_game *data);
 
 //init_texture.c
-void	init_all_textures(t_game *data);
+bool	init_all_textures(t_game *data);
 
 //init_value.c
 
 void	init_map(t_map *map);
 bool	init_value(t_game *data);
-bool	player_start_dir(t_game *data);
 
 /*-----------PARSING-----------*/
 
 //parse_arg.c
-int		count_lines(char *path, t_map *map);
-bool	read_file(char *path, t_map *map);
 bool	check_file_extension(char *path, int len, char *extension);
 bool	parse_arg(char *path, t_map *map);
 
@@ -158,5 +162,9 @@ bool	print_char2(char **a);
 //other.c
 bool	c_in_s(char a, char *b);
 int		skip_space(char *line);
+
+/*---------------MLX_UTILS------------------*/
+void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);
+bool	print_n_pixel(t_game *data, int x, int y, int color);
 
 #endif

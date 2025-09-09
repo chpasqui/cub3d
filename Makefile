@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+         #
+#    By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/09 13:55:51 by sydubois         ###   ########.fr        #
+#    Updated: 2025/09/09 13:59:08 by chpasqui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,14 @@ INC_DIR = includes/
 
 #Module
 SRC_MAIN	= 		main.c errors.c free.c
-SRC_INIT	=		init/init_game.c init/init_texture.c\
-					init/init_value.c
+SRC_INIT	=		init/init_game.c init/init_mlx.c\
+					init/init_texture.c init/init_player.c
 SRC_PARSING =		parsing/parse_arg.c parsing/parse_file.c\
 					parsing/parse_identifier.c\
 					parsing/parse_grid.c parsing/valid_identifier.c\
 					parsing/parse_grid_tool.c
 SRC_RAYCASTING	=	raycasting/ray_init.c raycasting/ray_dda.c
-SRC_RENDER	=		rendering/render_minimap.c\
+SRC_RENDER	=		rendering/render_minimap.c rendering/minimap_utils.c rendering/mlx_utils.c\
 					rendering/render.c rendering/render_logo.c\
 					rendering/render_wall.c rendering/render_ceiling_floor.c
 SRC_EVENTS	=		events/hook.c events/key.c events/move_map.c\

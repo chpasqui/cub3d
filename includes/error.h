@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:17:17 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:19:20 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/08 18:58:09 by Charlye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define GRID_CLOSE "grid not closed"
 # define MLX_ERROR "mlx error"
 # define BYE_BYE "Bye bye!!"
-# define IMG_FAILED	"texture did not load"
+# define TEX_FAIL "texture did not load"
 
 //GENERIC
 # define PARSE_FAIL	"parsing failed"

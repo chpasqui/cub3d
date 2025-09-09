@@ -3,41 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Charlye <Charlye@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/05 14:58:34 by Charlye          ###   ########.fr       */
+/*   Updated: 2025/09/09 13:55:10 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = mlx->address + (y * mlx->line_length + x * (mlx->bits_per_pixel / 8));
-	*(int *)dst = color;
-}
-
-bool	print_n_pixel(t_game *data, int x, int y, int color)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	while (j < data->minimap.square_size)
-	{
-		i = 0;
-		while (i < data->minimap.square_size)
-		{
-			put_pixel_in_image(&data->mlx, x + i, y + j, color);
-			i++;
-		}
-		j++;
-	}
-	return (true);
-}
 
 int	get_minimap_color(t_game *data, int m_row, int m_col)
 {
@@ -46,8 +19,6 @@ int	get_minimap_color(t_game *data, int m_row, int m_col)
 		return (data->minimap.color_floor);
 	else if (data->map.grid[m_row][m_col] == '1')
 		return (data->minimap.color_wall);
-	else if (m_row == data->map.player_y && m_col == data->map.player_x)
-		return (data->minimap.color_player);
 	else
 		return (data->minimap.color_floor);
 }
@@ -73,6 +44,48 @@ void	render_minimap_case(t_game *data, t_minimap *minimap, int row, int col)
 		minimap->offset_y + row * minimap->square_size, color);
 }
 
+void	draw_circle(t_game *data, int px, int py)
+{
+	int	radius;
+	int	x;
+	int	y;
+
+	radius = data->minimap.square_size / 3;
+	y = -radius;
+	while (y <= radius)
+	{
+		x = -radius;
+		while (x <= radius)
+		{
+			if (x * x + y * y <= radius * radius)
+				put_pixel_in_image(&data->mlx, px + x, py + y,
+					data->minimap.color_player);
+			x++;
+		}
+		y++;
+	}
+
+}
+
+void	draw_direction(t_game *data, int px, int py)
+{
+	int	radius;
+	int	i;
+	int	x;
+	int	y;
+
+	radius = data->minimap.square_size;
+	i = 0;
+
+	while (i < radius)
+	{
+		x = px + (int)(data->player.dir_x * i);
+		y = py + (int)(data->player.dir_y * i);
+		put_pixel_in_image(&data->mlx, x, y, data->minimap.color_ray);
+		i++;
+	}
+}
+
 bool	render_minimap(t_game *data)
 {
 	int	view_rows;
@@ -93,6 +106,10 @@ bool	render_minimap(t_game *data)
 		}
 		row++;
 	}
+	data->minimap.px = calc_pos_x_minimap(data, view_cols);
+	data->minimap.py = calc_pos_y_minimap(data, view_rows);
+	draw_circle(data, data->minimap.px, data->minimap.py);
+	draw_direction(data, data->minimap.px, data->minimap.py);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window,
 		data->mlx.img, 0, 0);
 	return (true);
