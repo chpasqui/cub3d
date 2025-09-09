@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:01 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/09 13:47:44 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 16:05:11 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	mouse_hook(int button, int x, int y, t_game *data)
-{
-	printf("touche : %d  x = %d  y = %d\n", button, x, y);
-	if (button == SCROLL_UP || button == CLICK_L)
-	{
-		printf("click L px = %d\n", data->map.player_x);
-	}
-	else if (button == SCROLL_DOWN || button == CLICK_R)
-	{
-		printf("click R py = %d\n", data->map.player_y);
-	}
-	render_game(data);
-	return (0);
-}
 
 int	key_hook(t_game *data)
 {

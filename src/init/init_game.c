@@ -6,10 +6,8 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 15:15:23 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 16:11:35 by chpasqui         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
-
 /* ************************************************************************** */
 
 #include "cub3d.h"
@@ -40,7 +38,7 @@ void	init_map(t_map *map)
 	map->ceiling.r = -1;
 	map->ceiling.g = -1;
 	map->ceiling.b = -1;
-	map->stick = 0;
+	map->stick = 1;
 }
 
 static void	init_values_ray(t_ray *ray)

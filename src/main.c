@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:21 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:05:22 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 16:04:48 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int argc, char **argv)
 		handle_error(&data, TEX_FAIL);
 	render_game(&data);
 	mlx_hook(data.mlx.window, 17, 0, close_window, &data);
-	mlx_mouse_hook(data.mlx.window, mouse_hook, &data);
 	mlx_hook(data.mlx.window, 2, 1L << 0, key_press, &data);
 	mlx_hook(data.mlx.window, 3, 1L << 1, key_release, &data);
 	if (data.map.stick == 0)
