@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42Lausanne.c    +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:54:50 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/08 12:03:14 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:01:15 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ bool	no_duplicates(t_map *map, t_token token)
 		return (true);
 	if (token == WE && !map->we_path)
 		return (true);
-	if (token == EA &&!map->ea_path)
+	if (token == EA && !map->ea_path)
 		return (true);
 	if (token == C && map->ceiling.r == -1)
 		return (true);
-	if (token == F && map->ceiling.r == -1)
+	if (token == F && map->floor.r == -1)
 		return (true);
 	return (false);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/08 15:00:54 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:43:24 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ bool	verify_color_value(char **tab)
 	{
 		value = ft_atoi(tab[i]);
 		if (value < 0 || value > 255)
+		{
+			free_str_array(tab);
 			return (false);
+		}
 		i++;
 	}
 	if (i != 3)
@@ -39,9 +42,15 @@ void	parse_color(t_map *map, char *value, t_token token)
 		handle_map_error(map, MISSING_COLOR_VALUES);
 	tab = ft_split(value, ',');
 	if (!tab)
+	{
+		free_str_array(tab);
 		handle_map_error(map, MALLOC_FAIL);
+	}
 	if (!verify_color_value(tab))
+	{
+		free_str_array(tab);
 		handle_map_error(map, INVALID_COLOR);
+	}
 	if (token == C)
 	{
 		map->ceiling.r = ft_atoi(tab[0]);
@@ -82,7 +91,10 @@ void	parse_texture(t_map *map, char *path, t_token token)
 
 	path = left_trim(path);
 	if (!*path)
+	{
+		free(path);
 		handle_map_error(map, MISSING_TEXTURE_PATH);
+	}
 	len = ft_strlen(path);
 	right_trim(path, len);
 	if (!check_file_extension(path, len, "xpm"))
@@ -90,7 +102,10 @@ void	parse_texture(t_map *map, char *path, t_token token)
 	whole_path = ft_strjoin("textures/", path);
 	fd = open(whole_path, O_RDONLY);
 	if (fd == -1)
+	{
+		free(whole_path);
 		handle_map_error(map, CANNOT_OPEN_XPM);
+	}
 	close(fd);
 	save_texture_path(map, token, whole_path);
 	free(whole_path);

@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:24:30 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:08:34 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_map(t_map *map)
 	map->ceiling.r = -1;
 	map->ceiling.g = -1;
 	map->ceiling.b = -1;
+	map->stick = 1;
 }
 
 static void	init_values_ray(t_ray *ray)

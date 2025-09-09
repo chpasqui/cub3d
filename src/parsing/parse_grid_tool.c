@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_grid_tool.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 12:08:43 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 13:47:10 by sydubois         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:51:19 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ bool	init_pass_grid(t_map *map)
 	i = 0;
 	map->pass_grid = malloc(sizeof(char *) * (map->height + 1));
 	if (!map->grid)
+	{
+		free(map->pass_grid);
 		return (false);
+	}
 	while (map->grid[i])
 	{
 		map->pass_grid[i] = ft_strdup(map->grid[i]);
@@ -66,7 +69,10 @@ bool	grid_close(t_map *map)
 			if (!init_pass_grid(map))
 				return (false);
 			if (c_in_s(map->grid[i][j], "0NSEW") && !algo_dfs(map, i, j))
+			{
+				free_str_array(map->pass_grid);
 				return (false);
+			}
 			j++;
 			if (map->pass_grid)
 				free_str_array(map->pass_grid);
