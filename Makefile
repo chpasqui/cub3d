@@ -6,15 +6,15 @@
 #    By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:16:43 by chpasqui          #+#    #+#              #
-#    Updated: 2025/09/09 13:35:29 by sydubois         ###   ########.fr        #
+#    Updated: 2025/09/09 13:55:51 by sydubois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Noms, compilateur et flags
 NAME = cub3d
 CC = cc
-#FLAGS = -Wall -Wextra -Werror
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
+
 
 #Dossiers
 SRC_DIR = src/
