@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 10:34:11 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 10:38:55 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	init_game(t_game *data)
 {
 	data->mlx.x_window = 800;
 	data->mlx.y_window = 600;
-	init_key(&data->key);
-	init_values_player(data);
 	init_minimap(&data->minimap);
+	init_values_player(data);
 	init_values_ray(&data->ray);
+	init_key(&data->key);
 }
 
