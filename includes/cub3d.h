@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:08:02 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:16:31 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 /*---------MAIN-----------*/
 
 //close_exit.c
-int	close_window(t_game *data);
-int	clean_exit(t_game *data, int code);
+int		close_window(t_game *data);
+int		clean_exit(t_game *data, int code);
 
 //main.c
 int		close_window(t_game *data);
@@ -57,11 +57,10 @@ void	render_wall(t_game *data, int x, int tex_side);
 void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);
 
 //render_minimap_utils.c
-int	calc_pos_y_minimap(t_game *data, int view_rows);
-int	calc_pos_x_minimap(t_game *data, int view_cols);
+int		calc_pos_y_minimap(t_game *data, int view_rows);
+int		calc_pos_x_minimap(t_game *data, int view_cols);
 
 //render.c
-
 bool	render_minimap(t_game *data);
 bool	render_logo(t_game *data);
 void	render_game(t_game *data);
@@ -98,17 +97,13 @@ bool	move_map_right2(t_game *data);
 /*-----------INIT-----------*/
 
 //init_game.c
+void	init_map(t_map *map);
 void	init_values_player(t_game *data);
 void	init_game(t_game *data);
 bool	init_mlx(t_game *data);
 
 //init_texture.c
 bool	init_all_textures(t_game *data);
-
-//init_value.c
-
-void	init_map(t_map *map);
-bool	init_value(t_game *data);
 
 /*-----------PARSING-----------*/
 

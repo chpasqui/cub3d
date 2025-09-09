@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:00:14 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/09 14:03:08 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:20:16 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	calc_frametime(t_game *data)
 	data->ray.oldtime = data->ray.time;
 	data->ray.time = tv.tv_usec / 1000 + tv.tv_sec * 1000;
 	data->ray.frametime = (data->ray.time - data->ray.oldtime) / 1000;
-	printf("frametime = %f\n", data->ray.frametime);
 	data->ray.movespeed = data->ray.frametime * 4;
 	data->ray.rotspeed = data->ray.frametime * 2;
 }

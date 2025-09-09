@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 14:09:49 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:24:30 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static void	init_minimap(t_game *data)
 	minimap->color_floor = COLOR_WHITE;
 	minimap->color_player = COLOR_GREEN;
 	minimap->color_wall = COLOR_BLACK;
-	minimap->color_ray = COLOR_RED;
-	minimap->square_size = 15;
-	minimap->width = 250;
-	minimap->height = 150;
+	minimap->color_ray = COLOR_BLACK;
+	minimap->square_size = 20;
+	minimap->width = 350;
+	minimap->height = 250;
 	minimap->offset_x = data->mlx.x_window - minimap->width - 20;
 	minimap->offset_y = data->mlx.y_window - minimap->height - 20;
 	minimap->show = true;
@@ -56,8 +56,8 @@ static void	init_values_ray(t_ray *ray)
 
 void	init_game(t_game *data)
 {
-	data->mlx.x_window = 1280;
-	data->mlx.y_window = 720;
+	data->mlx.x_window = 2200;
+	data->mlx.y_window = 1200;
 	init_values_player(data);
 	init_minimap(data);
 	init_values_ray(&data->ray);

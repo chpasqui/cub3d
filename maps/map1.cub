@@ -1,9 +1,9 @@
 F 0,85,46
 C 255,169,228
 
-NO BRICK_3E.xpm
-EA CONCRETE_5A.xpm
-WE BRICK_3C.xpm
+NO north.xpm
+EA east.xpm
+WE west.xpm
 SO south.xpm
 
 11111111111111
