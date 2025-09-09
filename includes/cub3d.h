@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:36:28 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 11:58:41 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:56:29 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	render_wall(t_game *data, int x, int tex_side);
 //render_minimap.c
 void	put_pixel_in_image(t_mlx *mlx, int x, int y, int color);
 
+//render_minimap_utils.c
+int	calc_pos_y_minimap(t_game *data, int view_rows);
+int	calc_pos_x_minimap(t_game *data, int view_cols);
+
 //render.c
 
 bool	render_minimap(t_game *data);
@@ -69,6 +73,8 @@ void	render_game(t_game *data);
 void	render_ceiling(t_game *data, int x, int y);
 void	render_floor(t_game *data, int x, int y);
 
+/*------------EVENTS--------------------------*/
+
 //move_map.c
 bool	move_map_up(t_game *data);
 bool	move_map_down(t_game *data);
@@ -76,7 +82,7 @@ bool	move_map_left(t_game *data);
 bool	move_map_right(t_game *data);
 bool	rotate(t_game *data, int direction);
 
-/*-----------INIT.C-----------*/
+/*-----------INIT-----------*/
 
 //init_game.c
 void	init_values_player(t_game *data);

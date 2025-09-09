@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 11:32:26 by sydubois          #+#    #+#             */
-/*   Updated: 2025/09/09 12:08:55 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:55:10 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	draw_circle(t_game *data, int px, int py)
 	int	x;
 	int	y;
 
-	radius = data->minimap.square_size / 2;
+	radius = data->minimap.square_size / 3;
 	y = -radius;
 	while (y <= radius)
 	{
@@ -106,10 +106,10 @@ bool	render_minimap(t_game *data)
 		}
 		row++;
 	}
-	draw_circle(data, data->minimap.offset_x + data->minimap.width / 2,
-		data->minimap.offset_y + data->minimap.height / 2);
-	draw_direction(data, data->minimap.offset_x + data->minimap.width / 2,
-		data->minimap.offset_y + data->minimap.height / 2);
+	data->minimap.px = calc_pos_x_minimap(data, view_cols);
+	data->minimap.py = calc_pos_y_minimap(data, view_rows);
+	draw_circle(data, data->minimap.px, data->minimap.py);
+	draw_direction(data, data->minimap.px, data->minimap.py);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.window,
 		data->mlx.img, 0, 0);
 	return (true);
