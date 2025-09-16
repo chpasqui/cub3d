@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sydubois <sydubois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:53:36 by chpasqui          #+#    #+#             */
-/*   Updated: 2025/09/09 16:11:35 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/16 13:32:02 by sydubois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	init_values_ray(t_ray *ray)
 	ray->frametime = 0.01;
 	ray->movespeed = ray->frametime * 5;
 	ray->rotspeed = ray->frametime * 3;
-	ray->bord = 1.0001;
+	ray->bord = 1;
 }
 
 void	init_game(t_game *data)
