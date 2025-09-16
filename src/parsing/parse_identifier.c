@@ -6,7 +6,7 @@
 /*   By: chpasqui <chpasqui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 10:20:04 by Charlye           #+#    #+#             */
-/*   Updated: 2025/09/09 15:37:47 by chpasqui         ###   ########.fr       */
+/*   Updated: 2025/09/16 14:37:25 by chpasqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,22 @@
 bool	verify_color_value(char **tab)
 {
 	int	i;
+	int	j;
 	int	value;
 
 	i = 0;
 	while (tab[i])
 	{
+		j = 0;
+		while (tab[i][j])
+		{
+			if (!ft_isdigit(tab[i][j]) && tab[i][j] != ' ')
+				return (false);
+			j++;
+		}
 		value = ft_atoi(tab[i]);
 		if (value < 0 || value > 255)
-		{
-			free_str_array(tab);
 			return (false);
-		}
 		i++;
 	}
 	if (i != 3)
@@ -38,6 +43,8 @@ void	parse_color(t_map *map, char *value, t_token token)
 	char	**tab;
 
 	value = trim_all_spaces(value);
+	if (!ft_isdigit(*value))
+		handle_map_error(map, INVALID_COLOR);
 	if (!*value)
 		handle_map_error(map, MISSING_COLOR_VALUES);
 	tab = ft_split(value, ',');
